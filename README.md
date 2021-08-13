@@ -16,7 +16,7 @@ npm install
 ```
 5. Create a copy of your .env file. Run the following command in cmd-
  ```bash
-cp .env.example .env
+copy .env.example .env
 ```
 6. Generate an app encryption key.Run the following command in cmd-
  ```bash
