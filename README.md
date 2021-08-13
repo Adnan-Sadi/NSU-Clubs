@@ -2,7 +2,7 @@
 
 # How to run
 1. Clone GitHub repo or download the zip file of the source code
-2. cd into the 'nsu_clubs'
+2. cd into the 'nsu_clubs' Folder.
 3. Install Composer Dependencies. Run the following command in cmd-
  ```bash
 composer install
