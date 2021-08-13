@@ -15,14 +15,14 @@ composer install --ignore-platform-reqs
 npm install
 ```
 - Create a copy of your .env file. Run the following command in cmd-
-  In Windows:
- ```bash
-copy .env.example .env
-```
-  In Linux/Mac:
- ```bash
-cp .env.example .env
-```
+  - In Windows:
+    ```bash
+     copy .env.example .env
+     ```
+  - In Linux/Mac:
+     ```bash
+     cp .env.example .env
+     ```
 - Generate an app encryption key.Run the following command in cmd-
  ```bash
 php artisan key:generate
