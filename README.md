@@ -5,7 +5,7 @@
  ```bash
   git clone https://github.com/Adnan-Sadi/CSE299-Project.git
 ```
-- cd into the 'nsu_clubs' Folder.
+- cd into the 'nsu_clubs' Folder using Command Prompt.
 - Install Composer Dependencies. Run the following command in cmd-
  ```bash
 composer install --ignore-platform-reqs
