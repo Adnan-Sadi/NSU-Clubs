@@ -94,8 +94,14 @@ class ClubController extends Controller
                       ->make(true);
         }
 
-        $userId = auth()->user()->id;//getting userId
-        $manager = DB::table('club_managers')->where('user_id',$userId)->where('club_id',$id)->get();// check if user is a manager of the club
+        if(auth()->user()){
+         $userId = auth()->user()->id;//getting userId
+         $manager = DB::table('club_managers')->where('user_id',$userId)->where('club_id',$id)->get();// check if user is a manager of the club
+        }
+        else{
+         $manager = collect();
+        }
+        
 
         if($manager->isNotEmpty()){
             $manages = 1;     
