@@ -31,4 +31,8 @@ class Members extends Model
     public function departments(){
         return $this->belongsTo(Departments::class);
     }
+
+    public function executive_members(){
+        return $this->hasMany(Executive_Members::class,'m_id'); // one to many relationship
+    }
 }

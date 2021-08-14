@@ -75,8 +75,14 @@ class ClubController extends Controller
      */
     public function show_members($id,Request $request)
     {
+        $executives = DB::table('members')
+                ->join('executive__members', 'members.m_id', '=','executive__members.m_id')
+                ->where('club_id','=',$id)
+                ->select('members.*','executive__members.photo')
+                ->get(); // get executive members
+
         if($request->ajax()){
-            //$data = Members::where('club_id',$id);
+
           $data = DB::table('members')
                       ->join('departments', 'members.dept_id', '=', 'departments.dept_id')
                       ->where('club_id','=',$id)
@@ -112,7 +118,7 @@ class ClubController extends Controller
 
         $departments= Departments::all();
 
-        return view('members')->with('club_id',$id)->with('departments',$departments)->with('manages',$manages);
+        return view('members')->with('executives',$executives)->with('club_id',$id)->with('departments',$departments)->with('manages',$manages);
 
     }
 
