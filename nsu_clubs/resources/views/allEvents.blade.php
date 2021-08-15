@@ -121,7 +121,7 @@
             <div class="event--content">
 
               <h2>
-                <a href="#" target="_blank" title="#">{{ $event->event_name }}</a>
+                <a href="{{ url('event/'.$event->event_id) }}" target="_blank" title="#">{{ $event->event_name }}</a>
               </h2>
 
               <p class="event--content-hall">North-South University</p>
@@ -156,7 +156,7 @@
                         <button type="button" class="btn btn-outline-success btn-sm follow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
                       @endif
                     
-                    <button type="button" class="btn btn-outline-info btn-sm edit_event" id="{{ $event->event_id }}">
+                    <button type="button" class="btn btn-outline-info btn-sm edit_event" id="{{ $event->event_id }}" onclick="location.href='/event/{{ $event->event_id }}/edit';">
                     <span class="btn-label"><i class="fas fa-edit"></i> Edit</button><br>
                     
                     <form id="form-1" action="/event/{{ $event->event_id }}" method="POST">
