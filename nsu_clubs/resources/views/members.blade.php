@@ -42,10 +42,13 @@
 <div id="all_mem" class="text-left">Executive Members</div><br/>
 
 <!-- Add executive member Button -->
-<div align="right">
-<button type="button" data-toggle="modal" data-target="#exampleModalScrollable" class="btn btn-dark btn-sm" id="create_exec_member">Add Member</button>
-</div><br>
 
+  <!-- Add Executive member Button -->
+  @if ($manages == 1)
+    <div align="right">
+    <button type="button" data-toggle="modal" data-target="#exampleModalScrollable" class="btn btn-dark btn-sm" id="create_exec_member">Add Member</button>
+    </div><br>
+  @endif
 <!-- Executive Member Body Starts-->
 
 
@@ -59,6 +62,8 @@
             <div class="team-member text-center">
               <div class="team-img">
                 <img class= "photo" src="{{ asset('images/Executive Members/'.$executive->photo) }}" alt="">
+                
+                @if ($manages == 1)
                 <div class="overlay-body">
                   <div class="team-details text-center">
                     <p>
@@ -69,6 +74,8 @@
                     </div>
                   </div>
                 </div>
+                @endif
+
               </div>
               <h6 class="team-title">{{ $executive->name }}<br></h6>
               <p class="profession">{{ $executive->position }}</p>
