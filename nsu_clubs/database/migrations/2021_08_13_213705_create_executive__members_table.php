@@ -27,6 +27,6 @@ class CreateExecutiveMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('executive__members');
+        Schema::dropIfExists('executive_members');
     }
 }

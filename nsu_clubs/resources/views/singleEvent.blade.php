@@ -54,7 +54,11 @@
 
 							<h1>{{ $event->event_name }}</h1>
 							
-							<p class="mu-event-date-line">19 - 21 February, 2018. New York, USA</p>
+							<p class="mu-event-date-line">
+								{{ $event->event_date->format('d') }} 
+								{{ $event->event_date->format('F') }}, 
+								{{ $event->event_date->format('Y') }}. 
+								From {{ $event->start_at }} to {{ $event->end_at }}</p>
 							<p class="background-extender">Hello</p>
 
 			
@@ -82,7 +86,7 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<div class="mu-about-right">
+									<div class="mu-about-right overflow-auto">
 										<h2>About The Event</h2>
 										<p> {{ $event->event_description }}</p>
 									

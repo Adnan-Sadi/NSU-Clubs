@@ -23,13 +23,13 @@
        <div class="container">
         <div class="page-header" style="border: none;position: relative;">
           <h1>Calendar of Events</h1>
-         
-          <div class="button-container-1">
-            <span class="mas">Organize Event</span>
-          <button id='work' type="button" name="Hover" data-toggle="modal" data-target="#modalCart">Organize Event</button>
-          </div>
-    
-
+          
+          @if ($manages == 1)
+            <div class="button-container-1">
+                <span class="mas">Organize Event</span>
+                <button id='work' type="button" name="Hover" data-toggle="modal" data-target="#modalCart">Organize Event</button>
+            </div>
+          @endif
           
               <!-- Modal: modalCart -->
               <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -149,21 +149,29 @@
                         @php       $following = true;       @endphp
                       @endif
                     @endforeach
-
+                    
+                     <!-- Follow Event Button -->
                       @if ($following == true)
                        <button type="button" class="btn btn-outline-danger btn-sm unfollow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-times-circle"></i> Follow</button><br>
                       @else
                         <button type="button" class="btn btn-outline-success btn-sm follow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
                       @endif
                     
-                    <button type="button" class="btn btn-outline-info btn-sm edit_event" id="{{ $event->event_id }}" onclick="location.href='/event/{{ $event->event_id }}/edit';">
-                    <span class="btn-label"><i class="fas fa-edit"></i> Edit</button><br>
                     
-                    <form id="form-1" action="/event/{{ $event->event_id }}" method="POST">
-                      @csrf
-                      @method('delete')
-                    <button type="submit" class="btn btn-outline-dark btn-sm"><i class="far fa-trash-alt"></i> Delete</button>
-                    </form>
+                    @if ($manages == 1)
+                       <!-- Edit Event Button -->
+                       <button type="button" class="btn btn-outline-info btn-sm edit_event" id="{{ $event->event_id }}" onclick="location.href='/event/{{ $event->event_id }}/edit';">
+                       <span class="btn-label"><i class="fas fa-edit"></i> Edit</button><br>
+                        
+                        <!-- Delete Event Button -->
+                        <form id="form-1" action="/event/{{ $event->event_id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-outline-dark btn-sm"><i class="far fa-trash-alt"></i> Delete</button>
+                        </form>
+                      
+                    @endif
+                    
                   
                   </div>
               @else

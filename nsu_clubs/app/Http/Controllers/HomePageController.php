@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clubs;
+use Illuminate\Support\facades\DB;
+use Carbon\Carbon;
 
 class HomePageController extends Controller
 {
@@ -15,7 +17,11 @@ class HomePageController extends Controller
     public function index()
     {
         $clubs = Clubs::all();
-        return view('home')->with('clubs',$clubs);
+        $current = Carbon::today()->format('Y-m-d');
+        
+        $events = DB::table('events')->where('event_date', ">" , $current)->orderBy('event_date','asc')->limit(3)->get();
+
+        return view('home')->with('clubs',$clubs)->with('events',$events);
     }
 
     /**

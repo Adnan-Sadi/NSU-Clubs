@@ -54,57 +54,13 @@
   </section>
   <!-- ================ End banner Area ================= -->
 
-  <!-- ================ Start Feature Area ================= -->
-  <!--
-  <section class="feature-area">
-    <div class="container-fluid">
-      <div class="feature-inner row">
-        <div class="col-lg-2 col-md-6">
-          <div class="feature-item d-flex">
-            <i class="ti-book"></i>
-            <div class="ml-20">
-              <h4>New Classes</h4>
-              <p>
-                In the history of modern astronomy, there is probably no one greater leap forward.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6">
-          <div class="feature-item d-flex">
-            <i class="ti-cup"></i>
-            <div class="ml-20">
-              <h4>Top Courses</h4>
-              <p>
-                In the history of modern astronomy, there is probably no one greater leap forward.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6">
-          <div class="feature-item d-flex border-right-0">
-            <i class="ti-desktop"></i>
-            <div class="ml-20">
-              <h4>Full E-Books</h4>
-              <p>
-                In the history of modern astronomy, there is probably no one greater leap forward.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
--->
-  <!-- ================ End Feature Area ================= -->
-
   <!-- ================ Start Clubs Area ================= -->
-  <section class="other-feature-area">
+  <section class="other-feature-area" id="clubs">
     <div class="container">
       <div class="feature-inner row">
         <div class="col-lg-12">
           <div class="section-title text-left">
-            <h2 class="home-font">
+            <h2 class="home-font" >
               Meet the Clubs<br />
               of North-South University 
             </h2>
@@ -143,7 +99,7 @@
       </div>
     </div>
   </section>
-  <!-- ================ End Testimonials Area ================= -->
+  <!-- ================ End Clubs Area ================= -->
 
   <section class="popular-course-area section-gap">
     
@@ -165,7 +121,7 @@
    </div>
 
  </section>
-  <!-- ================ Start Blog Post Area ================= -->
+  <!-- ================ Start Recent Events Area ================= -->
   <section class="blog-post-area section-gap">
     <div class="container-fluid">
       <div class="feature-inner row">
@@ -180,82 +136,89 @@
             </p>
           </div>
         </div>
+
+        @isset($events[0])
+
         <div class="col-lg-4 col-md-6">
           <div class="single-blog-post">
-            <img src="{{ asset('images/Home/blog-post/b1.jpg') }}" class="img-fluid" alt="" />
+            <img src="{{ asset('images/Event Covers/' . $events[0]->cover_photo) }}" class="img-fluid" alt="" />
             <div class="overlay"></div>
             <div class="top-text">
-              <p>29th, oct, 2018</p>
-              <p>121 likes</p>
-              <p>05 comments</p>
+              <p>{{ $events[0]->event_date }}.</p>
             </div>
             <div class="text">
-              <h4 class="text-white home-font">Smart Kitchen Setup</h4> 
+              <h4 class="text-white home-font">{{ $events[0]->event_name }}</h4> 
               <div>
                 <p>
-                  Lorem ipsum dolor sit amet consec tetur adipisicing elit,
-                  sed do.
+                  {{ $events[0]->event_description }}
                 </p>
               </div>
-              <a href="#" class="primary-btn">
+              <a href="{{ url('event/'.$events[0]->event_id) }}" class="primary-btn">
                 View Details
                 <i class="fa fa-long-arrow-right"></i>
               </a>
             </div>
           </div>
         </div>
+
+        @endisset
+         
+        @isset($events[1])
+
         <div class="col-lg-4 col-md-6 mt--160">
           <div class="single-blog-post">
-            <img src="{{ asset('images/Home/blog-post/b2.jpg') }}" class="img-fluid" alt="" />
+            <img src="{{ asset('images/Event Covers/' . $events[1]->cover_photo) }}" class="img-fluid" alt="" />
             <div class="overlay"></div>
             <div class="top-text">
-              <p>29th, oct, 2018</p>
-              <p>121 likes</p>
-              <p>05 comments</p>
+              <p>{{ $events[1]->event_date }}.</p>           
             </div>
             <div class="text">
-              <h4 class="text-white home-font">Smart Kitchen Setup</h4>
+              <h4 class="text-white home-font">{{ $events[1]->event_name }}</h4>
               <div>
                 <p>
-                  Lorem ipsum dolor sit amet consec tetur adipisicing elit,
-                  sed do.
+                  {{ $events[1]->event_description }}
                 </p>
               </div>
-              <a href="#" class="primary-btn">
+              <a href="{{ url('event/'.$events[1]->event_id) }}" class="primary-btn">
                 View Details
                 <i class="fa fa-long-arrow-right"></i>
               </a>
             </div>
           </div>
         </div>
+
+        @endisset
+        
+        @isset($events[2])
+                          
         <div class="col-lg-4 col-md-6 mt--260">
           <div class="single-blog-post">
-            <img src="{{ asset('images/Home/blog-post/b3.jpg') }}" class="img-fluid" alt="" />
+            <img src="{{ asset('images/Event Covers/' . $events[2]->cover_photo) }}" class="img-fluid" alt="" />
             <div class="overlay"></div>
             <div class="top-text">
-              <p>29th, oct, 2018</p>
-              <p>121 likes</p>
-              <p>05 comments</p>
+              <p>{{ $events[2]->event_date }}.</p>  
             </div>
             <div class="text">
-              <h4 class="text-white home-font">Smart Kitchen Setup</h4>
+              <h4 class="text-white home-font">{{ $events[2]->event_name }}</h4>
               <div>
                 <p>
-                  Lorem ipsum dolor sit amet consec tetur adipisicing elit,
-                  sed do.
+                  {{ $events[2]->event_description }}
                 </p>
               </div>
-              <a href="#" class="primary-btn">
+              <a href="{{ url('event/'.$events[2]->event_id) }}" class="primary-btn">
                 View Details
                 <i class="fa fa-long-arrow-right"></i>
               </a>
             </div>
           </div>
         </div>
+
+         @endisset
+
       </div>
     </div>
   </section>
-  <!-- ================ End Blog Post Area ================= -->
+  <!-- ================ End Recent Events Area ================= -->
 
 @endsection
 
