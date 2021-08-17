@@ -132,7 +132,7 @@
                 </div>
               </div>
 
-              <p class="event--content-ensemble">{{ $event->event_description }}</p>
+              <p class="event--content-ensemble">{{ Str::limit($event->event_description, 150, '...') }} <!-- Limiting the size of description -->  </p>
               <!-- csrf-token -->
               <meta name="csrf-token" content="{{ csrf_token() }}">
               

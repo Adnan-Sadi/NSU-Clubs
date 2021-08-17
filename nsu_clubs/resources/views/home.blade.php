@@ -41,9 +41,10 @@
             with NSU CLUBS
           </h1>
           <p class="mx-auto text-white  mt-20 mb-40">
-            In the history of modern astronomy, there is probably no one
-            greater leap forward than the building and launch of the space
-            telescope known as the Hubble.
+            We assist students prepare for personal fulfillment, responsible citizenship, 
+            and success in life by supporting their efforts to learn through extra and 
+            co-curricular experiences while achieving their academic goals, and striving 
+            for excellence in all.
           </p>
         </div>
         <div class="offset-lg-2 col-lg-5 col-md-12 home-banner-right">
@@ -78,10 +79,10 @@
                 </div>
                 <div class="flip-card-back">
                   <div class="inner color-white">
-                    <h3 class="flip-box-header home-font">{{ $club->club_name }}</h3>
+                    <h3 class="flip-box-header home-font">{{ $club->club_name }}</h3><br>
 
-                    <div class="backheader">
-                      {{ $club->Description }}
+                    <div class="backheader text-white">
+                      {{ Str::limit($club->Description, 150, '...') }} <!-- Limiting the size of description -->
                     </div>
                     
                     <button class="flip-box-button" onclick="location.href='/home/{{ $club->id }}';">Learn More</button>
@@ -128,12 +129,8 @@
         <div class="col-lg-12">
           <div class="section-title text-left">
             <h2 class="home-font">
-              Recent Events   
-            </h2>
-            <p>
-              There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope.
-              It’s exciting to think about setting up your own viewing station.
-            </p>
+              Upcoming Events   
+            </h2><br><br><br><br>
           </div>
         </div>
 
@@ -150,7 +147,7 @@
               <h4 class="text-white home-font">{{ $events[0]->event_name }}</h4> 
               <div>
                 <p>
-                  {{ $events[0]->event_description }}
+                  {{ Str::limit($events[0]->event_description, 150, '...')  }} <!-- Limiting the size of description -->
                 </p>
               </div>
               <a href="{{ url('event/'.$events[0]->event_id) }}" class="primary-btn">
@@ -176,7 +173,7 @@
               <h4 class="text-white home-font">{{ $events[1]->event_name }}</h4>
               <div>
                 <p>
-                  {{ $events[1]->event_description }}
+                  {{ Str::limit($events[1]->event_description, 150, '...')  }} <!-- Limiting the size of description -->
                 </p>
               </div>
               <a href="{{ url('event/'.$events[1]->event_id) }}" class="primary-btn">
@@ -202,7 +199,7 @@
               <h4 class="text-white home-font">{{ $events[2]->event_name }}</h4>
               <div>
                 <p>
-                  {{ $events[2]->event_description }}
+                  {{ Str::limit($events[2]->event_description, 150, '...') }} <!-- Limiting the size of description -->
                 </p>
               </div>
               <a href="{{ url('event/'.$events[2]->event_id) }}" class="primary-btn">
