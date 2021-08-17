@@ -15,8 +15,8 @@
 
         <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Clubs</a></li>
+            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{ url('/#clubs') }}">Clubs</a></li>
             <li><a href="#">Events</a></li>
 
              

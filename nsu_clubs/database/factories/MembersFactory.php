@@ -28,7 +28,7 @@ class MembersFactory extends Factory
         'nsu_id'=> $this->faker->numberBetween(1500000000,2100000000),
         'email' => $this->faker->email(),
         'phone_num' =>$this->faker->e164PhoneNumber(),
-        'position' => $this->faker->randomElement(array('General Member','Senior Member','Probationary Member','Vice President','Treasurer','President')),
+        'position' => $this->faker->randomElement(array('General Member','Senior Member','Probationary Member','Junior Member')),
         'join_date' => $this->faker->date($format = 'Y-m-d', $max = 'now')
         ];
     }

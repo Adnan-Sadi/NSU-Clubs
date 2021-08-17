@@ -65,8 +65,26 @@ class ClubController extends Controller
         else{
             $follows = null; //if user is not logged in
         }
+
+        /***  Check if the user is a Admin of the club */
+        if(auth()->user()){
+         $userId = auth()->user()->id;//getting userId
+         $manager = DB::table('club_managers')->where('user_id',$userId)->where('club_id',$id)->get();// check if user is a manager of the club
+        }
+        else{
+         $manager = collect(); // empty collection
+        }
         
-         return view ('allEvents')->with('club',$club)->with('follows',$follows);
+
+        if($manager->isNotEmpty()){
+            $manages = 1;     
+        }
+        else{
+            $manages = 0; 
+        }
+        /***  Check if the user is a Admin of the club */
+        
+         return view ('allEvents')->with('club',$club)->with('follows',$follows)->with('manages',$manages);
     }
 
     /**
@@ -75,8 +93,14 @@ class ClubController extends Controller
      */
     public function show_members($id,Request $request)
     {
+        $executives = DB::table('members')
+                ->join('executive__members', 'members.m_id', '=','executive__members.m_id')
+                ->where('club_id','=',$id)
+                ->select('members.*','executive__members.photo')
+                ->get(); // get executive members
+
         if($request->ajax()){
-            //$data = Members::where('club_id',$id);
+
           $data = DB::table('members')
                       ->join('departments', 'members.dept_id', '=', 'departments.dept_id')
                       ->where('club_id','=',$id)
@@ -93,13 +117,14 @@ class ClubController extends Controller
                       ->rawColumns(['action']) //protects from XSS attack for columns containing html content
                       ->make(true);
         }
-
+        
+        /***  Check if the user is a Admin of the club */
         if(auth()->user()){
          $userId = auth()->user()->id;//getting userId
          $manager = DB::table('club_managers')->where('user_id',$userId)->where('club_id',$id)->get();// check if user is a manager of the club
         }
         else{
-         $manager = collect();
+         $manager = collect(); // empty collection
         }
         
 
@@ -109,10 +134,11 @@ class ClubController extends Controller
         else{
             $manages = 0; 
         }
+        /***  Check if the user is a Admin of the club */
 
         $departments= Departments::all();
 
-        return view('members')->with('club_id',$id)->with('departments',$departments)->with('manages',$manages);
+        return view('members')->with('executives',$executives)->with('club_id',$id)->with('departments',$departments)->with('manages',$manages);
 
     }
 

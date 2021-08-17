@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfilePageController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MembersController;
+use App\Http\Controllers\ExecutiveMembersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::get('/event/{event}/follow', [EventController::class, 'follow'])->name('e
 Route::get('/event/{event}/unfollow', [EventController::class, 'unfollow'])->name('event.unfollow');
 
 Route::resource('/members', MembersController::class);
+Route::post('/ex_members', [ExecutiveMembersController::class, 'store'])->name('ex_members.store');
+Route::get('/ex_members/{ex_member}/edit', [ExecutiveMembersController::class, 'edit'])->name('ex_members.edit');
+Route::post('/ex_members/{ex_member}', [ExecutiveMembersController::class, 'update'])->name('ex_members.update');
 
 
 

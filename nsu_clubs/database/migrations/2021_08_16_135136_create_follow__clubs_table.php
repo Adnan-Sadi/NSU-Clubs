@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFollowEventsTable extends Migration
+class CreateFollowClubsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateFollowEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('follow_events', function (Blueprint $table) {
+        Schema::create('follow_clubs', function (Blueprint $table) {
             $table->increments('follower_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedInteger('event_id');
-            $table->foreign('event_id')->references('event_id')->on('events')->onDelete('cascade');
+            $table->unsignedInteger('club_id');
+            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateFollowEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('follow_events');
+        Schema::dropIfExists('follow_clubs');
     }
 }

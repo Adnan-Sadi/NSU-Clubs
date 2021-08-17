@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Members</title>
+
+    <!-- csrf-token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
@@ -19,6 +23,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+  <script src="https://use.fontawesome.com/da97f63bbd.js"></script>
 
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script> 
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap4.min.js"></script>
@@ -33,6 +39,159 @@
   <!-- Members list Section -->
   <div class="container">
     <section style="padding-top: 60px; padding-bottom:60px;">
+<div id="all_mem" class="text-left">Executive Members</div><br/>
+
+<!-- Add executive member Button -->
+
+  <!-- Add Executive member Button -->
+  @if ($manages == 1)
+    <div align="right">
+    <button type="button" data-toggle="modal" data-target="#exampleModalScrollable" class="btn btn-dark btn-sm" id="create_exec_member">Add Member</button>
+    </div><br>
+  @endif
+<!-- Executive Member Body Starts-->
+
+
+
+    <div class="row team-row">
+
+      @foreach ($executives as $executive)
+
+        <!-- Start team member -->
+        <div class="col-md-4 col-sm-6 team-wrap">
+            <div class="team-member text-center">
+              <div class="team-img">
+                <img class= "photo" src="{{ asset('images/Executive Members/'.$executive->photo) }}" alt="">
+                
+                @if ($manages == 1)
+                <div class="overlay-body">
+                  <div class="team-details text-center">
+                    <p>
+                      Update Info
+                    </p>
+                    <div class="socials mt-20">      
+                      <button type="button" data-toggle="modal" data-target="#exampleModalScrollable" class="btn btn-outline-dark btn-sm ex_edit" id={{ $executive->m_id }}><i class="fa fa-edit"></i></button>    
+                    </div>
+                  </div>
+                </div>
+                @endif
+
+              </div>
+              <h6 class="team-title">{{ $executive->name }}<br></h6>
+              <p class="profession">{{ $executive->position }}</p>
+            </div>
+          </div>
+          <!-- end team member -->
+        
+      @endforeach
+
+    </div>
+
+
+<div class="row footer">
+    <h2><br></h2>
+</div>
+<!-- Executive Member Body End -->
+
+
+
+<!-- Add Executive Modal Start-->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">Executive Member</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+           <span id="form_result_2"></span>
+
+          <form method="post" id="exec_member_form" class="form-horizontal" enctype="multipart/form-data">
+                    
+                    <div class="form-group">
+                      <label class="control-label col-md-4" >Name : </label>
+                      <div class="col-md-8">
+                      <input type="text" name="ex_name" id="ex_name" class="form-control" />
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="control-label col-md-4">NSU Id : </label>
+                      <div class="col-md-8">
+                      <input type="text" name="ex_nsu_id" id="ex_nsu_id" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+
+                      <div class="input-group mb-3 col-md-12">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" >Department</label>
+                            </div>
+                          <select class="custom-select" name="ex_dept_id" id="ex_dept_id">
+                            
+                            @foreach ($departments as $department )
+                              <option value="{{ $department->dept_id }}">{{ $department->dept_name }}</option>
+                            @endforeach
+                          
+                           </select>
+                      </div>
+                        
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-4">Email : </label>
+                      <div class="col-md-8">
+                      <input type="text" name="ex_email" id="ex_email" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4">Phone Number : </label>
+                      <div class="col-md-8">
+                      <input type="text" name="ex_phone_num" id="ex_phone_num" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4">Position : </label>
+                      <div class="col-md-8">
+                      <input type="text" name="ex_position" id="ex_position" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4">Join Date </label>
+                      <div class="col-md-8">
+                      <input type="date" name="ex_join_date" id="ex_join_date" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4">Photo Upload</label>
+                      <div class="col-md-8">
+                      <input type="file" name="ex_photo"  id="ex_photo" class="form-control form-control-sm"/>  
+                      </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group" align="center">
+                          <input type="hidden"  name="ex_club_id" value="{{ $club_id }}">
+                          <input type="hidden" name="ex_action" id="ex_action" value="Add" />
+                          <input type="hidden" name="ex_hidden_id" id="ex_hidden_id" />
+                          <input type="hidden" name="uploaded_image" id="uploaded_image" />
+                          <input type="submit" name="ex_action_button" id="ex_action_button" class="btn btn-warning" value="Add" />
+                    </div>
+                  </form>
+                
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--Add Executive Modal End-->
+
+
      <div id="all_mem" class="text-left">All Members</div><br/>
 
       <!-- Add member Button -->
@@ -141,8 +300,7 @@
                       <h4 align="center" style="margin:0;">Are you sure you want to remove this member?</h4>
                   </div>
                   <div class="modal-footer">
-                    <!-- csrf-token -->
-                  <meta name="csrf-token" content="{{ csrf_token() }}">
+                    
                   <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                   </div>
