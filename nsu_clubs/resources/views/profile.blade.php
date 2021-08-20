@@ -152,6 +152,7 @@
                 <div class="col-md-8">
                   <div class="card mb-3">
                     <div class="card-body">
+                      <h3 style="opacity:0;">Hello</h1>
                       <div class="row">
                         <div class="col-sm-3">
                           <h6 class="mb-0">NSU ID</h6>
@@ -187,6 +188,7 @@
                           {{ $user->phone_num }}
                         </div>
                       </div>
+                      
                     
                       <hr>
                       <div class="row">
@@ -216,6 +218,7 @@
                                       <form action="/profile/{{ $user->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
+                                        
                                             <div class="form-group">
                                              <label for="exampleFormControlSelect1">NSU ID</label>
                                              <input class="form-control" type="text" name="nsu_id" value="{{ $user->nsu_id }}">
@@ -262,6 +265,37 @@
                         <div class="card-body">
                           <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Events Following</i></h6>
 
+                          <!-- -->
+
+                          <div class="media">
+                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Media heading</h5>
+                              <p>
+                              <a href="#">View more</a>  
+                              </p>
+                            </div>
+                          </div>
+                          <div class="media">
+                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Media heading</h5>
+                              <p>
+                              <a href="#">View more</a>  
+                              </p>
+                            </div>
+                          </div>
+                          <div class="media">
+                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Media heading</h5>
+                              <p>
+                              <a href="#">View more</a>  
+                              </p>
+                            </div>
+                          </div>
+                          <!-- -->
+
                         </div>
                       </div>
                     </div>
@@ -270,6 +304,36 @@
                         <div class="card-body">
                           <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Clubs Following</i></h6>
 
+                           <!-- -->
+
+                           <div class="media">
+                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Media heading</h5>
+                              <p>
+                              <a href="#">View more</a>  
+                              </p>
+                            </div>
+                          </div>
+                          <div class="media">
+                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Media heading</h5>
+                              <p>
+                              <a href="#">View more</a>  
+                              </p>
+                            </div>
+                          </div>
+                          <div class="media">
+                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Media heading</h5>
+                              <p>
+                              <a href="#">View more</a>  
+                              </p>
+                            </div>
+                          </div>
+                          <!-- -->
                         </div>
                       </div>
                     </div>

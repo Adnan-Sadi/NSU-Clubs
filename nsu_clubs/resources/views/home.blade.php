@@ -20,6 +20,7 @@
   <title>NSU CLUBS</title>
 
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
   <link rel="stylesheet" href="{{ asset('css/HomeStyles.css') }}" />
@@ -130,7 +131,10 @@
           <div class="section-title text-left">
             <h2 class="home-font">
               Upcoming Events   
-            </h2><br><br><br><br>
+            </h2>
+            All the recent events organized by the clubs of <br>North-south university.
+            <br><br><br><br>
+            
           </div>
         </div>
 

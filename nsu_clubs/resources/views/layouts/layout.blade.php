@@ -54,20 +54,34 @@
   @yield('content')
 
 
-    <!-- ================ start footer Area ================= -->
-  <footer class="footer-area section-gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Quick Links</h4>
-					<ul>
-            <li><a href="#">Home</a></li>
-						<li><a href="#">Clubs</a></li>
-						<li><a href="#">Events</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-  <!-- ================ End footer Area ================= -->
+
+ <!-- ================ start footer Area ================= -->
+ <footer>
+  
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+      
+   
+  
+    <div class="row">
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Our Services</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+       
+      </ul>
+    </div>
+  
+      <div class="row">
+        TESLA Copyright © 2021 TESLA - All rights reserved
+      </div>
+  </div>
+  </div>
+  </footer>
 
