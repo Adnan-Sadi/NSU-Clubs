@@ -228,7 +228,13 @@ const itemsPerPage = 5;
 const numPages = Math.ceil(items.length / itemsPerPage);
 
 // Functions
-const createListItem = (item) => `<li class="list-item"><h4 class="item-title">${item.title}</h4><p>${item.description}</p></li>`;
+date = new Date('2013-03-10T02:00:00Z')
+
+
+
+
+const createListItem = (item) => `<li class="list-item"><h4 class="item-title">${item.title}<a href="#"><i class="fa fa-times" style="margin-left:5px; color:red;"aria-hidden="true"></i></a><span id="demo" style="color:rgb(180, 180, 180); font-style: italic; font-size:12px; float:right;">${item.updated_at}</span></h4><p>${item.description}</p></li>`;
+
 
 const nextPage = () => {
     if (currentPage === numPages) return;
