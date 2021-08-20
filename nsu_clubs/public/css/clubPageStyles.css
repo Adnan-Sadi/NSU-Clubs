@@ -10,7 +10,7 @@ img {
 /*--------------------*/
 
 #mu-hero {
-    background-image: url('../images/Club Covers/background.jpg');
+    background-image: url("../images/Club Covers/background.jpg");
     display: inline;
     float: left;
     width: 100%;
@@ -39,10 +39,11 @@ img {
     font-family: "Montserrat", sans-serif;
     display: inline-block;
     font-weight: 600;
-    background: #fff;
+    height: 350px;
+    width: 350px;
     padding: 5px 20px;
     margin-bottom: 20%;
-    margin-top: 20%;
+    margin-top: 10%;
 }
 
 .mu-logo:hover {
@@ -159,7 +160,6 @@ img {
     padding: 100px 0;
     width: 100%;
 }
-
 .mu-schedule-content-area {
     display: inline;
     float: left;
@@ -336,7 +336,6 @@ img {
 }
 
 @media (max-width: 320px) {
-
     .mu-event-timeline ul li .mu-single-event,
     .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event,
     .mu-event-timeline ul li:nth-child(2n) .mu-single-event {
@@ -386,14 +385,14 @@ img {
     background-color: rgba(110, 110, 110, 0.39);
 }
 
-.list-item>.item-title {
+.list-item > .item-title {
     font-size: 1.2rem;
     font-weight: 400;
     color: rgb(92, 121, 216);
     margin-bottom: 0.25rem;
 }
 
-.list-item>.item-description {
+.list-item > .item-description {
     margin-bottom: 0.5rem;
 }
 
@@ -439,8 +438,16 @@ img {
     margin-top: 20px;
 }
 
-
-
+#editButton {
+    display: inline-block;
+}
+.mu-title {
+    color: #1c1b1b;
+    margin-bottom: 15px;
+    padding: 0;
+    z-index: 10;
+    text-transform: capitalize;
+}
 /*=======================================
 Template Design By MarkUps	
 Author URI : http://www.markups.io/
@@ -448,13 +455,9 @@ Author URI : http://www.markups.io/
 
 .mu-hero-overlay,
 .mu-video-overlay {
-    background: -webkit-linear-gradient(to right,
-            #001c38a4,
-            #000523);
+    background: -webkit-linear-gradient(to right, #001c38a4, #000523);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right,
-            #001c38a4,
-            #000523);
+    background: linear-gradient(to right, #001c38a4, #000523);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -467,7 +470,7 @@ Author URI : http://www.markups.io/
 .mu-faq-content .panel-title a:hover,
 .mu-faq-content .panel-title a:focus,
 .mu-faq-content .panel-title a[aria-expanded="true"],
-.mu-faq-content .panel-title a>span,
+.mu-faq-content .panel-title a > span,
 .mu-menu ul li a:hover,
 .mu-menu ul li a:focus,
 .mu-single-speakers-info p,
@@ -490,9 +493,9 @@ Author URI : http://www.markups.io/
 .mu-navbar .navbar-toggle,
 .mu-navbar .navbar-toggle:hover,
 .mu-navbar .navbar-toggle:focus,
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
 .mu-schedule-menu li a:hover,
 .mu-schedule-menu li a:focus,
 .mu-schedule-menu li.active a,
@@ -501,6 +504,10 @@ Author URI : http://www.markups.io/
     background-color: #010622;
 }
 
-.mu-faq-content .panel-default>.panel-heading+.panel-collapse>.panel-body {
+.mu-faq-content
+    .panel-default
+    > .panel-heading
+    + .panel-collapse
+    > .panel-body {
     border-top-color: #010622;
 }

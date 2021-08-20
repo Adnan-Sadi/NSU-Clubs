@@ -23,29 +23,40 @@
   	<!-- Start Header -->
 	<header id="mu-hero" class="" role="banner">
 		<div class="mu-hero-overlay">
-			<div class="container">
+			<div class="container text-center">
 				<div class="mu-hero-area">
+			
 
 					<!-- Start hero featured area -->
 					<div class="mu-hero-featured-area">
 						<!-- Start center Logo -->
 						<div class="mu-logo-area">
 							<!-- text based logo -->
-							<a class="mu-logo" href="#">{{ $club->club_initial }}</a>
+							<div class="mu-logo">
+							
+								<img src="{{ asset('images/Club Logos/580b57fcd9996e24bc43c4d8.png') }}">
+							
+
+
+							</div>
 							<!-- image based logo -->
 							<!-- <a class="mu-logo" href="#"><img src="assets/images/logo.jpg" alt="logo img"></a> -->
 						</div>
 						<!-- End center Logo -->
 
 						<div class="mu-hero-featured-content">
+				
+							<div class="mu-event-date-line">
+								
+								{{ $club->club_name }} -
+								{{ $club->club_initial }}
+								
 
 							
-							<p class="mu-event-date-line">
+	
 								
-								{{ $club->club_name }}
-								 
-								 
-							</p>
+								</div>
+							
 
 							<div class="mu-event-counter-area">
 								<div id="mu-event-counter">
@@ -94,7 +105,7 @@
                             <button type="button" id="followButton" class="btn btn-outline-success follow_club" id="follow_club_{{ $club->id }}" data="{{ $club->id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
                         @endif
                         
-                        <button type="button" id="navButtons"class="btn btn-dark">Edit</button>
+                        
 
                     @endif
                     
@@ -104,16 +115,15 @@
 					<div class="colo-md-12">
 						
 						<div class="mu-schedule-area">
-						
-							<div class="container text-center">
-							
-
-
-							</div>
-
-
+				
 							<div class="mu-title-area">
-								<h2 class="mu-title">Club Details</h2>
+						
+								<h2 class="mu-title">Club Details
+								<button type="button" id="editButton" class="btn btn-dark">
+								<i class="fa fa-wrench" aria-hidden="true"></i> 	
+								Edit</button>
+								</h2>
+															
 								<p>
 									{{ $club->Description }}
 								</p>
