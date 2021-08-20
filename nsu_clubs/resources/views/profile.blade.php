@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Fonts Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" href="{{ asset('css/profileStyles.css') }}">
-    
- 
-      
+
+
+
     <title>Profile</title>
   </head>
   <!--BODY STARTS -->
@@ -28,10 +28,10 @@
   <body>
   @extends('layouts.layout1')
   @section('content')
-              
+
   <div class="container">
         <div class="main-body">
-        
+
 
               <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
@@ -48,14 +48,14 @@
                     <div class="card-body">
                       <div class="d-flex flex-column align-items-center text-center">
                         @if ($user->prof_image != null)
-                          <img class="profilePicture" src="{{ asset('images/Profile Pictures/'. $user->prof_image) }}" alt="Admin">  
+                          <img class="profilePicture" src="{{ asset('images/Profile Pictures/'. $user->prof_image) }}" alt="Admin">
                         @else
                           <img class="profilePicture" src="{{ asset('images/Profile Pictures/dummy-image2.png') }}" alt="Admin">
                         @endif
-                        
+
                         <div class="mt-3">
                           <h4>{{ $user->name }}</h4>
-   
+
                           <!--MODAL START-->
                           <!--MODAL START-->
                           <!--MODAL START-->
@@ -63,7 +63,7 @@
                           <!--MODAL START-->
 
                           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalDiscount">Change picture</button>
-                          
+
                               <!--Modal: modalDiscount-->
                               <div class="modal fade right" id="modalDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                                 aria-hidden="true" data-backdrop="true">
@@ -80,18 +80,18 @@
                                                         <span class="load">CLUB</span>
                                                         </p>
                                                     </header>
-                                            
+
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true" class="white-text">&times;</span>
                                                         </button>
                                                     </div>
-                                            
+
                                                     <!--Body Of Modal-->
                                                     <div class="modal-body">
 
                                                     <form action="/profile/{{ $user->id }}/update_image" method="POST" enctype="multipart/form-data">
                                                         @csrf
-                                                        @method('PUT')  
+                                                        @method('PUT')
 
                                                          <div class="row">
                                                              <div class="col-2">
@@ -106,10 +106,10 @@
                                                                  <p class="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload</p>
                                                                      <input type="file" name="prof_image">
                                                              </div>
-                    
+
                                                          </div>
                                                          </div>
-                                        
+
                                                          <!--Footer-->
                                                          <div class="modal-footer flex-center">
                                                              <footer>
@@ -119,7 +119,7 @@
                                                                  <span><AR>Photo</AR></span>
                                                                  </div>
                                                                  <div class="list-files">
-                                                        
+
                                                                  </div>
                                                                  <!--   Photo Upload button  -->
                                                                  <!--   Photo Upload button  -->
@@ -188,8 +188,8 @@
                           {{ $user->phone_num }}
                         </div>
                       </div>
-                      
-                    
+
+
                       <hr>
                       <div class="row">
                         <div class="col-sm-12">
@@ -206,7 +206,7 @@
                                     <!--Header-->
                                     <div class="modal-header">
 
-                                      
+
                                       <h4 class="modal-title" id="myModalLabel">Edit Information</h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
@@ -218,7 +218,7 @@
                                       <form action="/profile/{{ $user->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        
+
                                             <div class="form-group">
                                              <label for="exampleFormControlSelect1">NSU ID</label>
                                              <input class="form-control" type="text" name="nsu_id" value="{{ $user->nsu_id }}">
@@ -236,7 +236,7 @@
                                              <input class="form-control" type="text" name="phone_num" value="{{ $user->phone_num }}">
                                            </div>
 
-                                      
+
                                     </div>
                                     <!--Footer-->
                                     <div class="modal-footer">
@@ -249,16 +249,16 @@
                               </div>
                               <!-- Modal: modalCart -->
 
-                            
+
                              <!--   EDIT MODAL END -->
-                             <!--   EDIT MODAL END -->  
+                             <!--   EDIT MODAL END -->
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-    
+
                   <div class="row gutters-sm">
                     <div class="col-sm-6 mb-3">
                       <div class="card h-100">
@@ -272,7 +272,7 @@
                             <div class="media-body">
                               <h5 class="mt-0">Media heading</h5>
                               <p>
-                              <a href="#">View more</a>  
+                              <a href="#">View more</a>
                               </p>
                             </div>
                           </div>
@@ -281,7 +281,7 @@
                             <div class="media-body">
                               <h5 class="mt-0">Media heading</h5>
                               <p>
-                              <a href="#">View more</a>  
+                              <a href="#">View more</a>
                               </p>
                             </div>
                           </div>
@@ -290,7 +290,7 @@
                             <div class="media-body">
                               <h5 class="mt-0">Media heading</h5>
                               <p>
-                              <a href="#">View more</a>  
+                              <a href="#">View more</a>
                               </p>
                             </div>
                           </div>
@@ -311,7 +311,7 @@
                             <div class="media-body">
                               <h5 class="mt-0">Media heading</h5>
                               <p>
-                              <a href="#">View more</a>  
+                              <a href="#">View more</a>
                               </p>
                             </div>
                           </div>
@@ -320,7 +320,7 @@
                             <div class="media-body">
                               <h5 class="mt-0">Media heading</h5>
                               <p>
-                              <a href="#">View more</a>  
+                              <a href="#">View more</a>
                               </p>
                             </div>
                           </div>
@@ -329,7 +329,7 @@
                             <div class="media-body">
                               <h5 class="mt-0">Media heading</h5>
                               <p>
-                              <a href="#">View more</a>  
+                              <a href="#">View more</a>
                               </p>
                             </div>
                           </div>
@@ -338,16 +338,16 @@
                       </div>
                     </div>
                   </div>
-    
+
             </div>
         </div>
   @endsection
   </body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{ asset('js/profileScript.js') }}"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- 
+
 </html>

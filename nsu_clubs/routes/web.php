@@ -29,6 +29,9 @@ Route::resource('/profile', ProfilePageController::class);
 
 Route::get('/home/{club}/events', [ClubController::class, 'show_events'])->name('club.show_events');
 Route::get('/home/{club}/members', [ClubController::class, 'show_members'])->name('club.show_members');
+Route::post('club/{club}', [ClubController::class, 'create_notice'])->name('club.create_notice');
+Route::get('/club/{club}/follow', [ClubController::class, 'follow'])->name('club.follow');
+Route::get('/club/{club}/unfollow', [ClubController::class, 'unfollow'])->name('club.unfollow');
 
 Route::resource('/event', EventController::class);
 Route::get('/event/{event}/follow', [EventController::class, 'follow'])->name('event.follow');

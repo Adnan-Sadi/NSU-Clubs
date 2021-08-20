@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Clubs;
 use App\Models\Members;
 use App\Models\Departments;
 use App\Models\Follow_Events;
+use App\Models\Follow_Clubs;
 use App\Models\Club_Managers;
+use App\Models\Notices;
 use DataTables;
 
 class ClubController extends Controller
@@ -34,9 +37,44 @@ class ClubController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_notice($id,Request $request)
     {
-        //
+        $rules = array(
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string', 'max:1024'],
+        );
+
+        $error = Validator::make($request->all(), $rules);
+     
+        $notice = Notices::create([
+         'club_id' => $request->input('club_id'),
+         'title' => $request->input('title'),
+         'description' => $request->input('description'),
+        ]);
+
+        return redirect('/home/' . $request->club_id);
+        
+    }
+
+    public function follow($id)
+    {
+        $userId = auth()->user()->id;//getting userId
+
+        $follow= Follow_Clubs::create([
+          "user_id" => $userId,
+          "club_id"=> $id
+        ]);
+
+    }
+
+    public function unfollow($id)
+    {
+        $userId = auth()->user()->id;//getting userId
+
+        $follow = Follow_Clubs::where('user_id',$userId)->where('club_id',$id);
+        
+        $follow->delete();
+
     }
 
     /**

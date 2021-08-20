@@ -1,0 +1,506 @@
+img {
+    border: none;
+    max-width: 100%;
+}
+
+/* ========= BUTTON =========*/
+
+/*--------------------*/
+/* HEADER */
+/*--------------------*/
+
+#mu-hero {
+    background-image: url('../images/Club Covers/background.jpg');
+    display: inline;
+    float: left;
+    width: 100%;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.mu-hero-overlay {
+    display: inline;
+    float: left;
+    opacity: 0.94;
+    width: 100%;
+}
+
+.mu-logo-area {
+    display: inline;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+
+.mu-logo {
+    font-size: 72px;
+    font-family: "Montserrat", sans-serif;
+    display: inline-block;
+    font-weight: 600;
+    background: #fff;
+    padding: 5px 20px;
+    margin-bottom: 20%;
+    margin-top: 20%;
+}
+
+.mu-logo:hover {
+    text-decoration: none;
+}
+
+.mu-menu-btn {
+    position: fixed;
+    right: 15%;
+    top: 50px;
+    color: #fff;
+    font-size: 25px;
+    border: 2px solid #fff;
+    padding: 5px 14px;
+    z-index: 999;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.mu-menu-btn:hover,
+.mu-menu-btn:focus {
+    border: 2px solid #fff;
+}
+
+/*=== Featured section ===*/
+
+.mu-hero-featured-area {
+    display: inline;
+    float: left;
+
+    width: 100%;
+}
+
+.mu-hero-featured-content {
+    display: inline;
+    float: right;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+.mu-hero-featured-content h1 {
+    font-size: 45px;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+.mu-hero-featured-content h2 {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.mu-event-date-line {
+    background-color: #fff;
+    color: #333;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-top: 0px;
+    font-weight: 600;
+}
+
+.mu-event-counter-area {
+    display: inline;
+    float: left;
+    margin-top: 50px;
+    width: 100%;
+}
+
+#mu-event-counter {
+    display: inline;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.mu-event-counter-block {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    height: 180px;
+    width: 180px;
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
+    margin: 0 20px;
+    font-weight: 300;
+}
+
+.mu-event-counter-block span {
+    display: block;
+    font-size: 40px;
+    font-weight: 700;
+    padding-top: 56px;
+    line-height: 40px;
+}
+
+/*--------------------*/
+/* EVENT SCHEDULE */
+/*--------------------*/
+
+#mu-schedule {
+    background-color: #f8f8f8;
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+.mu-schedule-area {
+    display: inline;
+    float: left;
+    padding: 100px 0;
+    width: 100%;
+}
+
+.mu-schedule-content-area {
+    display: inline;
+    float: left;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.mu-schedule-menu {
+    text-align: center;
+    border: none;
+}
+
+.mu-schedule-menu li {
+    float: none;
+    display: inline-block;
+}
+
+.mu-schedule-menu li a {
+    border-radius: 0;
+    margin: 0 10px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.mu-schedule-content {
+    margin-top: 50px;
+}
+
+/*--------------------*/
+/* RESPONSIVE STYLE */
+/*--------------------*/
+
+@media (max-width: 991px) {
+    .mu-primary-btn {
+        font-size: 14px;
+        padding: 12px 22px;
+    }
+
+    .mu-navbar .mu-menu {
+        margin-top: 5px;
+    }
+
+    .mu-navbar .mu-menu li a {
+        font-size: 15px;
+        padding: 10px 6px;
+    }
+
+    .mu-hero-featured-content h1 {
+        font-size: 35px;
+    }
+
+    .mu-hero-featured-content h2 {
+        font-size: 18px;
+    }
+
+    .mu-event-timeline ul li {
+        margin-left: 15%;
+    }
+
+    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event {
+        left: 50px;
+        text-align: left;
+    }
+
+    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event::before {
+        right: auto;
+        left: -16px;
+        border-width: 8px 16px 8px 0;
+        border-color: transparent #fff transparent transparent;
+    }
+
+    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event img {
+        float: left;
+        margin-right: 15px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .mu-logo img {
+        width: 150px;
+    }
+}
+
+@media (max-width: 640px) {
+    .mu-title-area {
+        padding: 0;
+    }
+
+    .mu-register-content {
+        padding: 0 100px;
+    }
+
+    .mu-contact-content {
+        padding: 0 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .mu-logo {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    .mu-hero-featured-area {
+        padding: 60px 0 60px;
+    }
+
+    .mu-hero-featured-content {
+        margin-top: 20px;
+    }
+
+    .mu-hero-featured-content h1 {
+        font-size: 25px;
+    }
+
+    .mu-hero-featured-content h2 {
+        font-size: 14px;
+    }
+
+    .mu-event-date-line {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .mu-schedule-content {
+        margin-top: 30px;
+    }
+
+    .mu-schedule-menu li {
+        margin-bottom: 15px;
+    }
+
+    .mu-schedule-menu li a {
+        font-size: 15px;
+    }
+
+    .mu-event-timeline ul li {
+        margin-left: 5%;
+    }
+
+    .mu-event-timeline ul li .mu-single-event,
+    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event,
+    .mu-event-timeline ul li:nth-child(2n) .mu-single-event {
+        left: 30px;
+        width: 350px;
+    }
+}
+
+@media (max-width: 360px) {
+    .mu-logo img {
+        width: 120px;
+    }
+
+    .mu-hero-featured-area {
+        padding: 30px 0 30px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .mu-event-timeline ul li .mu-single-event,
+    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event,
+    .mu-event-timeline ul li:nth-child(2n) .mu-single-event {
+        left: 30px;
+        width: 250px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
+
+#page {
+    width: 40%;
+    position: relative;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    height: 40%;
+
+    border-radius: 3px;
+}
+
+.changingButtons {
+    color: #fff;
+    font-weight: bold;
+    background-color: rgb(201, 197, 192);
+}
+
+.list {
+    list-style: none;
+}
+
+.list-item {
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    animation: 0.5s fade ease-in-out;
+}
+
+.list-item:hover {
+    background-color: rgba(110, 110, 110, 0.39);
+}
+
+.list-item>.item-title {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgb(92, 121, 216);
+    margin-bottom: 0.25rem;
+}
+
+.list-item>.item-description {
+    margin-bottom: 0.5rem;
+}
+
+.list-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(64, 105, 219);
+    color: #fff;
+    padding: 1rem;
+}
+
+.sidebtn {
+    padding: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    background: transparent;
+    transition: background-color 0.3s ease;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.sidebtn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+#navButtons {
+    margin-top: 20px;
+}
+
+#followButton {
+    margin-top: 20px;
+}
+
+
+
+/*=======================================
+Template Design By MarkUps	
+Author URI : http://www.markups.io/
+========================================*/
+
+.mu-hero-overlay,
+.mu-video-overlay {
+    background: -webkit-linear-gradient(to right,
+            #001c38a4,
+            #000523);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,
+            #001c38a4,
+            #000523);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.mu-primary-btn:hover,
+.mu-primary-btn:focus,
+.mu-copy-right a:hover,
+.mu-copy-right a:focus,
+.mu-send-msg-btn:hover,
+.mu-send-msg-btn:focus,
+.mu-faq-content .panel-title a:hover,
+.mu-faq-content .panel-title a:focus,
+.mu-faq-content .panel-title a[aria-expanded="true"],
+.mu-faq-content .panel-title a>span,
+.mu-menu ul li a:hover,
+.mu-menu ul li a:focus,
+.mu-single-speakers-info p,
+.mu-single-speakers-social li a:hover,
+.mu-single-speakers-social li a:focus,
+.mu-logo,
+.mu-logo:hover,
+.mu-logo:focus,
+#mu-hero .navbar-default .navbar-brand,
+.mu-navbar .mu-menu li a:hover,
+.mu-navbar .mu-menu li a:focus,
+.mu-single-event .mu-event-time {
+    color: #090f2ed2;
+}
+
+.mu-speakers-slider .slick-next,
+.mu-speakers-slider .slick-prev,
+#mu-venue,
+.mu-popular-price .mu-price-tag,
+.mu-navbar .navbar-toggle,
+.mu-navbar .navbar-toggle:hover,
+.mu-navbar .navbar-toggle:focus,
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover,
+.mu-schedule-menu li a:hover,
+.mu-schedule-menu li a:focus,
+.mu-schedule-menu li.active a,
+.mu-schedule-menu li.active a:hover,
+.mu-schedule-menu li.active a:focus {
+    background-color: #010622;
+}
+
+.mu-faq-content .panel-default>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #010622;
+}
