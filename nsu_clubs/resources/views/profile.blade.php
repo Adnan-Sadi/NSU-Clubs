@@ -56,101 +56,74 @@
                         <div class="mt-3">
                           <h4>{{ $user->name }}</h4>
 
+          
                           <!--MODAL START-->
                           <!--MODAL START-->
                           <!--MODAL START-->
                           <!--MODAL START-->
                           <!--MODAL START-->
-
                           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalDiscount">Change picture</button>
+                         
+                        <form> 
+                          <!--Modal: modalDiscount-->
+                          <div class="modal fade right" id="modalDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                            aria-hidden="true" data-backdrop="true">
+                            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-danger" role="document">
+                              <!--Content-->
+                              <div class="modal-content">
+                             
+                                <!--Header-->
+                                <div class="modal-header">
+                                  <h4 class="heading">
+                                    Upload picture
+                                  </h4>
 
-                              <!--Modal: modalDiscount-->
-                              <div class="modal fade right" id="modalDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                                aria-hidden="true" data-backdrop="true">
-                                <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-danger" role="document">
-                                  <!--Content-->
-                                    <div class="modal-content">
-                                        <div class="upload">
-                                            <div class="upload-files">
-                                                <div class="modal-header">
-                                                    <header>
-                                                        <p>
-                                                        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                                        <span class="up">NSU</span>
-                                                        <span class="load">CLUB</span>
-                                                        </p>
-                                                    </header>
-
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true" class="white-text">&times;</span>
-                                                        </button>
-                                                    </div>
-
-                                                    <!--Body Of Modal-->
-                                                    <div class="modal-body">
-
-                                                    <form action="/profile/{{ $user->id }}/update_image" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('PUT')
-
-                                                         <div class="row">
-                                                             <div class="col-2">
-                                                             <p></p>
-                                                             <p class="text-center">
-                                                                 <i class="fas fa-gift fa-4x"></i>
-                                                             </p>
-                                                         </div>
-
-                                                             <div class="body" id="drop">
-                                                                 <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
-                                                                 <p class="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload</p>
-                                                                     <input type="file" name="prof_image">
-                                                             </div>
-
-                                                         </div>
-                                                         </div>
-
-                                                         <!--Footer-->
-                                                         <div class="modal-footer flex-center">
-                                                             <footer>
-
-
-                                                                 <div class="divider">
-                                                                 <span><AR>Photo</AR></span>
-                                                                 </div>
-                                                                 <div class="list-files">
-
-                                                                 </div>
-                                                                 <!--   Photo Upload button  -->
-                                                                 <!--   Photo Upload button  -->
-                                                                 <!--   Photo Upload button  -->
-                                                                     <button class="importar" type="submit">UPDATE PHOTO</button>
-
-                                                             </footer>
-                                                         </div>
-                                                    </form>
-                                            </div>
-                                        </div>
-                                  </div>
-                                  <!--/.Content-->
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                  </button>
                                 </div>
+
+                                <!--Body-->
+                                <div class="modal-body">
+
+                                      <div class="uploadOuter">
+                                          <label for="uploadFile" class="btn btn-dark">Upload Image</label>
+                                          <p>OR</p>
+                                        <span class="dragBox" >
+                                          Darg and Drop image here
+                                        <input type="file" onChange="dragNdrop(event)"  ondragover="drag()" ondrop="drop()" id="uploadFile"  />
+                                        </span>
+                                        </div>
+                                        <div id="preview"></div>
+                                </div>
+
+                                <!--Footer-->
+                                <div class="modal-footer flex-center">
+                                   <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                                   <button type="submit" class="btn btn-dark">Save changes</button>
+                                </div>
+                            
+                              </div>
+                              <!--/.Content-->
                             </div>
-                              <!--MODAL END-->
-                              <!--MODAL END-->
-                              <!--MODAL END-->
-                              <!--MODAL END-->
+                          </div>
+                          <!--Modal: modalDiscount-->
+                        </form>  
+ 
+                        
+                        
                         </div>
                       </div>
                     </div>
                   </div>
-
-                </div>
+                </div> 
+            
 
                 <!--USER INFO-->
                 <!--USER INFO-->
                 <!--USER INFO-->
                 <div class="col-md-8">
-                  <div class="card mb-3">
+                  <div class="card mb-2">
                     <div class="card-body">
                       <h3 style="opacity:0;">Hello</h1>
                       <div class="row">
@@ -240,8 +213,8 @@
                                     </div>
                                     <!--Footer-->
                                     <div class="modal-footer">
-                                      <button class="btn btn-outline-info" data-dismiss="modal">Close</button>
-                                      <button class="btn btn-info" type="submit">Submit</button>
+                                      <button class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                                      <button class="btn btn-dark" type="submit">Submit</button>
                                     </div>
                                     </form>
                                   </div>
@@ -349,5 +322,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/profileScript.js') }}"></script>
 
 </html>
