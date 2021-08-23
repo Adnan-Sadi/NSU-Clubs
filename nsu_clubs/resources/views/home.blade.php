@@ -81,6 +81,8 @@
                 <div class="flip-card-back">
                   <div class="inner color-white">
                     <h3 class="flip-box-header home-font">{{ $club->club_name }}</h3><br>
+                    
+                    <!-- -->
 
                     <div class="backheader text-white">
                       {{ Str::limit($club->Description, 150, '...') }} <!-- Limiting the size of description -->

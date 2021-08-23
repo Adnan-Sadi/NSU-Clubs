@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\facades\DB;
 use App\Models\User;
 use File;
 
@@ -25,7 +26,25 @@ class ProfilePageController extends Controller
         $userId = auth()->user()->id;//getting userId
         $user = User::find($userId);//getting user informations
 
-        return view('profile')->with('user',$user);
+        /**getting the clubs followed by the user */
+        $clubs_followed = DB::table('users')
+                                ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
+                                ->join('clubs', 'follow_clubs.club_id', '=','clubs.id')
+                                ->select('users.id','follow_clubs.club_id','clubs.*')
+                                ->where('users.id','=',$userId)
+                                ->get();
+        /**getting the clubs followed by the user */
+        
+        /**getting the events followed by the user */
+        $events_followed = DB::table('users')
+                                ->join('follow_events', 'users.id', '=','follow_events.user_id')
+                                ->join('events', 'follow_events.event_id', '=','events.event_id')
+                                ->select('users.id','follow_events.event_id','events.*')
+                                ->where('users.id','=',$userId)
+                                ->get();
+        /**getting the events followed by the user */
+
+        return view('profile')->with('user',$user)->with('clubs_followed',$clubs_followed)->with('events_followed',$events_followed);
     }
 
     /**

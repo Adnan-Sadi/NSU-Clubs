@@ -34,7 +34,7 @@
 							<!-- text based logo -->
 							<div class="mu-logo">
 							
-								<img src="{{ asset('images/Club Logos/580b57fcd9996e24bc43c4d8.png') }}">
+								<img src="{{ asset('images/Club Logos/' . $club->logo) }}">
 							
 
 
@@ -51,9 +51,6 @@
 								{{ $club->club_name }} -
 								{{ $club->club_initial }}
 								
-
-							
-	
 								
 								</div>
 							

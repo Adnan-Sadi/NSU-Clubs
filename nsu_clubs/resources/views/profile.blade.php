@@ -64,7 +64,9 @@
                           <!--MODAL START-->
                           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalDiscount">Change picture</button>
                          
-                        <form> 
+                        <form action="/profile/{{ $user->id }}/update_image" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          @method('PUT') 
                           <!--Modal: modalDiscount-->
                           <div class="modal fade right" id="modalDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true" data-backdrop="true">
@@ -91,7 +93,7 @@
                                           <p>OR</p>
                                         <span class="dragBox" >
                                           Darg and Drop image here
-                                        <input type="file" onChange="dragNdrop(event)"  ondragover="drag()" ondrop="drop()" id="uploadFile"  />
+                                        <input type="file" onChange="dragNdrop(event)"  ondragover="drag()" ondrop="drop()" id="uploadFile" name="prof_image" />
                                         </span>
                                         </div>
                                         <div id="preview"></div>
@@ -240,33 +242,20 @@
 
                           <!-- -->
 
-                          <div class="media">
-                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0">Media heading</h5>
-                              <p>
-                              <a href="#">View more</a>
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media">
-                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0">Media heading</h5>
-                              <p>
-                              <a href="#">View more</a>
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media">
-                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0">Media heading</h5>
-                              <p>
-                              <a href="#">View more</a>
-                              </p>
-                            </div>
-                          </div>
+                          @foreach ($events_followed as $event_followed)
+
+                              <div class="media">
+                                <img height=64 width=100 src="{{ asset('images/Event Covers/' . $event_followed->cover_photo) }}" class="mr-3" alt="...">
+                                <div class="media-body">
+                                  <h5 class="mt-0">{{ $event_followed->event_name }}</h5>
+                                  <p>
+                                  <a href="{{ url('event/' . $event_followed->event_id) }}">View more</a>
+                                  </p>
+                                </div>
+                              </div>
+                            
+                          @endforeach
+                          
                           <!-- -->
 
                         </div>
@@ -278,34 +267,20 @@
                           <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Clubs Following</i></h6>
 
                            <!-- -->
+                           @foreach ($clubs_followed as $club_followed )
 
-                           <div class="media">
-                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0">Media heading</h5>
-                              <p>
-                              <a href="#">View more</a>
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media">
-                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0">Media heading</h5>
-                              <p>
-                              <a href="#">View more</a>
-                              </p>
-                            </div>
-                          </div>
-                          <div class="media">
-                            <img height=64 src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0">Media heading</h5>
-                              <p>
-                              <a href="#">View more</a>
-                              </p>
-                            </div>
-                          </div>
+                              <div class="media">
+                                <img height=64 width=64 src="{{ asset('images/Club Logos/' . $club_followed->logo) }}" class="mr-3" alt="...">
+                                <div class="media-body">
+                                  <h5 class="mt-0">{{ $club_followed->club_name }}</h5>
+                                  <p>
+                                  <a href="{{ url('/home/'. $club_followed->club_id ) }}">View more</a>
+                                  </p>
+                                </div>
+                              </div>
+                             
+                           @endforeach
+                          
                           <!-- -->
                         </div>
                       </div>

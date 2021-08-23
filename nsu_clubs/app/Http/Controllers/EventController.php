@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\facades\DB;
+use Illuminate\Support\facades\Mail;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Events;
 use App\Models\Clubs;
 use App\Models\Follow_Events;
+use App\Models\Follow_Clubs;
 use App\Models\Event_Photos;
+use App\Mail\newEventMail;
 use File;
 
 class EventController extends Controller
@@ -64,6 +68,16 @@ class EventController extends Controller
          'end_at' => $request->input('end_at'),
          'cover_photo' => $newImageName
         ]);
+
+        $users = DB::table('users')
+                        ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
+                        ->select('users.*','follow_clubs.club_id')
+                        ->where('follow_clubs.club_id','=',$request->input('club_id'))
+                        ->get();
+
+        foreach ($users as $user) {
+            Mail::to($user->email)->queue(new newEventMail($request->input('club_id')));
+        }
 
         return redirect('/home/'.$request->club_id.'/events');
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\ExecutiveMembersController;
+use App\Mail\newEventMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,10 @@ Route::resource('/members', MembersController::class);
 Route::post('/ex_members', [ExecutiveMembersController::class, 'store'])->name('ex_members.store');
 Route::get('/ex_members/{ex_member}/edit', [ExecutiveMembersController::class, 'edit'])->name('ex_members.edit');
 Route::post('/ex_members/{ex_member}', [ExecutiveMembersController::class, 'update'])->name('ex_members.update');
+
+Route::get('/eventMail', function(){
+    return new newEventMail();
+});
 
 
 
