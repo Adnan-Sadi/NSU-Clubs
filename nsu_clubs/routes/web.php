@@ -33,6 +33,8 @@ Route::get('/home/{club}/members', [ClubController::class, 'show_members'])->nam
 Route::post('club/{club}', [ClubController::class, 'create_notice'])->name('club.create_notice');
 Route::get('/club/{club}/follow', [ClubController::class, 'follow'])->name('club.follow');
 Route::get('/club/{club}/unfollow', [ClubController::class, 'unfollow'])->name('club.unfollow');
+Route::put('/club/{club}', [ClubController::class, 'update'])->name('club.update');
+Route::get('/club/{club}', [ClubController::class, 'destroy'])->name('club.destroy');
 
 Route::resource('/event', EventController::class);
 Route::get('/event/{event}/follow', [EventController::class, 'follow'])->name('event.follow');

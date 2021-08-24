@@ -21,7 +21,7 @@
   <body>
   	
   	<!-- Start Header -->
-	<header id="mu-hero" class="" role="banner">
+	<header id="mu-hero" class="" role="banner" style="background-image: url('{{ asset('images/Club Covers/' . $club->cover_photo) }}');">
 		<div class="mu-hero-overlay">
 			<div class="container text-center">
 				<div class="mu-hero-area">
@@ -116,9 +116,13 @@
 							<div class="mu-title-area">
 						
 								<h2 class="mu-title">Club Details
+
+								@if ($manages == 1)
 								<button type="button" id="editButton" class="btn btn-dark"  data-toggle="modal" data-target="#modalCart">
 								<i class="fa fa-wrench" aria-hidden="true"></i> 	
-								Edit</button>
+								Edit</button>	
+								@endif
+								
 								</h2>
 															
 								<p>
@@ -127,8 +131,12 @@
 							</div>
 
 							<div class="container text-center">
-								
+
+								@if ($manages == 1)
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Add Notice</button>
+								@endif
+								
+								
 								<!-- Button trigger modal -->		
 								<hr>
 								
@@ -173,27 +181,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-	  
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Change Club Description</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-					<div class="form-group">
-					<label class="form-label" for="customFile">Upload logo</label>
-					<input type="file" class="form-control" id="customFile" />
-					</div>
-					<div class="form-group">
-					<label class="form-label" for="customFile">Upload Background Image</label>
-					<input type="file" class="form-control" id="customFile" />
-					</div>
-                 
-                    
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
+	    <form action="/club/{{ $club->id }}" method="POST" enctype="multipart/form-data">
+         @csrf
+		 @method('PUT')
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="message-text" class="col-form-label">Change Club Description</label>
+					<textarea class="form-control" id="message-text" rows="5" name="description">{{ $club->Description }}</textarea>
+				</div>
+				<div class="form-group">
+				<label class="form-label" for="customFile">Upload logo</label>
+				<input type="file" class="form-control" id="customFile" name="logo"/>
+				</div>
+				<div class="form-group">
+				<label class="form-label" for="customFile">Upload Background Image</label>
+				<input type="file" class="form-control" id="customFile" name="cover_photo"/>
+				</div>
+				
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Save changes</button>
+			</div>
+	    </form>
     </div>
   </div>
 </div>
@@ -251,6 +263,18 @@ const buttonNext = document.querySelector('#next-page');
 const items = {!! json_encode($notices) !!};//getting the notices
 
 const length = {{ $length }}; // number of notices
+const manages = {{ $manages }}; //check if user is manager
+
+for (let i = 0; i < length; i++) {
+	if (manages == 1) {
+		items[i]["html"] ='<a href="/club/'+items[i]["notice_id"] +'"><i class="fa fa-times" style="margin-left:5px; color:red; float:right;"aria-hidden="true"></i></a></h4>' ;
+	}
+	else{
+		items[i]["html"] = '</h4>';
+	}
+  
+}
+
 console.log(length);
 console.log(items);
 
@@ -258,13 +282,16 @@ console.log(items);
 let currentPage = 1;
 let currentIndex = 0;
 const itemsPerPage = 5;
+var cross = '<a href="#"><i class="fa fa-times" style="margin-left:5px; color:red; float:right;"aria-hidden="true"></i></a></h4>';
 
 const numPages = Math.ceil(items.length / itemsPerPage);
 
-// Functions
-date = new Date('2013-03-10T02:00:00Z')
 
-const createListItem = (item) => `<li class="list-item"><h4 class="item-title">${item.title}<a href="#"><i class="fa fa-times" style="margin-left:5px; color:red;"aria-hidden="true"></i></a><span id="demo" style="color:rgb(180, 180, 180); font-style: italic; font-size:12px; float:right;">${item.updated_at}</span></h4><p>${item.description}</p></li>`;
+const createListItem = (item) => `<li class="list-item"><h4 class="item-title">${item.title}
+                                  <span id="demo" style="color:rgb(106, 90, 205); font-style: italic; font-size:12px; ">${item.updated_at.split("T")[0]}</span>
+                                  <span id="demo" style="color:rgb(106, 90, 205); font-style: italic; font-size:12px; ">${item.updated_at.split("T")[1].split(".")[0]}</span>
+								  ${item.html}								  
+								  <p>${item.description}</p></li>`;
 
 
 const nextPage = () => {

@@ -12,6 +12,7 @@ use App\Models\Follow_Events;
 use App\Models\Follow_Clubs;
 use App\Models\Club_Managers;
 use App\Models\Notices;
+use File;
 use DataTables;
 
 class ClubController extends Controller
@@ -201,7 +202,51 @@ class ClubController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'description' => ['required', 'string'],
+            'logo' => ['mimes:png,jpg,jpeg','max:5048'],
+            'cover_photo' => ['mimes:png,jpg,jpeg','max:9048']
+        );
+
+        $error = Validator::make($request->all(), $rules);
+
+        $club = Clubs::find($id);
+        
+        //if Logo is updated
+        if($request->hasfile('logo')){
+
+            if(File::exists(public_path('images/Club Logos/'.$club->logo))){
+            File::delete(public_path('images/Club Logos/'.$club->logo));
+            }//Delete previous picture from storage
+
+          $newImageName = time(). '-'. $club->club_name .'.'. $request->logo->extension();
+          $request->logo->move(public_path('images/Club Logos'),$newImageName);
+          
+          $club->update([
+             'logo' => $newImageName
+          ]);
+        }
+
+        //if background image is updated
+        if($request->hasfile('cover_photo')){
+
+            if(File::exists(public_path('images/Club Covers/'.$club->cover_photo))){
+            File::delete(public_path('images/Club Covers/'.$club->cover_photo));
+            }//Delete previous picture from storage
+
+          $newImageName = time(). '-'. $club->club_name .'.'. $request->cover_photo->extension();
+          $request->cover_photo->move(public_path('images/Club Covers'),$newImageName);
+          
+          $club->update([
+             'cover_photo' => $newImageName
+          ]);
+        }
+        
+        $club->update([
+          'Description' => $request->input('description'),
+        ]);
+
+        return redirect('/home/' . $id);
     }
 
     /**
@@ -212,6 +257,10 @@ class ClubController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $notice = Notices::find($id);
+
+        $notice->delete();
+
+        return redirect()->back();
     }
 }

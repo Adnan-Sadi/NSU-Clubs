@@ -15,6 +15,8 @@ class Clubs extends Model
         'cover_photo',  
     ];
 
+    public $timestamps = false;
+
     public function events(){
         return $this->hasMany(Events::class,'club_id'); // one to many relationship
     }
