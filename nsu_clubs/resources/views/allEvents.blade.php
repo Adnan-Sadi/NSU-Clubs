@@ -131,8 +131,11 @@
                   <time>{{ $event->start_at }} - {{ $event->end_at }}</time>
                 </div>
               </div>
-
-              <p class="event--content-ensemble">{{ Str::limit($event->event_description, 150, '...') }} <!-- Limiting the size of description -->  </p>
+                <!--{{ Str::limit($event->event_description, 150, '...') }}  -->
+              <div class="event--content-ensemble">
+                <!-- Limiting the size of description -->  
+                {{ Str::limit($event->event_description, 150, '...') }}
+            </div>
               <!-- csrf-token -->
               <meta name="csrf-token" content="{{ csrf_token() }}">
               

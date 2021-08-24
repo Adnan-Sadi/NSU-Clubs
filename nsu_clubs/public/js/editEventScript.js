@@ -1,35 +1,33 @@
+$(document).ready(function() {
+    if (window.File && window.FileList && window.FileReader) {
+      $("#files").on("change", function(e) {
+        var files = e.target.files,
+          filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i]
+          var fileReader = new FileReader();
+          fileReader.onload = (function(e) {
+            var file = e.target;
+            $("<span class=\"pip\">" +
+              "<img  class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+              "<br/><span class=\"remove\">Remove image</span>" +
+              "</span>").insertAfter("#files");
+            $(".remove").click(function(){
+                $(this).parent(".pip").remove();
+                $(this).siblings().remove();
+                $(this).remove();
+            });
+            $('input[type="checkbox"]').click(function() {
+                $('input#photo').val('');
+            });
+          });
+          fileReader.readAsDataURL(f);
+        }
+        console.log(files);
+      });
+    } else {
+      alert("Your browser doesn't support to File API")
+    }
+  });
 
-
-
-/*var loadFile = function(event) {
-    var imagesource = URL.createObjectURL(event.target.files[0]);
-    document.getElementById('output').innerHTML = "Image uploaded";
-    document.getElementById('profile-picture').style.color = "black";
-    document.getElementById('profile-picture').style.backgroundImage = "url('"+imagesource+"')";
-  };
   
- */
-function myFunction1() {
-    document.getElementById('output1').innerHTML = "Image uploaded";
-}
-function myFunction2() {
-    document.getElementById('output2').innerHTML = "gg";
-}
-
-function myFunction3() {
-    document.getElementById('output3').innerHTML = "Image uploaded";
-}
-
-function myFunction4() {
-    document.getElementById('output4').innerHTML = "Image uploaded";
-}
-
-function myFunction5() {
-    document.getElementById('output5').innerHTML = "Image uploaded";
-}
-
-function myFunction6() {
-    document.getElementById('output6').innerHTML = "Image uploaded";
-}
-
-

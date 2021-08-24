@@ -16,19 +16,19 @@ span {
     color: #4d4d4d;
 }
 
-.page-header>h1 {
+.page-header > h1 {
     text-align: center;
 }
 
-.page-header>h3 {
+.page-header > h3 {
     text-align: center;
 }
 
-.page-header>h1 {
+.page-header > h1 {
     text-align: left;
 }
 
-.page-header>h3 {
+.page-header > h3 {
     text-align: left;
 }
 
@@ -424,7 +424,7 @@ img {
     left: 0;
 }
 
-.event--date span+span {
+.event--date span + span {
     bottom: 10px;
     margin-left: 5px;
 }
@@ -478,12 +478,12 @@ img {
     position: relative;
 }
 
-.event--content>* {
+.event--content > * {
     margin: 0;
     margin-bottom: 10px;
 }
 
-.event--content>*:last-child {
+.event--content > *:last-child {
     margin-bottom: 0;
 }
 
@@ -501,7 +501,7 @@ img {
     color: var(--primary-clr);
 }
 
-.event--content h2>a[href]::after {
+.event--content h2 > a[href]::after {
     content: "\f08e";
     font-family: "FontAwesome";
     padding: 0 3px 0 6px;
@@ -520,7 +520,7 @@ img {
     flex-wrap: wrap;
 }
 
-.event--content-info>div {
+.event--content-info > div {
     margin-right: 16px;
 }
 
@@ -538,6 +538,8 @@ img {
 .event--content-ensemble {
     font-weight: 500;
     margin-top: auto;
+    width: 80%;
+    overflow: hidden;
 }
 
 .event--content-program {
@@ -616,7 +618,7 @@ img {
         top: 0;
     }
 
-    .event--date span+span {
+    .event--date span + span {
         margin: 0;
         margin-top: 2px;
     }
@@ -663,7 +665,7 @@ img {
         padding: 15px 20px;
     }
 
-    .event--content>*:not(.event--content-social) {
+    .event--content > *:not(.event--content-social) {
         max-width: 96%;
     }
 
@@ -728,5 +730,3 @@ img {
 #myModalLabel {
     color: white;
 }
-
-

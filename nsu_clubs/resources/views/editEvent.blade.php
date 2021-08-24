@@ -139,87 +139,13 @@
 				
 				<hr>
 				<div class="container">
-											
-					<div class="profile-picture-container"> 
-						
-						    
-							<div class="picture">
-								
-								<div id="profile-picture"  class="profile-pic">
-                                    
-									<label for="fileToUpload">
-										<span id="output1">Change Image</span>
-								</label>
-									<input type="File" name="photos[]" id="fileToUpload" onchange="myFunction1()" style="display: none;">
-                                	
-							</div>
-								
-							
-							<div class="picture">
-								
-								<div id="profile-picture"  class="profile-pic">
-									<label for="fileToUpload">
-										<span id="output2">Change Image</span>
-								</label>
-									<input type="File" name="photos[]" id="fileToUpload" onchange="myFunction2()" style="display: none;">
-									
-							
-							</div>
-								
-
-							
-							<div class="picture">
-								
-								<div id="profile-picture"  class="profile-pic">
-									<label for="fileToUpload">
-										<span id="output3">Change Image</span>
-								</label>
-									<input type="File" name="photos[]" id="fileToUpload" onchange="myFunction3()" style="display: none;">
-									
-							
-							</div>
-								
-
-							
-							<div class="picture">
-								
-								<div id="profile-picture"  class="profile-pic">
-									<label for="fileToUpload">
-										<span id="output4">Change Image</span>
-								</label>
-									<input type="File" name="photos[]" id="fileToUpload" onchange="myFunction4()" style="display: none;">
-									
-							
-							</div>
-								
-
-							
-							<div class="picture">
-								
-								<div id="profile-picture"  class="profile-pic">
-									<label for="fileToUpload">
-										<span id="output5">Change Image</span>
-								</label>
-									<input type="File" name="photos[]" id="fileToUpload" onchange="myFunction5()" style="display: none;">
-									
-							
-							</div>
-								
-
-							
-							<div class="picture">
-								
-								<div id="profile-picture"  class="profile-pic">
-									<label for="fileToUpload">
-										<span id="output6">Change Image</span>
-								</label>
-									<input type="File" name="photos[]" id="fileToUpload" onchange="myFunction6()" style="display: none;">
-									
-							
-							</div>										
-			  </div>					  
-			</div>							
-		</div>		
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+					<div class="field" align="left">
+					<input type="file" id="files" name="files[]" multiple />
+					</div>
+										
+				</div>		
+			</div>		
 				
 			
 		</section>

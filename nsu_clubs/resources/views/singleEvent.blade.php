@@ -138,13 +138,7 @@
 									<div class="rotatingGallery-slide" data-arrival-index="{{ $count }}">
 									<img class="rotatingGallery-image" alt="" src="{{ asset('images/Event Photos/'.$photo->path) }}" title="">
 							
-									<h2 class="rotatingGallery-text">
-										Slider text
-									</h2>
-							
-									<p class="rotatingGallery-text">
-										This is a description for the current slide
-									</p>
+									
 									</div>
 
 								@endforeach

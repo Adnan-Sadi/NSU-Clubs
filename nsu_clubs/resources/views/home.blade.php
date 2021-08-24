@@ -84,7 +84,7 @@
                     
                     <!-- -->
 
-                    <div class="backheader text-white">
+                    <div class="backheader">
                       {{ Str::limit($club->Description, 150, '...') }} <!-- Limiting the size of description -->
                     </div>
                     

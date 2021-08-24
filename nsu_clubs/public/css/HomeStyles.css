@@ -900,13 +900,14 @@
 
 .backheader {
     height: 150px;
+    color: #ffffff;
     overflow: hidden;
 }
 
 .flip-box-header {
     font-size: 20px;
     text-decoration: underline;
-    color: white;
+    color: #ffffff;
 }
 
 .flip-box p {
@@ -916,9 +917,9 @@
 
 .flip-box-button {
     background-color: transparent;
-    border: 2px solid #fff;
+    border: 2px solid #ffffff;
     border-radius: 2px;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
     font-size: 10px;
     font-weight: bold;

@@ -508,7 +508,45 @@ img {
     padding: 50px;
 }
 
+/* Image upload */
+input[type="file"] {
+    display: block;
+}
+.imageThumb {
+    height: 200px;
+    width: 200px;
+    border: 2px solid;
+    padding: 1px;
+    cursor: pointer;
+}
+.pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+.remove,
+.remove::after {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.remove {
+    display: block;
+    background: rgb(0, 0, 0);
+    border: 1px solid black;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding: 1em 3em;
+    text-align: center;
+    cursor: pointer;
+}
 
+.remove:hover {
+    color: #000523;
+    background-color: white;
+}
+
+/* Image upload */
 
 /*=======================================
 Template Design By MarkUps	
@@ -517,13 +555,9 @@ Author URI : http://www.markups.io/
 
 .mu-hero-overlay,
 .mu-video-overlay {
-    background: -webkit-linear-gradient(to right,
-            #001c38a4,
-            #000523);
+    background: -webkit-linear-gradient(to right, #001c38a4, #000523);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right,
-            #001c38a4,
-            #000523);
+    background: linear-gradient(to right, #001c38a4, #000523);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -536,7 +570,7 @@ Author URI : http://www.markups.io/
 .mu-faq-content .panel-title a:hover,
 .mu-faq-content .panel-title a:focus,
 .mu-faq-content .panel-title a[aria-expanded="true"],
-.mu-faq-content .panel-title a>span,
+.mu-faq-content .panel-title a > span,
 .mu-menu ul li a:hover,
 .mu-menu ul li a:focus,
 .mu-single-speakers-info p,
@@ -559,9 +593,9 @@ Author URI : http://www.markups.io/
 .mu-navbar .navbar-toggle,
 .mu-navbar .navbar-toggle:hover,
 .mu-navbar .navbar-toggle:focus,
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
 .mu-schedule-menu li a:hover,
 .mu-schedule-menu li a:focus,
 .mu-schedule-menu li.active a,
@@ -570,6 +604,10 @@ Author URI : http://www.markups.io/
     background-color: #010622;
 }
 
-.mu-faq-content .panel-default>.panel-heading+.panel-collapse>.panel-body {
+.mu-faq-content
+    .panel-default
+    > .panel-heading
+    + .panel-collapse
+    > .panel-body {
     border-top-color: #010622;
 }
