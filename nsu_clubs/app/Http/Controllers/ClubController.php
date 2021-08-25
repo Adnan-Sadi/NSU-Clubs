@@ -46,6 +46,12 @@ class ClubController extends Controller
         );
 
         $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+        return redirect('/home/' . $request->club_id)
+                    ->withErrors($error,'notice_errors')
+                    ->withInput();
+        }
      
         $notice = Notices::create([
          'club_id' => $request->input('club_id'),
@@ -209,6 +215,12 @@ class ClubController extends Controller
         );
 
         $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+        return redirect('/home/' . $id)
+                    ->withErrors($error,'club_errors')
+                    ->withInput();
+        }
 
         $club = Clubs::find($id);
         

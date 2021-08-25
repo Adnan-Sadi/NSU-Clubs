@@ -63,6 +63,17 @@
                           <!--MODAL START-->
                           <!--MODAL START-->
                           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalDiscount">Change picture</button>
+
+                          @if ($errors->image_error->any())
+                            <div class="alert alert-danger alert-block">
+                              <strong>Error:</strong><br>
+                              <button type="button" class="close" data-dismiss="alert">×</button>
+                              
+                              @foreach ($errors->image_error->all() as $error)
+                                <span>{{$error}}</span><br>
+                              @endforeach
+                            </div>
+                          @endif  
                          
                         <form action="/profile/{{ $user->id }}/update_image" method="POST" enctype="multipart/form-data">
                           @csrf
@@ -172,6 +183,16 @@
                             <!--   EDIT MODAL START-->
 
                               <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalCart">Edit</button>
+                              @if ($errors->desc_error->any())
+                                <div class="alert alert-danger alert-block">
+                                  <strong>Error:</strong><br>
+                                  <button type="button" class="close" data-dismiss="alert">×</button>
+                                  
+                                  @foreach ($errors->desc_error->all() as $error)
+                                    <span>{{$error}}</span><br>
+                                  @endforeach
+                                </div>
+                              @endif  
 
                               <!-- Modal: modalCart -->
                               <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -202,10 +223,7 @@
                                              <label for="exampleFormControlSelect1">Full Name</label>
                                              <input class="form-control" type="text" name="name" value="{{ $user->name }}">
                                            </div>
-                                           <div class="form-group">
-                                             <label for="exampleFormControlInput1">Email address</label>
-                                             <input type="email" class="form-control" name="email" id="exampleFormControlInput1" value="{{ $user->email }}">
-                                           </div>
+                                           
                                            <div class="form-group">
                                              <label for="exampleFormControlSelect1">Phone</label>
                                              <input class="form-control" type="text" name="phone_num" value="{{ $user->phone_num }}">

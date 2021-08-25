@@ -121,7 +121,7 @@
             <div class="event--content">
 
               <h2>
-                <a href="{{ url('event/'.$event->event_id) }}" target="_blank" title="#">{{ $event->event_name }}</a>
+                <a href="{{ url('event/'.$event->event_id) }}" >{{ $event->event_name }}</a>
               </h2>
 
               <p class="event--content-hall">North-South University</p>

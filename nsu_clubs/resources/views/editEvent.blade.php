@@ -141,7 +141,7 @@
 				<div class="container">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 					<div class="field" align="left">
-					<input type="file" id="files" name="files[]" multiple />
+					<input type="file" id="files" name="photos[]" multiple />
 					</div>
 										
 				</div>		

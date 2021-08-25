@@ -124,6 +124,18 @@
 								@endif
 								
 								</h2>
+								
+								@if ($errors->club_errors->any())
+								 <div class="alert alert-danger alert-block">
+									 <strong>Error:</strong><br>
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									
+									@foreach ($errors->club_errors->all() as $error)
+										<span>{{$error}}</span><br>
+									@endforeach
+								 </div>
+
+								 @endif
 															
 								<p>
 									{{ $club->Description }}
@@ -135,6 +147,18 @@
 								@if ($manages == 1)
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Add Notice</button>
 								@endif
+
+								 @if ($errors->notice_errors->any())
+								 <div class="alert alert-danger alert-block">
+									 <strong>Error:</strong><br>
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									
+									@foreach ($errors->notice_errors->all() as $error)
+										<span>{{$error}}</span><br>
+									@endforeach
+								</div>
+
+								 @endif
 								
 								
 								<!-- Button trigger modal -->		
@@ -167,6 +191,8 @@
 				</div>
 			</div>
 		</section>
+
+		
 		<!-- End Schedule -->
 
 

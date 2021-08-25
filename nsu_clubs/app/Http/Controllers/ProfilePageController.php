@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use File;
 
@@ -99,10 +100,23 @@ class ProfilePageController extends Controller
      */
     public function update(Request $request, $id)
     {
+      /*  $rules = array(
+            'name' => ['string', 'max:255'],
+            'nsu_id' =>['integer','max:11'],
+            'phone_num'=>['string', 'max:255'],
+        );
+        
+        $error=Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+        return redirect('/profile')
+                    ->withErrors($error,'desc_error')
+                    ->withInput();
+        }*/
+
         $user = User::where('id',$id)->update([
             'nsu_id' => $request->input('nsu_id'),
             'name' => $request->input('name'),
-            'email' => $request->input('email'),
             'phone_num' => $request->input('phone_num')
         ]);
 
@@ -115,9 +129,17 @@ class ProfilePageController extends Controller
 
     public function update_image(Request $request, $id)
     {
-        $request->validate([
-          'prof_image' =>'required|mimes:png,jpg,jpeg|max:5048',
-        ]);
+        $rules = array(
+            'prof_image' => ['required', 'mimes:png,jpg,jpeg','max:5048'],
+        );
+
+        $error=Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+        return redirect('/profile')
+                    ->withErrors($error,'image_error')
+                    ->withInput();
+        }
 
         $user = User::find($id);
 
