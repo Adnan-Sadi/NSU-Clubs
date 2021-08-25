@@ -13,16 +13,16 @@ $(document).ready(function() {
               "<br/><span class=\"remove\">Remove image</span>" +
               "</span>").insertAfter("#files");
             $(".remove").click(function(){
-                $(this).parent(".pip").remove();
-                $(this).siblings().remove();
-                $(this).remove();
-            });
-            $('input[type="checkbox"]').click(function() {
-                $('input#photo').val('');
+              
+               $(this).parent(".pip").remove();
+      
+              
+              $('#files').val("");
             });
           });
           fileReader.readAsDataURL(f);
         }
+       
         console.log(files);
       });
     } else {

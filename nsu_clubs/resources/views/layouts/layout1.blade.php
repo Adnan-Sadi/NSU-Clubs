@@ -91,7 +91,7 @@
     </div>
   
       <div class="row">
-        TESLA Copyright © 2021 TESLA - All rights reserved
+        NSU CLUBS Copyright © 2021 NSU CLUBS - All rights reserved
       </div>
   </div>
   </div>

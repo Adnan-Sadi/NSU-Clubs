@@ -244,7 +244,7 @@
 	<div class="modal-dialog" role="document">
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		  <h5 class="modal-title" id="exampleModalLabel">Add Notice</h5>
 		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		  </button>
@@ -314,8 +314,8 @@ const numPages = Math.ceil(items.length / itemsPerPage);
 
 
 const createListItem = (item) => `<li class="list-item"><h4 class="item-title">${item.title}
-                                  <span id="demo" style="color:rgb(106, 90, 205); font-style: italic; font-size:12px; ">${item.updated_at.split("T")[0]}</span>
-                                  <span id="demo" style="color:rgb(106, 90, 205); font-style: italic; font-size:12px; ">${item.updated_at.split("T")[1].split(".")[0]}</span>
+                                  <span id="demo" style="color:rgba(172, 175, 172, 1); font-style: italic; font-size:13px; ">${item.updated_at.split("T")[0]}</span>
+                                  <span id="demo" style="color:rgba(172, 175, 172, 1); font-style: italic; font-size:13px; ">${item.updated_at.split("T")[1].split(".")[0]}</span>
 								  ${item.html}								  
 								  <p>${item.description}</p></li>`;
 

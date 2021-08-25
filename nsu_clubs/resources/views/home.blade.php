@@ -65,9 +65,12 @@
             <h2 class="home-font" >
               Meet the Clubs<br />
               of North-South University 
+            
+              
             </h2>
           </div>
         </div>
+      
         
         @foreach ( $clubs as $club )
 
@@ -158,7 +161,7 @@
               </div>
               <a href="{{ url('event/'.$events[0]->event_id) }}" class="primary-btn">
                 View Details
-                <i class="fa fa-long-arrow-right"></i>
+                <i  class="fa fa-long-arrow-right"></i>
               </a>
             </div>
           </div>

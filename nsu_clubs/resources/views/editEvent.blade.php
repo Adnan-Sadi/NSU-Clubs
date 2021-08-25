@@ -143,6 +143,7 @@
 					<div class="field" align="left">
 					<input type="file" id="files" name="photos[]" multiple />
 					</div>
+					
 										
 				</div>		
 			</div>		

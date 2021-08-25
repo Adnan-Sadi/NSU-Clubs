@@ -570,10 +570,6 @@
     box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.08);
 }
 
-.other-feature-item:hover i {
-    color: #7c32ff;
-}
-
 .testimonials-area {
     position: relative;
 }
@@ -655,14 +651,14 @@
 }
 
 .blog-post-area .single-blog-post .overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.616);
 }
 
 .blog-post-area .single-blog-post .top-text {
     position: absolute;
     top: -30px;
     right: 30px;
-    background: #828bb2;
+    background: #222222;
     padding: 30px;
     text-align: center;
 }
@@ -775,6 +771,13 @@
     font-size: 0.8em;
     display: inline-block;
 }
+.primary-btn {
+    color: #7b88c2;
+}
+.primary-btn:hover {
+    text-decoration: none;
+    color: #5f70bb;
+}
 
 .footer .row a {
     text-decoration: none;
@@ -886,7 +889,7 @@
 }
 
 .flip-card-back {
-    background-color: rgb(43, 56, 114);
+    background: linear-gradient(to left, #000624, #002042);
     color: black;
     transform: rotateY(180deg);
     -webkit-transform-style: preserve-3d;
