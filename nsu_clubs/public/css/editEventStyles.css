@@ -540,12 +540,38 @@ input[type="file"] {
     text-align: center;
     cursor: pointer;
 }
+.removeButton {
+    float: left;
+    margin-right: 5px;
+    display: block;
+    background: rgb(0, 0, 0);
+    border: 1px solid black;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding: 1em 3em;
+    text-align: center;
+    cursor: pointer;
+}
 
-.remove:hover {
+.removeButton:hover {
     color: #000523;
     background-color: white;
 }
-
+.uploadF {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.field input {
+    opacity: 0.5;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 /* Image upload */
 
 /*=======================================

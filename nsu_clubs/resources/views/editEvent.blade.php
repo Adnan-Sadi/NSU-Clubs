@@ -139,12 +139,14 @@
 				
 				<hr>
 				<div class="container">
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-					<div class="field" align="left">
-					<input type="file" id="files" name="photos[]" multiple />
-					</div>
-					
-										
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				
+				<div class="field" align="left">
+				<button class="removeButton"type="button">Remove all</button>	
+				<input type="file" name="hello" class="uploadF" id="files" name="photos[]" multiple />
+				
+				</div>
+						
 				</div>		
 			</div>		
 				
@@ -167,7 +169,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="{{ asset('js/editEventScript.js') }}"></script>
 
-    
 	
 	
     

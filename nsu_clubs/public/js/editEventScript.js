@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  $(".removeButton").click(function(){
+    $(".imageThumb").remove(); 
+    $('#files').val("");
+
+  });
     if (window.File && window.FileList && window.FileReader) {
       $("#files").on("change", function(e) {
         var files = e.target.files,
@@ -10,18 +15,14 @@ $(document).ready(function() {
             var file = e.target;
             $("<span class=\"pip\">" +
               "<img  class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-              "<br/><span class=\"remove\">Remove image</span>" +
+        
               "</span>").insertAfter("#files");
-            $(".remove").click(function(){
-              
-               $(this).parent(".pip").remove();
-      
-              
-              $('#files').val("");
-            });
+          
           });
           fileReader.readAsDataURL(f);
         }
+
+      
        
         console.log(files);
       });
@@ -29,5 +30,7 @@ $(document).ready(function() {
       alert("Your browser doesn't support to File API")
     }
   });
+
+  
 
   
