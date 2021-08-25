@@ -143,6 +143,9 @@
 				
 				<div class="field" align="left">
 				<button class="removeButton"type="button">Remove all</button>	
+				<label for="file-upload" class="custom-file-upload">
+					<i class="fa fa-cloud-upload"></i> Image Upload
+				</label>
 				<input type="file" name="hello" class="uploadF" id="files" name="photos[]" multiple />
 				
 				</div>
