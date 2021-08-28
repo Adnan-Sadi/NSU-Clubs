@@ -9,7 +9,7 @@
     width: 100%;
     z-index: 9;
     background-color: #222222;
-    margin-bottom: 20px;
+    
 }
 
 .navbar-light .navbar-toggler {
@@ -153,6 +153,3 @@
     }
 }
 
-h1 {
-    background-color: red;
-}

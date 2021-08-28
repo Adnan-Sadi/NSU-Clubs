@@ -100,10 +100,10 @@ class ProfilePageController extends Controller
      */
     public function update(Request $request, $id)
     {
-      /*  $rules = array(
+        $rules = array(
             'name' => ['string', 'max:255'],
-            'nsu_id' =>['integer','max:11'],
-            'phone_num'=>['string', 'max:255'],
+            'nsu_id' =>['integer','max:9999999999','nullable'],
+            'phone_num'=>['string', 'max:255','nullable'],
         );
         
         $error=Validator::make($request->all(), $rules);
@@ -112,7 +112,7 @@ class ProfilePageController extends Controller
         return redirect('/profile')
                     ->withErrors($error,'desc_error')
                     ->withInput();
-        }*/
+        }
 
         $user = User::where('id',$id)->update([
             'nsu_id' => $request->input('nsu_id'),

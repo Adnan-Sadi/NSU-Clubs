@@ -20,6 +20,35 @@
         <!-- DataTable ends --> 
     </section>
   </div>
+
+<footer>
+  
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+      
+   
+  
+    <div class="row">
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Our Services</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+       
+      </ul>
+    </div>
+  
+      <div class="row">
+        NSU CLUBS Copyright © 2021 NSU CLUBS - All rights reserved
+      </div>
+  </div>
+  </div>
+  </footer>
     
 <script>
   $(document).ready(function() {

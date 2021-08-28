@@ -72,6 +72,20 @@
 		<!-- Start About -->
 		<section id="mu-about">
 			<div class="container">
+                 
+				<!-- View Errors if any-->
+				@if ($errors->any())
+					<div class="alert alert-danger alert-block">
+					<strong>Error:</strong><br>
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					
+					@foreach ($errors->all() as $error)
+						<span>{{$error}}</span><br>
+					@endforeach
+					</div>
+				@endif
+				<!-- View Errors if any--> 
+				
 				<div class="row">
 					<div class="col-md-12">
 						<div class="mu-about-area">
@@ -146,7 +160,7 @@
 				<label for="file-upload" class="custom-file-upload">
 					<i class="fa fa-cloud-upload"></i> Image Upload
 				</label>
-				<input type="file" name="hello" class="uploadF" id="files" name="photos[]" multiple />
+				<input type="file" class="uploadF" id="files" name="photos[]" multiple />
 				
 				</div>
 						

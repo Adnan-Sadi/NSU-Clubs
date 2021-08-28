@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Clubs;
 use App\Models\Members;
@@ -12,6 +13,7 @@ use App\Models\Follow_Events;
 use App\Models\Follow_Clubs;
 use App\Models\Club_Managers;
 use App\Models\Notices;
+use App\Mail\newNoticeMail;
 use File;
 use DataTables;
 
@@ -58,6 +60,16 @@ class ClubController extends Controller
          'title' => $request->input('title'),
          'description' => $request->input('description'),
         ]);
+
+        $users = DB::table('users')
+                        ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
+                        ->select('users.*','follow_clubs.club_id')
+                        ->where('follow_clubs.club_id','=',$request->input('club_id'))
+                        ->get();
+
+        foreach ($users as $user) {
+            Mail::to($user->email)->queue(new newNoticeMail($request->input('club_id'),$notice->notice_id));
+        }
 
         return redirect('/home/' . $request->club_id);
         

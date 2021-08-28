@@ -1,4 +1,4 @@
-@extends(($manages == 1) ? 'layouts.adminDataTable' : 'layouts.generalDataTable');
+@extends(($manages == 1) ? 'layouts.adminDataTable' : 'layouts.generalDataTable')
 
 @section('content')
 
@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('css/membersStyles.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/layoutstyle.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/membersStyles.css') }}">
+     
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -35,6 +37,57 @@
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 </head>
 <body>
+
+<header class="default-header">
+  <nav class="navbar navbar-expand-lg  navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+      <img src="{{ asset('images/Home/LogoMakr-0U2Aqa.png') }}" height="30" alt="" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="lnr lnr-menu"></span>
+      </button>
+
+        <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{ url('/#clubs') }}">Clubs</a></li>
+            <li><a href="#">Events</a></li>
+
+         
+
+             
+            @if (Auth::user())
+                  <li class="dropdown show profileDropdown">
+                    <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                      {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="/profile">Profile</a>
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Logout</a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                      </form>      
+                      
+                    </div>
+                  </li>  
+              @else
+                <li><a href="/login">Login</a></li>
+              @endif
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+  <!-- ================ End Header Area ================= -->
 
   <!-- Members list Section -->
   <div class="container">
@@ -79,7 +132,7 @@
               </div>
               <h6 class="team-title">{{ $executive->name }}<br></h6>
               <p class="profession">{{ $executive->position }}</p>
-            </div>
+            </div><br><br>
           </div>
           <!-- end team member -->
         
@@ -88,9 +141,6 @@
     </div>
 
 
-<div class="row footer">
-    <h2><br></h2>
-</div>
 <!-- Executive Member Body End -->
 
 

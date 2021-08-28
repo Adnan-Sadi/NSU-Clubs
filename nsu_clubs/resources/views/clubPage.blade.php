@@ -20,8 +20,10 @@
   </head>
   <body>
   	
+	@extends('layouts.layout1')
+	@section('content')
   	<!-- Start Header -->
-	<header id="mu-hero" class="" role="banner" style="background-image: url('{{ asset('images/Club Covers/' . $club->cover_photo) }}');">
+	<div id="mu-hero" class="" role="banner" style="background-image: url('{{ asset('images/Club Covers/' . $club->cover_photo) }}');">
 		<div class="mu-hero-overlay">
 			<div class="container text-center">
 				<div class="mu-hero-area">
@@ -68,7 +70,7 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</div>
 	<!-- End Header -->
 	
 	
@@ -273,9 +275,14 @@
      </div>
 	</div>
   </div>
+
+
+
 @php
     $length = $notices->count();
 @endphp
+
+
 
 <script>
 
@@ -371,12 +378,9 @@ init();
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/clubScript.js') }}"></script>
+   <script src="{{ asset('js/clubScript.js') }}"></script>
    
-
-		
-    
+@endsection
+   
   </body>
 </html>

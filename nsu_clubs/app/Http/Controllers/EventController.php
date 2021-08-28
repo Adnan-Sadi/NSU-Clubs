@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\DB;
 use Illuminate\Support\facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Events;
@@ -52,9 +53,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-          'cover_photo' =>'required|mimes:png,jpg,jpeg|max:9048',
-        ]);
+        $rules =array(
+          'title' => ['required','max:255'],
+          'description' => ['required'],
+          'event_date' => ['required'],
+          'start_at' => ['required'],
+          'end_at' => ['required'],
+          'cover_photo' =>['required','mimes:png,jpg,jpeg','max:9048'],
+        );
+
+        $error=Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+        return redirect('/home/'.$request->club_id.'/events')
+                    ->withErrors($error)
+                    ->withInput();
+        }
 
         $newImageName = time(). '-'. $request->title .'.'. $request->cover_photo->extension();
         $request->cover_photo->move(public_path('images/Event Covers'),$newImageName);
@@ -69,6 +83,7 @@ class EventController extends Controller
          'cover_photo' => $newImageName
         ]);
 
+        /**sending email notification to club followers */
         $users = DB::table('users')
                         ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
                         ->select('users.*','follow_clubs.club_id')
@@ -76,8 +91,9 @@ class EventController extends Controller
                         ->get();
 
         foreach ($users as $user) {
-            Mail::to($user->email)->queue(new newEventMail($request->input('club_id')));
+            Mail::to($user->email)->queue(new newEventMail($request->input('club_id'),$event->event_id));
         }
+        /**sending email notification to club followers */
 
         return redirect('/home/'.$request->club_id.'/events');
     }
@@ -144,17 +160,25 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $error= $request->validate([
-           'event_date' => 'required',
-           'event_name' => 'required',
-           'description' => 'required',
-           'cover_photo' =>'mimes:png,jpg,jpeg|max:9048',
-           'about_image' =>'mimes:png,jpg,jpeg|max:9048',
-           'photos.*' => 'mimes:png,jpg,jpeg|max:5048'    
-        ]);
+       $rules= array(
+           'event_date' => ['required'],
+           'event_name' => ['required'],
+           'description' => ['required'],
+           'cover_photo' =>['mimes:png,jpg,jpeg','max:9048'],
+           'about_image' =>['mimes:png,jpg,jpeg','max:9048'],
+           'photos.*' => ['mimes:png,jpg,jpeg','max:5048']    
+        );
 
         $event = Events::find($id);
-        
+
+        $error=Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+        return redirect('/event/'.$event->event_id.'/edit')
+                    ->withErrors($error)
+                    ->withInput();
+        }
+      
         //if background image is updated
         if($request->hasfile('cover_photo')){
 

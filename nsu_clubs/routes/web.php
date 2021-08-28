@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\ExecutiveMembersController;
 use App\Mail\newEventMail;
+use App\Mail\newNoticeMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,11 @@ Route::get('/ex_members/{ex_member}/edit', [ExecutiveMembersController::class, '
 Route::post('/ex_members/{ex_member}', [ExecutiveMembersController::class, 'update'])->name('ex_members.update');
 
 Route::get('/eventMail', function(){
-    return new newEventMail();
+    return new newEventMail(1,13);
+});
+
+Route::get('/noticeMail', function(){
+    return new newNoticeMail(1,2);
 });
 
 

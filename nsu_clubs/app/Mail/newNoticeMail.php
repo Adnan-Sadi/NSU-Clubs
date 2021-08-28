@@ -7,23 +7,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Clubs;
-use App\Models\Events;
+use App\Models\Notices;
 
-class newEventMail extends Mailable implements ShouldQueue
+class newNoticeMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $club,$event;
+    protected $club,$notice;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($club_id,$event_id)
+    public function __construct($club_id,$notice_id)
     {
         $this->club = Clubs::find($club_id);
-        $this->event = Events::find($event_id);
+        $this->notice = Notices::find($notice_id);
     }
 
     /**
@@ -33,6 +33,6 @@ class newEventMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.eventMail')->with('club',$this->club)->with('event',$this->event);
+        return $this->markdown('emails.noticeMail')->with('club',$this->club)->with('notice',$this->notice);
     }
 }

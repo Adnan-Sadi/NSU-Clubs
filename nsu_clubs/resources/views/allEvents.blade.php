@@ -19,6 +19,9 @@
     </head>
 
    <body>
+
+    @extends('layouts.layout1')
+    @section('content')
      
        <div class="container">
         <div class="page-header" style="border: none;position: relative;">
@@ -94,6 +97,20 @@
         <!-- TIMELINE -->
         
         <div id="2020" class="spacer-toc"><i class="fa fa-calendar"></i></div>
+
+        <!-- View Errors if any-->
+				@if ($errors->any())
+					<div class="alert alert-danger alert-block">
+					<strong>Error:</strong><br>
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					
+					@foreach ($errors->all() as $error)
+						<span>{{$error}}</span><br>
+					@endforeach
+					</div>
+				@endif
+				<!-- View Errors if any--> 
+        
         <h2 class="border-line">2021</h2>
         
         <!-- 2020 -->
@@ -209,6 +226,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{{ asset('js/allEventScript.js') }}"></script>
   
+    @endsection
     </body>
 
    
