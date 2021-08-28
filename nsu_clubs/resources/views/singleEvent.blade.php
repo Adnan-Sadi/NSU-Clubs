@@ -183,6 +183,7 @@
 							<h3>North South University</h3>
 							<h4>Bashundhara, Dhaka-1229, Bangladesh</h4>
 							<p>North South University is a private university based in Dhaka, Bangladesh. Its business school is the first Bangladeshi university to receive American accreditation from the ACBSP in 2015.</p>
+					
 						</div>
 					</div>
 
@@ -191,7 +192,7 @@
 		</section>
 		<!-- End Venue -->
 
-
+    <div style="opacity:0;font-size:4px;">k</div>
 	
 	
     <!-- jQuery library Bootstrap-->

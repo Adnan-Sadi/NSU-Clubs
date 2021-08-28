@@ -22,7 +22,7 @@
 
     @extends('layouts.layout1')
     @section('content')
-     
+       <p style='opacity:0;'>hello</p>
        <div class="container">
         <div class="page-header" style="border: none;position: relative;">
           <h1>Calendar of Events</h1>

@@ -1,37 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,700,300);
 
-body {
-    margin-top: 150px;
-    background: lightblue;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-span {
-    font-family: "Raleway", sans-serif;
-    color: #4d4d4d;
-}
-
-.page-header > h1 {
-    text-align: center;
-}
-
-.page-header > h3 {
-    text-align: center;
-}
-
-.page-header > h1 {
-    text-align: left;
-}
-
-.page-header > h3 {
-    text-align: left;
-}
-
 /* */
 .button-container-1 {
     position: absolute;
@@ -243,48 +211,6 @@ a {
     --v-lgh-gray-clr: #d9d9d9;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-body,
-html,
-p {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: "Roboto", sans-serif;
-    font-size: 18px;
-    color: #1f1f1f;
-    min-height: 100%;
-    background: #ebebeb;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 700;
-    line-height: 1.15;
-}
-
 h2.border-line,
 h3.border-line {
     overflow: hidden;
@@ -306,25 +232,14 @@ h3.border-line::after {
     vertical-align: middle;
 }
 
-a {
-    color: var(--primary-clr);
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-}
-
-a:hover {
-    color: #971c3d;
-}
-
 img {
     max-width: 100%;
 }
 
-.container,
-#footer-content {
+.container {
     width: 100%;
     max-width: 960px;
-    padding: 2em 20px;
+
     margin: 0 auto;
 }
 

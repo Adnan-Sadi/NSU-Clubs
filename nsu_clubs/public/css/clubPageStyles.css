@@ -41,7 +41,7 @@ img {
     height: 350px;
     width: 350px;
     padding: 5px 20px;
-    margin-bottom: 20%;
+    margin-bottom: 13%;
     margin-top: 10%;
 }
 
@@ -384,8 +384,6 @@ img {
 .list-item:hover {
     background-color: rgba(37, 37, 37, 0.192);
 }
-
-
 
 .list-item > .item-description {
     margin-bottom: 0.5rem;
