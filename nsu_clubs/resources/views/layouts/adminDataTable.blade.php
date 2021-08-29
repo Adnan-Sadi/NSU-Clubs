@@ -21,8 +21,9 @@
     </section>
   </div>
 
+<!-- Start Footer -->
 <footer>
-  
+ 
   <div class="footer">
     <div class="container">
       <div class="row">
@@ -48,7 +49,8 @@
       </div>
   </div>
   </div>
-  </footer>
+</footer>
+<!-- End Footer -->  
     
 <script>
   $(document).ready(function() {
@@ -70,17 +72,18 @@
        ],
        dom: "<'row'<'col-sm-12 col-md-3 d-flex justify-content-start'f><'col-sm-12 col-md-3'l><'col-sm-12 col-md-6 d-flex justify-content-end'B>>" +
             "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>", // positioning the buttons,fields and table
        buttons: [ 
          { extend: 'csv',exportOptions: {columns: [ 0, 1, 2, 3, 4, 5 ]}},
          { extend: 'excel',exportOptions: { columns: [ 0, 1, 2, 3, 4, 5 ]}},
          { extend: 'pdf',exportOptions: { columns: [ 0, 1, 2, 3, 4, 5 ]}}
-       ],
-       lengthMenu: [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ]
+       ],//Export Buttons
+       lengthMenu: [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ] //number of entries
        
        });
     /** Generate DataTable **/
-
+     
+     // On-click create member button
      $('#create_member').click(function(){
       $('.modal-title').text('Add New Record');
       $('#action_button').val('Add');
@@ -92,7 +95,7 @@
       $('#formModal').modal('show');
     });
    
-
+    // On-click create executive member button
     $('#create_exec_member').click(function(){
       $('.modal-title').text('Add New Record');
       $('#ex_action_button').val('Add');
@@ -110,13 +113,14 @@
         var action_url = '';
         var action_method='';
         let formData = new FormData(this);
-
+        
+        //checking if the action is Add
         if($('#ex_action').val() == 'Add')
         {
         action_url = "{{ route('ex_members.store') }}";
         action_method="POST";
         }
-
+        //checking if the action is Edit
         if($('#ex_action').val() == 'Edit')
         {
         var m_id = $('#ex_hidden_id').val(); //geting member id
@@ -135,9 +139,11 @@
         data:formData,
         contentType: false,
         processData: false,
+        //ajax call success function
         success:function(data)
         {
           var html = ''; //html containing error/success message
+          //if there are errors, add error message
           if(data.errors)
           {
           html = '<div class="alert alert-danger">';
@@ -147,23 +153,19 @@
           }
           html += '</div>';
           }
-          
+          //if there are no errors, add success message
           if(data.success)
           {
           html = '<div class="alert alert-success">' + data.success + '</div>';
           $('#exec_member_form')[0].reset(); //reset form values
           window.location.reload();//reloads page
           }
-          $('#form_result_2').html(html); //display error message    
+          $('#form_result_2').html(html); //display error or success message    
         },
-
+        //ajax call error function
         error:function(data){
-                // Something went wrong
-                // HERE you can handle asynchronously the response 
-
-                // Log in the console
                 var errors = data.responseJSON;
-                console.log(errors);
+                console.log(errors);//display errors in console
       }       
         });
       });
@@ -177,6 +179,7 @@
         $.ajax({
         url :"/ex_members/"+id+"/edit",
         dataType:"json",
+        //ajax call success function
         success:function(data)
         {
           $('#ex_name').val(data.result[0].name);
@@ -226,9 +229,11 @@
         method: action_method,
         data:$(this).serialize(),
         dataType:"json",
+        //ajax call success function
         success:function(data)
         {
           var html = ''; //html containing error/success message
+          //if there are errors, add error message
           if(data.errors)
           {
           html = '<div class="alert alert-danger">';
@@ -238,6 +243,7 @@
           }
           html += '</div>';
           }
+          //if there are no errors, add success message
           if(data.success)
           {
           html = '<div class="alert alert-success">' + data.success + '</div>';
@@ -258,6 +264,7 @@
         $.ajax({
         url :"/members/"+id+"/edit",
         dataType:"json",
+        //ajax call success function
         success:function(data)
         {
           $('#name').val(data.result.name);
@@ -282,7 +289,7 @@
       var member_id;
 
       $(document).on('click', '.delete', function(){
-        member_id = $(this).attr('id');
+        member_id = $(this).attr('id');//get member id
         
         $('#confirmModal').modal('show');
       });
@@ -300,6 +307,7 @@
         beforeSend:function(){
           $('#ok_button').text('Deleting...'); //change ok button text with 'Deleting...' text
         },
+        //ajax call success function
         success:function(data)
         {
           setTimeout(function(){

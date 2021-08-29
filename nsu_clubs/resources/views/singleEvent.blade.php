@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
     <title>EVENT</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
@@ -17,38 +17,29 @@
 
     <!-- Main Style -->
     <link href="{{ asset('css/singleEventStyles.css') }}" rel="stylesheet">
-    <!-- Fonts -->
 
     <!-- Open Sans for body font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
 	<!-- Montserrat for title -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
  
- 
-	
-   
   </head>
   <body>
 
 	@extends('layouts.layout1')
 	@section('content')
   	
-	<!-- Start Header -->
+	<!-- Start Event Heading Section  -->
 	<div id="mu-hero" role="banner" style="background-image: url('{{ asset('images/Event Covers/' . $event->cover_photo) }}');" > 
 	
 
 		<div class="mu-hero-overlay">
 			<div class="container">
 				<div class="mu-hero-area">
-
-					<!-- Start hero featured area -->
 					<div class="mu-hero-featured-area">
 						<!-- Start center Logo -->
 						<div class="mu-logo-area">
-							<!-- text based logo -->
 							<a class="mu-logo" href="#">{{ $event->clubs->club_initial }}</a>
-							<!-- image based logo -->
-							<!-- <a class="mu-logo" href="#"><img src="assets/images/logo.jpg" alt="logo img"></a> -->
 						</div>
 						<!-- End center Logo -->
 
@@ -66,21 +57,19 @@
 			
 						</div>
 					</div>
-					<!-- End hero featured area -->
-
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Header -->
+	<!-- End Event Heading Section  -->
 	
-		<!-- Start About -->
+	<!-- Start About Section -->
 		<section id="mu-about">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="mu-about-area">
-							<!-- Start Feature Content -->
+
 							<div class="row">
 								<div class="col-md-6">
 									<div class="mu-about-left">
@@ -95,16 +84,15 @@
 									</div>
 								</div>
 							</div>
-							<!-- End Feature Content -->
 
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- End About -->
+		<!-- End About Section -->
 	
-		<!-- Start Video -->
+		<!-- Start Parallax -->
 		<section id="mu-video" style="background-image: url('{{ asset('images/Event Covers/' . $event->cover_photo) }}');">
 			
 				<div class="container">
@@ -121,50 +109,38 @@
 			
 
 		</section>
-		<!-- End Video -->
-			<section id="mu-schedule">
-						<div class="rotatingGallery-parentContainer">
-							<div class="rotatingGallery">
-							  <div class="rotatingGallery-slides">
-                               
-								@php
-									$count=0;
-								@endphp
-
-								@foreach ($photos as $photo)
-
-									@php
-										$count=$count+1;
-									@endphp
-
-									<div class="rotatingGallery-slide" data-arrival-index="{{ $count }}">
-									<img class="rotatingGallery-image" alt="" src="{{ asset('images/Event Photos/'.$photo->path) }}" title="">
-							
-									
-									</div>
-
-								@endforeach
-								
-							  </div>
-							</div>
-						  </div>
-						
+		<!-- End Parallax -->
+       
+		<!-- Start Image Slider Section -->
+		<section id="mu-schedule">
+			<div class="rotatingGallery-parentContainer">
+				<div class="rotatingGallery">
+					<div class="rotatingGallery-slides">
 					
-				
-			
+					@php
+						$count=0;
+					@endphp
+
+					@foreach ($photos as $photo)
+
+						@php
+							$count=$count+1;
+						@endphp
+
+						<div class="rotatingGallery-slide" data-arrival-index="{{ $count }}">
+						<img class="rotatingGallery-image" alt="" src="{{ asset('images/Event Photos/'.$photo->path) }}" title="">
+						
+						</div>
+
+					@endforeach
+					
+					</div>
+				</div>
+			</div>													
 		</section>
+		<!-- End Image Slider Section -->		
 
-		<!-- Start Schedule  -->
-				
-
-
-		<!-- End Schedule -->
-		
-
-
-		
-
-		<!-- Start Venue -->
+		<!-- Start Venue Section -->
 		<section id="mu-venue">
 			<div class="mu-venue-area">
 				<div class="row">
@@ -189,7 +165,7 @@
 				</div>
 			</div>
 		</section>
-		<!-- End Venue -->
+		<!-- End Venue Section -->
 
     <div style="opacity:0;font-size:4px;">k</div>
 	

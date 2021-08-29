@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
     <title>CLUB PAGE</title>
  
     <!-- Font Awesome -->
@@ -17,95 +17,77 @@
     <!-- Main Style -->
     <link href="{{ asset('css/clubPageStyles.css') }}" rel="stylesheet">
 
-   
   </head>
   <body>
   	
 	@extends('layouts.layout1')
 	@section('content')
-  	<!-- Start Header -->
+
+  	<!-- Start Heading Section -->
 	<div id="mu-hero" class="" role="banner" style="background-image: url('{{ asset('images/Club Covers/' . $club->cover_photo) }}');">
 		<div class="mu-hero-overlay">
 			<div class="container text-center">
 				<div class="mu-hero-area">
-			
-
-					<!-- Start hero featured area -->
+								
 					<div class="mu-hero-featured-area">
 						<!-- Start center Logo -->
 						<div class="mu-logo-area">
-							<!-- text based logo -->
-							<div class="mu-logo">
-							
-								<img src="{{ asset('images/Club Logos/' . $club->logo) }}">
-							
-
-
-							</div>
-							<!-- image based logo -->
-							<!-- <a class="mu-logo" href="#"><img src="assets/images/logo.jpg" alt="logo img"></a> -->
+							<div class="mu-logo">							
+							   <img src="{{ asset('images/Club Logos/' . $club->logo) }}">
+						    </div>
 						</div>
 						<!-- End center Logo -->
 
-						<div class="mu-hero-featured-content">
-				
-							<div class="mu-event-date-line">
-								
+						<div class="mu-hero-featured-content">				
+							<div class="mu-event-date-line">								
 								{{ $club->club_name }} -
-								{{ $club->club_initial }}
-								
-								
-								</div>
+								{{ $club->club_initial }}								
+						    </div>
 							
-
 							<div class="mu-event-counter-area">
 								<div id="mu-event-counter">
 									
 								</div>
 							</div>
-
 						</div>
 					</div>
-					<!-- End hero featured area -->
-
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Header -->
+	<!-- End Heading Section -->
 	
-	
 
-
-
-		<!-- Start Schedule  -->
+		<!-- Start Club Info Section -->
 		<section id="mu-schedule">
 			<div class="container">
                 
-               
-
 				<div class="container text-center" >
 					<button type="button" id="navButtons" class="btn btn-dark" onclick="location.href='/home/{{ $club->id }}/members';">Members</button>
 					<button type="button" id="navButtons"class="btn btn-dark" onclick="location.href='/home/{{ $club->id }}/events';">Events</button>
-                    
+
+                    <!-- Check if user is logged in -->
                     @if (Auth::user())
+
                         @php
                         $following = false;//if $following = true then user is following the event
                         @endphp
                         
+						<!-- Checking if user is one of the followers of the club -->
                         @foreach ($follows as $follow)
                             @if ( $club->id == $follow->club_id)
                                 @php       $following = true;       @endphp
                             @endif
                         @endforeach
-
+						<!-- Checking if user is one of the followers of the club -->
+                        
+						<!-- Follow button -->
                         @if ($following == true)
                         <button type="button" id="followButton" class="btn btn-outline-danger unfollow_club" id="follow_club_{{ $club->id }}" data="{{ $club->id }}"><i class="fas fa-times-circle"></i> Unfollow</button><br>
                         @else
                             <button type="button" id="followButton" class="btn btn-outline-success follow_club" id="follow_club_{{ $club->id }}" data="{{ $club->id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
                         @endif
-                        
-                        
+						<!-- Follow button -->                       
 
                     @endif
                     
@@ -120,14 +102,17 @@
 						
 								<h2 class="mu-title">Club Details
 
+                                <!-- Check if the user is the manager of the club -->
 								@if ($manages == 1)
 								<button type="button" id="editButton" class="btn btn-dark"  data-toggle="modal" data-target="#modalCart">
 								<i class="fa fa-wrench" aria-hidden="true"></i> 	
 								Edit</button>	
 								@endif
+								<!-- Check if the user is the manager of the club -->
 								
 								</h2>
-								
+
+								<!-- View edit club errors if any-->
 								@if ($errors->club_errors->any())
 								 <div class="alert alert-danger alert-block">
 									 <strong>Error:</strong><br>
@@ -139,6 +124,7 @@
 								 </div>
 
 								 @endif
+								 <!-- View edit clubs errors if any-->
 															
 								<p>
 									{{ $club->Description }}
@@ -151,6 +137,7 @@
 								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Add Notice</button>
 								@endif
 
+                                 <!-- View add notice errors if any-->
 								 @if ($errors->notice_errors->any())
 								 <div class="alert alert-danger alert-block">
 									 <strong>Error:</strong><br>
@@ -162,18 +149,16 @@
 								</div>
 
 								 @endif
-								
-								
-								<!-- Button trigger modal -->		
+								 <!-- View add notice errors if any-->
+						
 								<hr>
 								
 							  </div>
 
 							
 							<div class="mu-schedule-content-area">
-								<!-- Nav tabs -->
-							
-								
+
+								<!-- Start Club Notices Section -->
 								<div class="container">
 									<h1>
 										NOTICES
@@ -185,8 +170,8 @@
 										<button class="sidebtn" id="next-page">></button>
 									</div>
 								</div>
+								<!-- End Club Notices Section -->
 							
-
 							</div>
 							
 						</div>
@@ -196,10 +181,10 @@
 		</section>
 
 		
-		<!-- End Schedule -->
+	<!-- End Club Info Section -->
 
 
-  <!-- Modal -->
+  <!-- Edit Club Info Modal -->
   <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -238,11 +223,9 @@
     </div>
   </div>
 </div>
+<!-- Edit Club Info Modal -->
 
-
-
-
-  <!-- Modal -->
+<!-- Add Notice Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 	  <div class="modal-content">
@@ -276,9 +259,9 @@
      </div>
 	</div>
   </div>
+<!-- Add Notice Modal -->
 
-
-
+<!-- Getting the number of notices -->
 @php
     $length = $notices->count();
 @endphp
@@ -287,7 +270,6 @@
 
 <script>
 
-    // DOM Elements
 const list = document.querySelector('.list');
 const currPage = document.querySelector('#current-page');
 const totalPages = document.querySelector('#total-pages');
@@ -299,7 +281,9 @@ const items = {!! json_encode($notices) !!};//getting the notices
 const length = {{ $length }}; // number of notices
 const manages = {{ $manages }}; //check if user is manager
 
+//Adding delete button html to notice if user is the manager if the ckub
 for (let i = 0; i < length; i++) {
+	//Checking if user is the manager of the club
 	if (manages == 1) {
 		items[i]["html"] ='<a href="/club/'+items[i]["notice_id"] +'"><i class="fa fa-times" style="margin-left:5px; color:red; float:right;"aria-hidden="true"></i></a></h4>' ;
 	}
@@ -311,7 +295,6 @@ for (let i = 0; i < length; i++) {
 
 console.log(length);
 console.log(items);
-
 
 let currentPage = 1;
 let currentIndex = 0;
@@ -374,10 +357,8 @@ init();
 
   
 
-    <!-- jQuery library -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    <script src="{{ asset('js/clubScript.js') }}"></script>
    

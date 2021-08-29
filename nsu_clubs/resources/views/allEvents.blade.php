@@ -27,14 +27,16 @@
         <div class="page-header" style="border: none;position: relative;">
           <h1>Calendar of Events</h1>
           
+          <!-- Check if the user is the manager of the club -->
           @if ($manages == 1)
             <div class="button-container-1">
                 <span class="mas">Organize Event</span>
                 <button id='work' type="button" name="Hover" data-toggle="modal" data-target="#modalCart">Organize Event</button>
             </div>
           @endif
+          <!-- Check if the user is the manager of the club -->
           
-              <!-- Modal: modalCart -->
+              <!-- Add new event modal -->
               <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -43,7 +45,7 @@
                   <div class="modal-header">
 
                     
-                    <h4 class="modal-title" id="myModalLabel">Edit Information</h4>
+                    <h4 class="modal-title" id="myModalLabel">Enter Information</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span>
                     </button>
@@ -89,7 +91,7 @@
                 </div>
               </div>
             </div>
-            <!-- Modal: modalCart -->
+            <!-- Add new event modal -->
 
         
         
@@ -112,8 +114,6 @@
 				<!-- View Errors if any--> 
         
         <h2 class="border-line">2021</h2>
-        
-        <!-- 2020 -->
         
         <div class="eventWrapper">
       
@@ -148,7 +148,7 @@
                   <time>{{ $event->start_at }} - {{ $event->end_at }}</time>
                 </div>
               </div>
-                <!--{{ Str::limit($event->event_description, 150, '...') }}  -->
+      
               <div class="event--content-ensemble">
                 <!-- Limiting the size of description -->  
                 {{ Str::limit($event->event_description, 150, '...') }}
@@ -156,12 +156,13 @@
               <!-- csrf-token -->
               <meta name="csrf-token" content="{{ csrf_token() }}">
               
+              <!-- Check if user is logged in -->
               @if (Auth::user())
                 
                   <div class="event--content-social">
 
                     @php
-                        $following = false;//if $following = true then user is following the event
+                        $following = false;//if $following = true, then user is following the event
                     @endphp
                                         
                     @foreach ($follows as $follow)
@@ -176,12 +177,14 @@
                       @else
                         <button type="button" class="btn btn-outline-success btn-sm follow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
                       @endif
+                      <!-- Follow Event Button -->
                     
-                    
+                    <!-- Check if the user is the manager of the club -->
                     @if ($manages == 1)
                        <!-- Edit Event Button -->
                        <button type="button" class="btn btn-outline-info btn-sm edit_event" id="{{ $event->event_id }}" onclick="location.href='/event/{{ $event->event_id }}/edit';">
                        <span class="btn-label"><i class="fas fa-edit"></i> Edit</button><br>
+                        <!-- Edit Event Button -->
                         
                         <!-- Delete Event Button -->
                         <form id="form-1" action="/event/{{ $event->event_id }}" method="POST">
@@ -189,8 +192,10 @@
                             @method('delete')
                             <button type="submit" class="btn btn-outline-dark btn-sm"><i class="far fa-trash-alt"></i> Delete</button>
                         </form>
+                        <!-- Delete Event Button -->
                       
                     @endif
+                    <!-- Check if the user is the manager of the club -->
                     
                   
                   </div>
@@ -204,12 +209,13 @@
          @endif
               
         @empty
+        <!-- If the club has no events -->
         <p>No Events found</p>
               
         @endforelse
 
 
-        </div><!-- end eventWrapper  -->
+        </div>
         
         
         
@@ -217,9 +223,6 @@
           
         </div><!-- container -->
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -3,14 +3,14 @@
   
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
    
-    <!-- ================ start footer Area ================= -->
+
     <!--FONT AWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/layoutstyle.css') }}">
   
 </head>
 
-
+<!-- ================ start header Area ================= -->
 <header class="default-header">
   <nav class="navbar navbar-expand-lg  navbar-light">
     <div class="container">
@@ -21,16 +21,14 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="lnr lnr-menu"></span>
       </button>
-
+         
         <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li><a href="{{ url('/') }}">Home</a></li>
             <li><a href="{{ url('/#clubs') }}">Clubs</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="{{ url('/#events') }}">Events</a></li>
 
-         
-
-             
+            <!--  login/logout button -->
             @if (Auth::user())
                   <li class="dropdown show profileDropdown">
                     <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -66,7 +64,7 @@
 
 
     <!-- ================ start footer Area ================= -->
-    <footer>
+  <footer>
   
   <div class="footer">
     <div class="container">

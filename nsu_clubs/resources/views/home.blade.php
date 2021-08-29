@@ -71,7 +71,7 @@
           </div>
         </div>
       
-        
+        <!-- Generating the club cards -->
         @foreach ( $clubs as $club )
 
         <div class="col-lg-4 col-md-6" data-aos="zoom-in-right">
@@ -100,9 +100,8 @@
         </div>
             
         @endforeach
-
-            
-     
+        <!-- Generating the club cards -->
+   
       </div>
     </div>
   </section>
@@ -122,14 +121,12 @@
      </section>
     
    </section>
-    
-     
-
-   </div>
+  <!-- PARALLEX -->
 
  </section>
+
   <!-- ================ Start Recent Events Area ================= -->
-  <section class="blog-post-area section-gap">
+  <section class="blog-post-area section-gap" id="events">
     <div class="container-fluid">
       <div class="feature-inner row">
         <div class="col-lg-12">
@@ -143,7 +140,7 @@
           </div>
         </div>
 
-        @isset($events[0])
+        @isset($events[0]) <!-- checking if there are upcoming events -->
 
         <div class="col-lg-4 col-md-6">
           <div class="single-blog-post">
@@ -169,7 +166,7 @@
 
         @endisset
          
-        @isset($events[1])
+        @isset($events[1])<!-- checking if there are upcoming events -->
 
         <div class="col-lg-4 col-md-6 mt--160">
           <div class="single-blog-post">
@@ -195,7 +192,7 @@
 
         @endisset
         
-        @isset($events[2])
+        @isset($events[2])<!-- checking if there are upcoming events -->
                           
         <div class="col-lg-4 col-md-6 mt--260">
           <div class="single-blog-post">

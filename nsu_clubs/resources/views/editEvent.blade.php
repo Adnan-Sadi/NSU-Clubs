@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>EVENT</title>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
@@ -13,20 +12,15 @@
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		
-	
+			
 		<!-- Main Style -->
 		<link href="{{ asset('css/editEventStyles.css') }}" rel="stylesheet">
-	
-		<!-- Fonts -->
 	
 		<!-- Open Sans for body font -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
 		<!-- Montserrat for title -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	 
- 
-
   </head>
   <body>
   	
@@ -34,7 +28,8 @@
     <form action="/event/{{ $event->event_id }}" method="POST" enctype="multipart/form-data"> 
      @csrf
      @method('PUT')
-	<!-- Start Content -->
+
+	<!-- Start Event Heading Section  -->
 	<div id="mu-hero" role="banner" style="background-image: url('{{ asset('images/Event Covers/' . $event->cover_photo) }}');" > 
 	
 		<div class="mu-hero-overlay">
@@ -68,13 +63,13 @@
 			</div>
 		</div>
     </div>
-	<!-- Start Content -->
+	<!-- End Event Heading Section -->
 
-		<!-- Start About -->
+		<!-- Start About Event Section -->
 		<section id="mu-about">
 			<div class="container">
                  
-				<!-- View Errors if any-->
+				<!-- View Update Info Errors if any-->
 				@if ($errors->any())
 					<div class="alert alert-danger alert-block">
 					<strong>Error:</strong><br>
@@ -85,7 +80,7 @@
 					@endforeach
 					</div>
 				@endif
-				<!-- View Errors if any--> 
+				<!-- View Update Info Errors if any--> 
 				
 				<div class="row">
 					<div class="col-md-12">
@@ -108,8 +103,7 @@
 									<div class="mu-about-right">
                                         
 										<h2>About The Event</h2>
-                                        
-                                        
+                                                                               
 										<p>
                                             <textarea class="form-control" name="description" id="exampleFormControlTextarea1" placeholder="" rows="5">{{ $event->event_description }}</textarea>
                                         </p>
@@ -124,7 +118,7 @@
 				</div>
 			</div>
 		</section>
-		<!-- End About -->
+		<!-- End About Event Section -->
 		
 
 		<!-- Start Parallex -->
@@ -147,7 +141,7 @@
 		
 		<!-- End Parallex -->
 
-		<!-- Start Image Slider  -->
+		<!-- Start Add Image Section  -->
 		<section id="mu-schedule">
 			<div class="container text-center">
 				<h1 class="title">Add Images</h1>
@@ -170,7 +164,7 @@
 				
 			
 		</section>
-		<!-- End Image Slider  -->
+		<!-- End Add Image Section -->
 
 		
         <div class=submitButton>  

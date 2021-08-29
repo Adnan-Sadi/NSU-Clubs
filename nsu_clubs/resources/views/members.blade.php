@@ -1,4 +1,5 @@
-@extends(($manages == 1) ? 'layouts.adminDataTable' : 'layouts.generalDataTable')
+<!-- If user is a club manager then open Admin Datatable, otherwise open General Datatable -->
+@extends(($manages == 1) ? 'layouts.adminDataTable' : 'layouts.generalDataTable') 
 
 @section('content')
 
@@ -38,6 +39,7 @@
 </head>
 <body>
 
+<!-- Start Header -->
 <header class="default-header">
   <nav class="navbar navbar-expand-lg  navbar-light">
     <div class="container">
@@ -54,10 +56,8 @@
             <li><a href="{{ url('/') }}">Home</a></li>
             <li><a href="{{ url('/#clubs') }}">Clubs</a></li>
             <li><a href="#">Events</a></li>
-
-         
-
              
+            <!--  login/logout button -->
             @if (Auth::user())
                   <li class="dropdown show profileDropdown">
                     <a id="navbarDropdown" class="dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,30 +87,32 @@
     </nav>
 
   </header>
-  <!-- ================ End Header Area ================= -->
+  <!-- End Header -->
 
   <!-- Members list Section -->
   <div class="container">
     <section style="padding-top: 60px; padding-bottom:60px;">
-<div id="all_mem" class="text-left">Executive Members</div><br/>
+  <div id="all_mem" class="text-left">Executive Members</div><br/>
 
-<!-- Add executive member Button -->
 
-  <!-- Add Executive member Button -->
+
+  <!-- Checking if user is the manager of the club -->
   @if ($manages == 1)
+    <!-- Add Executive member Button -->
     <div align="right">
     <button type="button" data-toggle="modal" data-target="#exampleModalScrollable" class="btn btn-dark btn-sm" id="create_exec_member">Add Member</button>
     </div><br>
   @endif
-<!-- Executive Member Body Starts-->
+  <!-- Checking if user is the manager of the club -->
 
 
+ <!-- Executive Member Body Starts-->
 
     <div class="row team-row">
-
+      <!-- Getting Executive Members of the Club -->
       @foreach ($executives as $executive)
 
-        <!-- Start team member -->
+        <!-- Start executive member -->
         <div class="col-md-4 col-sm-6 team-wrap">
             <div class="team-member text-center">
               <div class="team-img">
@@ -134,16 +136,13 @@
               <p class="profession">{{ $executive->position }}</p>
             </div><br><br>
           </div>
-          <!-- end team member -->
+          <!-- end executive member -->
         
       @endforeach
 
     </div>
 
-
 <!-- Executive Member Body End -->
-
-
 
 <!-- Add Executive Modal Start-->
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -182,11 +181,11 @@
                               <label class="input-group-text" >Department</label>
                             </div>
                           <select class="custom-select" name="ex_dept_id" id="ex_dept_id">
-                            
+                            <!-- Getting the department names -->
                             @foreach ($departments as $department )
                               <option value="{{ $department->dept_id }}">{{ $department->dept_name }}</option>
                             @endforeach
-                          
+                             <!-- Getting the department names -->                         
                            </select>
                       </div>
                         
@@ -244,15 +243,14 @@
 
      <div id="all_mem" class="text-left">All Members</div><br/>
 
-      <!-- Add member Button -->
+      <!-- Checking if user is the manager of the club -->
       @if ($manages == 1)
-
+        <!-- Add member Button -->
         <div align="right">
         <button type="button" name="create_member" id="create_member" class="btn btn-success btn-sm">Add Member</button>
         </div><br>
-
       @endif
-      
+      <!-- Checking if user is the manager of the club -->
 
      <!-- Add Member Modal Starts --> 
           <div id="formModal" class="modal fade" role="dialog">
@@ -290,11 +288,11 @@
                               <label class="input-group-text" >Department</label>
                             </div>
                           <select class="custom-select" name="dept_id" id="dept_id">
-                            
+                             <!-- Getting the department names -->
                             @foreach ($departments as $department )
                               <option value="{{ $department->dept_id }}">{{ $department->dept_name }}</option>
                             @endforeach
-                          
+                             <!-- Getting the department names -->                         
                            </select>
                       </div>
                         

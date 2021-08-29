@@ -18,7 +18,8 @@
     </section>
   </div>
 
-      <footer>
+<!-- End Footer -->
+<footer>
   
   <div class="footer">
     <div class="container">
@@ -45,8 +46,9 @@
       </div>
   </div>
   </div>
-  </footer>
-    
+</footer>
+<!-- End Footer -->
+
 <script>
   $(document).ready(function() {
     /** Generate DataTable **/
