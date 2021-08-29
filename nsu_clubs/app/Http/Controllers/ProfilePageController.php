@@ -10,18 +10,13 @@ use File;
 
 class ProfilePageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-
+     /** Display Profile Page */
     public function index()
     {
         $userId = auth()->user()->id;//getting userId
@@ -48,58 +43,10 @@ class ProfilePageController extends Controller
         return view('profile')->with('user',$user)->with('clubs_followed',$clubs_followed)->with('events_followed',$events_followed);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Update User Information */
     public function update(Request $request, $id)
     {
+        //Validation Rules
         $rules = array(
             'name' => ['string', 'max:255'],
             'nsu_id' =>['integer','max:9999999999','nullable'],
@@ -108,6 +55,7 @@ class ProfilePageController extends Controller
         
         $error=Validator::make($request->all(), $rules);
 
+        //Return error if exists
         if ($error->fails()) {
         return redirect('/profile')
                     ->withErrors($error,'desc_error')
@@ -122,19 +70,18 @@ class ProfilePageController extends Controller
 
         return redirect('/profile');
     }
-    /**
-     * Update profile picture
-     * 
-     */
 
+    /** Update profile picture */
     public function update_image(Request $request, $id)
     {
+        //Validation Rules
         $rules = array(
             'prof_image' => ['required', 'mimes:png,jpg,jpeg','max:5048'],
         );
 
         $error=Validator::make($request->all(), $rules);
 
+        //Return error if exists
         if ($error->fails()) {
         return redirect('/profile')
                     ->withErrors($error,'image_error')
@@ -150,7 +97,7 @@ class ProfilePageController extends Controller
 
         $newImageName = time(). '-'. $id .'.'. $request->prof_image->extension();
         
-        $request->prof_image->move(public_path('images/Profile Pictures'),$newImageName);
+        $request->prof_image->move(public_path('images/Profile Pictures'),$newImageName); //store image to storage
 
         $user = User::where('id',$id)->update([
             'prof_image' => $newImageName
@@ -159,15 +106,4 @@ class ProfilePageController extends Controller
         return redirect('/profile');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

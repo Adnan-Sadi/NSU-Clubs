@@ -9,34 +9,12 @@ use DataTables;
 
 class MembersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-       
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /** Store a new member */
     public function store(Request $request)
     {
+        //Validation Rules
         $rules = array(
             'name' => ['required', 'string', 'max:64'],
             'nsu_id'=> ['required', 'integer'],
@@ -48,11 +26,13 @@ class MembersController extends Controller
 
         $error = Validator::make($request->all(), $rules);
 
+        //Return error if exists
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
+        //creating new member
         $member = Members::create([
          'club_id' => $request->input('club_id'),
          'dept_id' => $request->input('dept_id'),
@@ -68,23 +48,8 @@ class MembersController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Return data to edit member modal  */
     public function edit($id)
     {
         if(request() -> ajax()){
@@ -94,15 +59,10 @@ class MembersController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Update a Member */
     public function update(Request $request, $id)
     {
+        //Validation Rules
         $rules = array(
             'name' => ['required', 'string', 'max:64'],
             'nsu_id'=> ['required', 'integer'],
@@ -114,6 +74,7 @@ class MembersController extends Controller
 
         $error = Validator::make($request->all(), $rules);
 
+        //Return error if exists
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
@@ -132,12 +93,7 @@ class MembersController extends Controller
         return response()->json(['success' => 'Data Updated successfully.']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   /** Delete a Member */
     public function destroy($id)
     {
         $member = Members::find($id);

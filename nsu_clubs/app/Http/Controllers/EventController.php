@@ -25,34 +25,10 @@ class EventController extends Controller
         $this->middleware('auth', ['except' => ['show']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /** Store a new Event */
     public function store(Request $request)
     {
+        //Validation Rules
         $rules =array(
           'title' => ['required','max:255'],
           'description' => ['required'],
@@ -64,6 +40,7 @@ class EventController extends Controller
 
         $error=Validator::make($request->all(), $rules);
 
+        //return error if exists
         if ($error->fails()) {
         return redirect('/home/'.$request->club_id.'/events')
                     ->withErrors($error)
@@ -71,8 +48,9 @@ class EventController extends Controller
         }
 
         $newImageName = time(). '-'. $request->title .'.'. $request->cover_photo->extension();
-        $request->cover_photo->move(public_path('images/Event Covers'),$newImageName);
-
+        $request->cover_photo->move(public_path('images/Event Covers'),$newImageName);//store image in storage
+        
+        //creating event
         $event = Events::create([
          'club_id' => $request->input('club_id'),
          'event_name' => $request->input('title'),
@@ -83,27 +61,23 @@ class EventController extends Controller
          'cover_photo' => $newImageName
         ]);
 
-        /**sending email notification to club followers */
+        //getting all the users that follows the club
         $users = DB::table('users')
                         ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
                         ->select('users.*','follow_clubs.club_id')
                         ->where('follow_clubs.club_id','=',$request->input('club_id'))
                         ->get();
 
+        /**sending email notification to club followers */
         foreach ($users as $user) {
             Mail::to($user->email)->queue(new newEventMail($request->input('club_id'),$event->event_id));
         }
-        /**sending email notification to club followers */
+        
 
         return redirect('/home/'.$request->club_id.'/events');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Display Event Page */
     public function show($id)
     {
         $event = Events::with('clubs')->find($id);
@@ -112,15 +86,11 @@ class EventController extends Controller
         return view ('singleEvent')->with('event',$event)->with('photos',$photos);
     }
 
-    /**
-     * Follow Event
-     *
-     * 
-     */
+     /** Follow a Event */
     public function follow($id)
     {
         $userId = auth()->user()->id;//getting userId
-
+        
         $follow= Follow_Events::create([
           "user_id" => $userId,
           "event_id"=> $id
@@ -128,6 +98,7 @@ class EventController extends Controller
 
     }
 
+    /** Unfollow a Event */
     public function unfollow($id)
     {
         $userId = auth()->user()->id;//getting userId
@@ -138,12 +109,8 @@ class EventController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    /** Display editEvent Page */
     public function edit($id)
     {
         $event = Events::with('clubs')->find($id);
@@ -151,15 +118,10 @@ class EventController extends Controller
         return view('editEvent')->with('event',$event);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Update Event Information */
     public function update(Request $request, $id)
     {
+       //Validation Rules
        $rules= array(
            'event_date' => ['required'],
            'event_name' => ['required'],
@@ -170,9 +132,10 @@ class EventController extends Controller
         );
 
         $event = Events::find($id);
-
+        
         $error=Validator::make($request->all(), $rules);
 
+        //return error if exists
         if ($error->fails()) {
         return redirect('/event/'.$event->event_id.'/edit')
                     ->withErrors($error)
@@ -187,7 +150,7 @@ class EventController extends Controller
             }//Delete previous picture from storage
 
           $newImageName = time(). '-'. $request->event_name .'.'. $request->cover_photo->extension();
-          $request->cover_photo->move(public_path('images/Event Covers'),$newImageName);
+          $request->cover_photo->move(public_path('images/Event Covers'),$newImageName);//store image in storage
           
           $event->update([
              'cover_photo' => $newImageName
@@ -202,7 +165,7 @@ class EventController extends Controller
             }//Delete previous picture from storage
 
           $newImageName = time(). '-'. $request->event_name .'.'. $request->about_image->extension();
-          $request->about_image->move(public_path('images/Event Photos'),$newImageName);
+          $request->about_image->move(public_path('images/Event Photos'),$newImageName);//store image in storage
           
           $event->update([
              'about_image' => $newImageName
@@ -214,7 +177,7 @@ class EventController extends Controller
 
           foreach ($request->photos as $photo) {
             $newImageName = time(). '-'. $request->event_name .'.'. $photo->extension();
-            $photo->move(public_path('images/Event Photos'),$newImageName);
+            $photo->move(public_path('images/Event Photos'),$newImageName);//store image in storage
 
             Event_Photos::create([
                 "event_id" => $event->event_id,
@@ -233,12 +196,8 @@ class EventController extends Controller
         return redirect('/event/'.$event->event_id.'/edit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    /** Delete an Event */
     public function destroy($id)
     {
         $event = Events::find($id);

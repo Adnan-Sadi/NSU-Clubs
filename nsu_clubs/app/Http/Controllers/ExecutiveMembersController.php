@@ -13,14 +13,10 @@ use File;
 class ExecutiveMembersController extends Controller
 {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /** Store an Executive Member */
     public function store(Request $request)
     {   
+        //Validation Rules
         $rules = array(
             'ex_name' => ['required', 'string', 'max:64'],
             'ex_nsu_id'=> ['required', 'integer'],
@@ -33,13 +29,14 @@ class ExecutiveMembersController extends Controller
 
         $error = Validator::make($request->all(), $rules);
 
+        //return error if exists
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
         $newImageName = time(). '-'. $request->ex_name .'.'. $request->ex_photo->extension();
-        $request->ex_photo->move(public_path('images/Executive Members'),$newImageName);
+        $request->ex_photo->move(public_path('images/Executive Members'),$newImageName);//store image in storage
 
         $member = Members::create([
          'club_id' => $request->input('ex_club_id'),
@@ -69,12 +66,7 @@ class ExecutiveMembersController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Return data to edit executive member modal  */
     public function edit($id)
     {
         $temp = DB::table('members')
@@ -83,19 +75,13 @@ class ExecutiveMembersController extends Controller
                 ->get();
         $data = $temp->where('m_id',$id)->values();
         
-
         return response()->json(['result' => $data]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Update an Executive Member */
     public function update(Request $request, $id)
     {
+        //Validation Rules
         $rules = array(
             'ex_name' => ['required', 'string', 'max:64'],
             'ex_nsu_id'=> ['required', 'integer'],
@@ -108,6 +94,7 @@ class ExecutiveMembersController extends Controller
 
         $error = Validator::make($request->all(), $rules);
 
+        //return error if exists
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
@@ -124,7 +111,7 @@ class ExecutiveMembersController extends Controller
          'join_date' => $request->input('ex_join_date'),
         ]);
 
-
+        //Set new image name if user uploads a new image
         if($request->ex_photo != null){
          
             if(File::exists(public_path('images/Executive Members/'.$request->uploaded_image))){
@@ -132,11 +119,11 @@ class ExecutiveMembersController extends Controller
             }//Delete previous picture from storage
 
             $newImageName = time(). '-'. $request->ex_name .'.'. $request->ex_photo->extension();
-            $request->ex_photo->move(public_path('images/Executive Members'),$newImageName);
+            $request->ex_photo->move(public_path('images/Executive Members'),$newImageName);//store image in storage
 
         }
         else{
-            $newImageName= $request->uploaded_image;
+            $newImageName= $request->uploaded_image; //Set to old imagename if user doesn't upload a new image
         }
 
         $ex_member = Executive_Members::where('m_id',$id)->update([
@@ -146,14 +133,4 @@ class ExecutiveMembersController extends Controller
         return response()->json(['success' => 'Data Added successfully.']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

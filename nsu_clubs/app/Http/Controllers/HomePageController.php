@@ -10,39 +10,31 @@ use Carbon\Carbon;
 
 class HomePageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     * 
-     */
 
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index','show']]); 
     }
-
+    
+    /** Display Home Page */
     public function index()
     {
         $clubs = Clubs::all();
         $current = Carbon::today()->format('Y-m-d');
         
-        $events = DB::table('events')->where('event_date', ">" , $current)->orderBy('event_date','asc')->limit(3)->get();
+        $events = DB::table('events')->where('event_date', ">" , $current)
+                      ->orderBy('event_date','asc')->limit(3)->get(); // get most recent 3 events
 
         return view('home')->with('clubs',$clubs)->with('events',$events);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** Display Club Page */
     public function show($id)
     {
         $club = Clubs::find($id);
         $notices = $club->notices()->where('club_id',$id)->orderBy('created_at', 'desc')->get();//getting notices
 
+        //Check if user is following a club
         if(auth()->user()){
             $userId = auth()->user()->id;//getting userId
             $follows = DB::table('follow_clubs')->where('user_id','=',$userId)->get();

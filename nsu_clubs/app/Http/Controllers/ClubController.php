@@ -25,48 +25,40 @@ class ClubController extends Controller
     {
         $this->middleware('auth', ['except' => ['show_events','show_members']]); 
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   /** Create New Notice */
     public function create_notice($id,Request $request)
     {
+        //Validation Rules
         $rules = array(
             'title' => ['required', 'string'],
             'description' => ['required', 'string', 'max:1024'],
         );
 
         $error = Validator::make($request->all(), $rules);
-
+        
+        //return error if exists
         if ($error->fails()) {
         return redirect('/home/' . $request->club_id)
                     ->withErrors($error,'notice_errors')
                     ->withInput();
         }
-     
+        
+        //creating notice
         $notice = Notices::create([
          'club_id' => $request->input('club_id'),
          'title' => $request->input('title'),
          'description' => $request->input('description'),
         ]);
-
+        
+        //getting all the users that follows the club
         $users = DB::table('users')
                         ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
                         ->select('users.*','follow_clubs.club_id')
                         ->where('follow_clubs.club_id','=',$request->input('club_id'))
                         ->get();
-
+        
+        /**sending email notification to club followers */
         foreach ($users as $user) {
             Mail::to($user->email)->queue(new newNoticeMail($request->input('club_id'),$notice->notice_id));
         }
@@ -74,11 +66,13 @@ class ClubController extends Controller
         return redirect('/home/' . $request->club_id);
         
     }
-
+    
+    /** Follow a Club */
     public function follow($id)
     {
         $userId = auth()->user()->id;//getting userId
-
+        
+        //creating follower
         $follow= Follow_Clubs::create([
           "user_id" => $userId,
           "club_id"=> $id
@@ -86,25 +80,15 @@ class ClubController extends Controller
 
     }
 
+    /** Unfollow a Club */
     public function unfollow($id)
     {
         $userId = auth()->user()->id;//getting userId
 
         $follow = Follow_Clubs::where('user_id',$userId)->where('club_id',$id);
         
-        $follow->delete();
+        $follow->delete(); //deleting follower
 
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -114,10 +98,10 @@ class ClubController extends Controller
     public function show_events($id)
     {
         $club = Clubs::find($id);
-
+        
         if(auth()->user()){
             $userId = auth()->user()->id;//getting userId
-            $follows = DB::table('follow_events')->where('user_id','=',$userId)->get();
+            $follows = DB::table('follow_events')->where('user_id','=',$userId)->get();// Check if user is following any of the events
         }
         else{
             $follows = null; //if user is not logged in
@@ -132,7 +116,6 @@ class ClubController extends Controller
          $manager = collect(); // empty collection
         }
         
-
         if($manager->isNotEmpty()){
             $manages = 1;     
         }
@@ -155,7 +138,8 @@ class ClubController extends Controller
                 ->where('club_id','=',$id)
                 ->select('members.*','executive__members.photo')
                 ->get(); // get executive members
-
+        
+        /** Members Datatable */
         if($request->ajax()){
 
           $data = DB::table('members')
@@ -193,41 +177,25 @@ class ClubController extends Controller
         }
         /***  Check if the user is a Admin of the club */
 
-        $departments= Departments::all();
+        $departments= Departments::all();// geting all the departments
 
         return view('members')->with('executives',$executives)->with('club_id',$id)->with('departments',$departments)->with('manages',$manages);
 
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /** update Club Information */
     public function update(Request $request, $id)
     {
+        // Validation Rules
         $rules = array(
             'description' => ['required', 'string'],
             'logo' => ['mimes:png,jpg,jpeg','max:5048'],
             'cover_photo' => ['mimes:png,jpg,jpeg','max:9048']
         );
-
+        
         $error = Validator::make($request->all(), $rules);
-
+        
+        //return error if exists
         if ($error->fails()) {
         return redirect('/home/' . $id)
                     ->withErrors($error,'club_errors')
@@ -244,7 +212,7 @@ class ClubController extends Controller
             }//Delete previous picture from storage
 
           $newImageName = time(). '-'. $club->club_name .'.'. $request->logo->extension();
-          $request->logo->move(public_path('images/Club Logos'),$newImageName);
+          $request->logo->move(public_path('images/Club Logos'),$newImageName);//store image in storage
           
           $club->update([
              'logo' => $newImageName
@@ -259,13 +227,14 @@ class ClubController extends Controller
             }//Delete previous picture from storage
 
           $newImageName = time(). '-'. $club->club_name .'.'. $request->cover_photo->extension();
-          $request->cover_photo->move(public_path('images/Club Covers'),$newImageName);
+          $request->cover_photo->move(public_path('images/Club Covers'),$newImageName);//store image in storage
           
           $club->update([
              'cover_photo' => $newImageName
           ]);
         }
         
+        //update description
         $club->update([
           'Description' => $request->input('description'),
         ]);
@@ -273,12 +242,8 @@ class ClubController extends Controller
         return redirect('/home/' . $id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    /** Delete a Notice */
     public function destroy($id)
     {
         $notice = Notices::find($id);
