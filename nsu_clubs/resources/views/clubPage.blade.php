@@ -8,6 +8,7 @@
     <title>CLUB PAGE</title>
  
     <!-- Font Awesome -->
+	<link rel="shortcut icon" href="{{ asset('images/Home/mortarboard.png') }}"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8aa2fd0685.js" crossorigin="anonymous"></script>
     <!-- Bootstrap -->

@@ -5,7 +5,7 @@
   <header class="default-header">
     <nav class="navbar navbar-expand-lg  navbar-light">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{ url('/') }}">
           <img src="{{ asset('images/Home/LogoMakr-0U2Aqa.png') }}" height="30" alt="" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -17,7 +17,8 @@
           <ul class="navbar-nav ml-auto">
             <li><a href="{{ url('/') }}">Home</a></li>
             <li><a href="{{ url('/#clubs') }}">Clubs</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="">Events</a></li>
+          
 
              
             @if (Auth::user())

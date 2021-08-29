@@ -8,6 +8,7 @@
 		<title>EVENT</title>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
+		<link rel="shortcut icon" href="{{ asset('images/Home/mortarboard.png') }}"/>
 		<!-- Font Awesome -->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 		<!-- Bootstrap -->
