@@ -89,7 +89,7 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<div class="mu-about-right overflow-auto">
+									<div class="mu-about-right">
 										<h2>About The Event</h2>
 										<p> {{ $event->event_description }}</p>
 									

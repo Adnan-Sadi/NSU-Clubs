@@ -43,48 +43,6 @@
     animation: ani 0.7s steps(22) forwards;
 }
 
-.button-container-2 {
-    position: absolute;
-    width: 100px;
-    height: 50px;
-    top: 0;
-    right: 0;
-    overflow: hidden;
-    border: 1px solid;
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    letter-spacing: 1px;
-    border-radius: 8px;
-}
-
-.button-container-2 button {
-    width: 101%;
-    height: 100%;
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-size: 11px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    background: #000;
-    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
-    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
-    -webkit-mask-size: 3000% 100%;
-    mask-size: 3000% 100%;
-
-    color: #fff;
-    cursor: pointer;
-    -webkit-animation: ani2 0.7s steps(29) forwards;
-    animation: ani2 0.7s steps(29) forwards;
-}
-
-.button-container-2 button:hover {
-    -webkit-animation: ani 0.7s steps(29) forwards;
-    animation: ani 0.7s steps(29) forwards;
-}
-
 .mas {
     position: absolute;
     color: #000;
@@ -145,52 +103,6 @@
     }
 }
 
-a {
-    color: #00ff95;
-}
-
-.button-container-3 {
-    position: absolute;
-    width: 100px;
-    height: 50px;
-    top: 0;
-    right: 0;
-    overflow: hidden;
-    border: 1px solid;
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    letter-spacing: 1px;
-    border-radius: 8px;
-}
-
-.button-container-3 button {
-    width: 101%;
-    height: 100%;
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-size: 11px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    background: #000;
-    -webkit-mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
-    mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
-    -webkit-mask-size: 7100% 100%;
-    mask-size: 7100% 100%;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    -webkit-animation: ani2 0.7s steps(70) forwards;
-    animation: ani2 0.7s steps(70) forwards;
-}
-
-.button-container-3 button:hover {
-    -webkit-animation: ani 0.7s steps(70) forwards;
-    animation: ani 0.7s steps(70) forwards;
-}
-
 /*# sourceMappingURL=styles.css.map */
 
 /* ========================*/
@@ -239,7 +151,6 @@ img {
 .container {
     width: 100%;
     max-width: 960px;
-
     margin: 0 auto;
 }
 
@@ -416,14 +327,6 @@ img {
     color: var(--primary-clr);
 }
 
-.event--content h2 > a[href]::after {
-    content: "\f08e";
-    font-family: "FontAwesome";
-    padding: 0 3px 0 6px;
-    font-weight: normal;
-    font-size: 0.7em;
-}
-
 .event--content h2.canceled,
 .event--content-canceled {
     color: var(--secondary-clr);
@@ -437,13 +340,6 @@ img {
 
 .event--content-info > div {
     margin-right: 16px;
-}
-
-.event--content-tickets a {
-    background: var(--primary-clr);
-    color: var(--light-clr);
-    padding: 3px 11px;
-    border-radius: 3px;
 }
 
 .event--content-tickets a:hover {
@@ -468,45 +364,11 @@ img {
     border-radius: 15px;
 }
 
-.event--content-canceled::before,
-.event--content-program a::before,
-.event--content-info time::before,
-.event--content-tickets a::before,
-.event--content-price::before {
-    font-family: "Font Awesome 5 Free";
-    padding-right: 6px;
-}
-
-.event--content-canceled::before {
-    content: "\f273";
-}
-
-.event--content-program a::before {
-    content: "\f02d";
-}
-
-.event--content-info time::before {
-    font-family: FontAwesome;
-    content: "\f017";
-}
-
 .event--content-social {
     font-size: 1.2rem;
     margin-top: 10px;
     display: flex;
     transition: 0.3s;
-}
-
-.event--content-social a {
-    width: 40px;
-    height: 40px;
-    margin-right: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: var(--light-clr);
-    border-radius: 50%;
 }
 
 @media (min-width: 801px) {

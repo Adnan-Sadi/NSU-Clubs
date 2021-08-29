@@ -85,19 +85,6 @@ img {
     width: 100%;
 }
 
-.mu-hero-featured-content h1 {
-    font-size: 45px;
-    color: #fff;
-    font-weight: 300;
-    margin-bottom: 15px;
-}
-
-.mu-hero-featured-content h2 {
-    color: #fff;
-    font-size: 25px;
-    font-weight: 300;
-}
-
 .mu-event-date-line {
     background-color: #fff;
     color: #333;
@@ -120,27 +107,6 @@ img {
     float: left;
     width: 100%;
     text-align: center;
-}
-
-.mu-event-counter-block {
-    border: 2px solid #fff;
-    border-radius: 50%;
-    display: inline-block;
-    height: 180px;
-    width: 180px;
-    text-align: center;
-    font-size: 22px;
-    color: #fff;
-    margin: 0 20px;
-    font-weight: 300;
-}
-
-.mu-event-counter-block span {
-    display: block;
-    font-size: 40px;
-    font-weight: 700;
-    padding-top: 56px;
-    line-height: 40px;
 }
 
 /*--------------------*/
@@ -167,28 +133,6 @@ img {
     width: 100%;
 }
 
-.mu-schedule-menu {
-    text-align: center;
-    border: none;
-}
-
-.mu-schedule-menu li {
-    float: none;
-    display: inline-block;
-}
-
-.mu-schedule-menu li a {
-    border-radius: 0;
-    margin: 0 10px;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-}
-
-.mu-schedule-content {
-    margin-top: 50px;
-}
-
 /*--------------------*/
 /* RESPONSIVE STYLE */
 /*--------------------*/
@@ -202,41 +146,6 @@ img {
     .mu-navbar .mu-menu {
         margin-top: 5px;
     }
-
-    .mu-navbar .mu-menu li a {
-        font-size: 15px;
-        padding: 10px 6px;
-    }
-
-    .mu-hero-featured-content h1 {
-        font-size: 35px;
-    }
-
-    .mu-hero-featured-content h2 {
-        font-size: 18px;
-    }
-
-    .mu-event-timeline ul li {
-        margin-left: 15%;
-    }
-
-    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event {
-        left: 50px;
-        text-align: left;
-    }
-
-    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event::before {
-        right: auto;
-        left: -16px;
-        border-width: 8px 16px 8px 0;
-        border-color: transparent #fff transparent transparent;
-    }
-
-    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event img {
-        float: left;
-        margin-right: 15px;
-        margin-left: 0;
-    }
 }
 
 @media (max-width: 767px) {
@@ -248,14 +157,6 @@ img {
 @media (max-width: 640px) {
     .mu-title-area {
         padding: 0;
-    }
-
-    .mu-register-content {
-        padding: 0 100px;
-    }
-
-    .mu-contact-content {
-        padding: 0 10%;
     }
 }
 
@@ -277,51 +178,12 @@ img {
         margin-top: 20px;
     }
 
-    .mu-hero-featured-content h1 {
-        font-size: 25px;
-    }
-
-    .mu-hero-featured-content h2 {
-        font-size: 14px;
-    }
-
     .mu-event-date-line {
         font-size: 12px;
     }
 
-    h2 {
-        font-size: 28px;
-    }
-
-    h3 {
-        font-size: 24px;
-    }
-
-    h4 {
-        font-size: 20px;
-    }
-
     .mu-schedule-content {
         margin-top: 30px;
-    }
-
-    .mu-schedule-menu li {
-        margin-bottom: 15px;
-    }
-
-    .mu-schedule-menu li a {
-        font-size: 15px;
-    }
-
-    .mu-event-timeline ul li {
-        margin-left: 5%;
-    }
-
-    .mu-event-timeline ul li .mu-single-event,
-    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event,
-    .mu-event-timeline ul li:nth-child(2n) .mu-single-event {
-        left: 30px;
-        width: 350px;
     }
 }
 
@@ -332,19 +194,6 @@ img {
 
     .mu-hero-featured-area {
         padding: 30px 0 30px;
-    }
-}
-
-@media (max-width: 320px) {
-    .mu-event-timeline ul li .mu-single-event,
-    .mu-event-timeline ul li:nth-child(2n + 1) .mu-single-event,
-    .mu-event-timeline ul li:nth-child(2n) .mu-single-event {
-        left: 30px;
-        width: 250px;
-    }
-
-    h2 {
-        font-size: 22px;
     }
 }
 
@@ -458,55 +307,4 @@ Author URI : http://www.markups.io/
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #001c38a4, #000523);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.mu-primary-btn:hover,
-.mu-primary-btn:focus,
-.mu-copy-right a:hover,
-.mu-copy-right a:focus,
-.mu-send-msg-btn:hover,
-.mu-send-msg-btn:focus,
-.mu-faq-content .panel-title a:hover,
-.mu-faq-content .panel-title a:focus,
-.mu-faq-content .panel-title a[aria-expanded="true"],
-.mu-faq-content .panel-title a > span,
-.mu-menu ul li a:hover,
-.mu-menu ul li a:focus,
-.mu-single-speakers-info p,
-.mu-single-speakers-social li a:hover,
-.mu-single-speakers-social li a:focus,
-.mu-logo,
-.mu-logo:hover,
-.mu-logo:focus,
-#mu-hero .navbar-default .navbar-brand,
-.mu-navbar .mu-menu li a:hover,
-.mu-navbar .mu-menu li a:focus,
-.mu-single-event .mu-event-time {
-    color: #090f2ed2;
-}
-
-.mu-speakers-slider .slick-next,
-.mu-speakers-slider .slick-prev,
-#mu-venue,
-.mu-popular-price .mu-price-tag,
-.mu-navbar .navbar-toggle,
-.mu-navbar .navbar-toggle:hover,
-.mu-navbar .navbar-toggle:focus,
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:focus,
-.navbar-default .navbar-nav > .active > a:hover,
-.mu-schedule-menu li a:hover,
-.mu-schedule-menu li a:focus,
-.mu-schedule-menu li.active a,
-.mu-schedule-menu li.active a:hover,
-.mu-schedule-menu li.active a:focus {
-    background-color: #210122;
-}
-
-.mu-faq-content
-    .panel-default
-    > .panel-heading
-    + .panel-collapse
-    > .panel-body {
-    border-top-color: #010622;
 }

@@ -9,17 +9,6 @@ a:focus {
     text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    margin-top: 0;
-}
-
 img {
     border: none;
     max-width: 100%;
@@ -323,15 +312,6 @@ img {
     .mu-title-area {
         padding: 0;
     }
-
-    .mu-video-iframe-area {
-        padding: 5% 5%;
-    }
-
-    .mu-video-iframe-area iframe {
-        width: 100%;
-        height: 100%;
-    }
 }
 
 @media (max-width: 480px) {
@@ -368,37 +348,8 @@ img {
         padding: 100px 0;
     }
 
-    .mu-video-iframe-area {
-        padding: 10% 5%;
-    }
-
-    .mu-video-iframe-area iframe {
-        height: 250px;
-    }
-
-    h2 {
-        font-size: 28px;
-    }
-
-    h3 {
-        font-size: 24px;
-    }
-
-    h4 {
-        font-size: 20px;
-    }
-
     .mu-venue-address h4 {
         font-size: 16px;
-    }
-
-    .mu-register-content,
-    .mu-contact-content {
-        padding: 0 5%;
-    }
-
-    .mu-faq-content .panel-title {
-        font-size: 14px;
     }
 }
 
@@ -415,10 +366,6 @@ img {
         padding: 50px 0;
     }
 
-    .mu-video-iframe-area {
-        padding: 15% 5%;
-    }
-
     .mu-video-play-btn,
     .mu-video-close-btn {
         font-size: 18px;
@@ -426,10 +373,6 @@ img {
         height: 50px;
         line-height: 46px;
         margin-top: 50px;
-    }
-
-    h2 {
-        font-size: 25px;
     }
 }
 
@@ -443,66 +386,6 @@ img {
     }
 }
 
-/* Image slider  */
-/* Image slider  */
-
-.ImageSliderHeader {
-    display: flex;
-    flex-wrap: wrap;
-    min-width: 320px;
-}
-
-.ImageSliderHeader h2 {
-    flex-basis: 100%;
-    text-align: center;
-    margin: 50px auto 30px;
-    text-transform: uppercase;
-    font-size: 20px;
-    letter-spacing: 2px;
-    color: #111;
-}
-
-.profile-picture-container {
-    overflow: hidden;
-    position: relative;
-}
-
-.profile-pic {
-    height: 350px;
-    width: 350px;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
-    vertical-align: middle;
-    float: left;
-    text-align: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    background-color: rgba(2, 2, 39, 0.5);
-    margin: 5px;
-}
-
-.profile-pic:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 1;
-    color: #fff;
-}
-
-.profile-pic span {
-    display: inline-block;
-    cursor: pointer;
-    padding: 150px 70px 170px 70px;
-    opacity: 0;
-}
-
-.profile-pic span:hover {
-    opacity: 1;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-/* Image slider  */
-/* Image slider  */
 .submitButton {
     margin-left: 47%;
     padding: 50px;
@@ -587,55 +470,4 @@ Author URI : http://www.markups.io/
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #001c38a4, #000523);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.mu-primary-btn:hover,
-.mu-primary-btn:focus,
-.mu-copy-right a:hover,
-.mu-copy-right a:focus,
-.mu-send-msg-btn:hover,
-.mu-send-msg-btn:focus,
-.mu-faq-content .panel-title a:hover,
-.mu-faq-content .panel-title a:focus,
-.mu-faq-content .panel-title a[aria-expanded="true"],
-.mu-faq-content .panel-title a > span,
-.mu-menu ul li a:hover,
-.mu-menu ul li a:focus,
-.mu-single-speakers-info p,
-.mu-single-speakers-social li a:hover,
-.mu-single-speakers-social li a:focus,
-.mu-logo,
-.mu-logo:hover,
-.mu-logo:focus,
-#mu-hero .navbar-default .navbar-brand,
-.mu-navbar .mu-menu li a:hover,
-.mu-navbar .mu-menu li a:focus,
-.mu-single-event .mu-event-time {
-    color: #090f2ed2;
-}
-
-.mu-speakers-slider .slick-next,
-.mu-speakers-slider .slick-prev,
-#mu-venue,
-.mu-popular-price .mu-price-tag,
-.mu-navbar .navbar-toggle,
-.mu-navbar .navbar-toggle:hover,
-.mu-navbar .navbar-toggle:focus,
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:focus,
-.navbar-default .navbar-nav > .active > a:hover,
-.mu-schedule-menu li a:hover,
-.mu-schedule-menu li a:focus,
-.mu-schedule-menu li.active a,
-.mu-schedule-menu li.active a:hover,
-.mu-schedule-menu li.active a:focus {
-    background-color: #010622;
-}
-
-.mu-faq-content
-    .panel-default
-    > .panel-heading
-    + .panel-collapse
-    > .panel-body {
-    border-top-color: #010622;
 }
