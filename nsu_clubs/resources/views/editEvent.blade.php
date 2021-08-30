@@ -51,6 +51,13 @@
                                 <label for="exampleFormControlSelect1" class="text-white"><strong>Event Date</strong></label>
                                 <input type="date" name="event_date" value="{{ $event->event_date->format('Y-m-d') }}">
                             </div>
+							
+							<div class="form-group">
+                                <label for="exampleFormControlSelect1" class="text-white"><strong>From</strong></label>
+                                <input type="time"  name="start_at" value="{{ $event->start_at }}">
+                                <label for="exampleFormControlSelect1" class="text-white"><strong>To</strong></label>
+                                <input type="time"  name="end_at" value="{{ $event->end_at }}">
+                            </div>
 
 							<div class="mu-event-date-line">
 								<p style="margin-left: -140px;">Background Image</p>

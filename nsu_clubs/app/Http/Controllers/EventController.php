@@ -125,6 +125,8 @@ class EventController extends Controller
        $rules= array(
            'event_date' => ['required'],
            'event_name' => ['required'],
+           'start_at' => ['required'],
+           'end_at' => ['required'],
            'description' => ['required'],
            'cover_photo' =>['mimes:png,jpg,jpeg','max:9048'],
            'about_image' =>['mimes:png,jpg,jpeg','max:9048'],
@@ -191,9 +193,12 @@ class EventController extends Controller
              'event_name' => $request->input('event_name'),
              'event_description' => $request->input('description'),
              'event_date' => $request->input('event_date'),
+             'start_at' => $request->input('start_at'),
+             'end_at' => $request->input('end_at'),
+
         ]);
 
-        return redirect('/event/'.$event->event_id.'/edit');
+        return redirect('/event/'.$event->event_id);
     }
 
 
