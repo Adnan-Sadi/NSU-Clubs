@@ -296,12 +296,16 @@ img {
 .event--content {
     padding: 15px;
     text-align: left;
-    background: var(--bg-clr);
+    background: white;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     transition: 0.35s;
     position: relative;
+}
+
+.event--content h2 {
+    width: 80%;
 }
 
 .event--content > * {

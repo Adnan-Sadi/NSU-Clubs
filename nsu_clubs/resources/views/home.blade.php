@@ -42,10 +42,8 @@
             with NSU CLUBS
           </h1>
           <p class="mx-auto text-white  mt-20 mb-40">
-            We assist students prepare for personal fulfillment, responsible citizenship, 
-            and success in life by supporting their efforts to learn through extra and 
-            co-curricular experiences while achieving their academic goals, and striving 
-            for excellence in all.
+            We assist students find the best club for them, to prepare them for personal fulfillment, 
+            and success in life.  
           </p>
         </div>
         <div class="offset-lg-2 col-lg-5 col-md-12 home-banner-right">
@@ -69,6 +67,12 @@
               
             </h2>
           </div>
+          <p>
+          They help students by supporting their efforts to learn through extra and 
+            <br>co-curricular experiences while achieving academic goals<br>and striving 
+            for excellence in all.
+        
+        </p>
         </div>
       
         <!-- Generating the club cards -->

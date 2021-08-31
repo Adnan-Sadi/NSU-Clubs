@@ -137,7 +137,7 @@
 
             <div class="event--content">
 
-              <h2>
+              <h2 class="content-heading">
                 <a href="{{ url('event/'.$event->event_id) }}" >{{ $event->event_name }}</a>
               </h2>
 

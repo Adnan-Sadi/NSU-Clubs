@@ -78,7 +78,10 @@
 								</div>
 								<div class="col-md-6">
 									<div class="mu-about-right">
-										<h2>About The Event</h2>
+										<h2>About The Event
+
+										<button type="button" class="btn btn-outline-success">Follow</button>
+										</h2>
 										<p> {{ $event->event_description }}</p>
 									
 									</div>
@@ -129,8 +132,10 @@
 
 						<div class="rotatingGallery-slide" data-arrival-index="{{ $count }}">
 						<img class="rotatingGallery-image" alt="" src="{{ asset('images/Event Photos/'.$photo->path) }}" title="">
-						
+						<div  class="container text-center">
+							<button type="button" id="imageRemove" class="btn btn-dark"><i class="fa fa-trash" aria-hidden="true"></i> remove</button>
 						</div>
+					</div>
 
 					@endforeach
 					

@@ -133,6 +133,9 @@ img {
     width: 100%;
 }
 
+.mu-about-left input {
+    margin-top: 10px;
+}
 .mu-about-right {
     display: inline;
     float: left;
@@ -140,6 +143,10 @@ img {
     width: 100%;
 }
 
+.AboutImage {
+    width: 600px;
+    height: 400px;
+}
 /*--------------------*/
 /* VIDEO */
 /*--------------------*/
@@ -180,7 +187,7 @@ img {
 /*--------------------*/
 
 #mu-schedule {
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     display: inline;
     float: left;
     width: 100%;

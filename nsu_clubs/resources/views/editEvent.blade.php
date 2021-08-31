@@ -98,12 +98,13 @@
 									<div class="mu-about-left">
 
                                         @if ($event->about_image != null)
-                                            <img class="" src="{{ asset('images/Event Photos/' . $event->about_image) }}" >
+                                            <img class="AboutImage" src="{{ asset('images/Event Photos/' . $event->about_image) }}" >
                                         @else
-                                            <img class="" src="{{ asset('images/Event Template/about.jpg') }}">
+                                            <img  class="AboutImage" src="{{ asset('images/Event Template/about.jpg') }}">
                                         @endif
 										
                                         <input type="file" name="about_image" class="form-control-file" id="exampleFormControlFile1">
+									
 									</div>
 								</div>
 								<div class="col-md-6">
