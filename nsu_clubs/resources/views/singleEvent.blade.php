@@ -8,8 +8,7 @@
     <title>EVENT</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
-    <!-- Font Awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    
     <!-- Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="shortcut icon" href="{{ asset('images/Home/mortarboard.png') }}"/>
@@ -17,6 +16,9 @@
 
     <!-- Main Style -->
     <link href="{{ asset('css/singleEventStyles.css') }}" rel="stylesheet">
+
+	  <!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/8aa2fd0685.js" crossorigin="anonymous"></script>
 
     <!-- Open Sans for body font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
@@ -79,8 +81,17 @@
 								<div class="col-md-6">
 									<div class="mu-about-right">
 										<h2>About The Event
+										
+										@if (Auth::user())
+										<!-- Follow Event Button -->
+										@if ($follows != null)
+										<button type="button" class="btn btn-outline-danger btn-sm unfollow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-times-circle"></i> Follow</button><br>
+										@else
+											<button type="button" class="btn btn-outline-success btn-sm follow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
+										@endif
+										<!-- Follow Event Button -->
+										@endif
 
-										<button type="button" class="btn btn-outline-success">Follow</button>
 										</h2>
 										<p> {{ $event->event_description }}</p>
 									
@@ -132,9 +143,20 @@
 
 						<div class="rotatingGallery-slide" data-arrival-index="{{ $count }}">
 						<img class="rotatingGallery-image" alt="" src="{{ asset('images/Event Photos/'.$photo->path) }}" title="">
+						
+						<!-- Check if user is club admin -->
+						@if ($manages == 1)
+
 						<div  class="container text-center">
-							<button type="button" id="imageRemove" class="btn btn-dark"><i class="fa fa-trash" aria-hidden="true"></i> remove</button>
+							<form id="form-1" action="/event/{{ $photo->p_id }}/photo" method="POST">
+                            @csrf
+                            @method('delete')
+							<button type="submit" id="imageRemove" class="btn btn-dark" name="{{ $photo->p_id }}"><i class="fas fa-trash"></i> remove</button>
+							</form>
 						</div>
+		
+						@endif
+						
 					</div>
 
 					@endforeach
@@ -176,10 +198,11 @@
 	
 	
     <!-- jQuery library Bootstrap-->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="{{ asset('js/singelEventScript.js') }}"></script>
+	<script src="{{ asset('js/allEventScript.js') }}"></script>
 @endsection
   </body>
 </html>

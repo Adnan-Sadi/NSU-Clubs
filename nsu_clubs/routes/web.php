@@ -40,6 +40,7 @@ Route::get('/club/{club}', [ClubController::class, 'destroy'])->name('club.destr
 Route::resource('/event', EventController::class);
 Route::get('/event/{event}/follow', [EventController::class, 'follow'])->name('event.follow');
 Route::get('/event/{event}/unfollow', [EventController::class, 'unfollow'])->name('event.unfollow');
+Route::delete('/event/{event}/photo', [EventController::class, 'delete_photo'])->name('event.delete_photo');
 
 Route::resource('/members', MembersController::class);
 Route::post('/ex_members', [ExecutiveMembersController::class, 'store'])->name('ex_members.store');

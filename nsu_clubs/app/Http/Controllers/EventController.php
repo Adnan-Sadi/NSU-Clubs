@@ -83,8 +83,33 @@ class EventController extends Controller
     {
         $event = Events::with('clubs')->find($id);
         $photos = $event->event_photos()->where('event_id',$id)->get();//getting photos
+
+        if(auth()->user()){
+            $userId = auth()->user()->id;//getting userId
+            $follows = DB::table('follow_events')->where('user_id','=',$userId)->where('event_id','=',$id)->get();// Check if user is following any of the events
+        }
+        else{
+            $follows = null; //if user is not logged in
+        }
+
+        /***  Check if the user is a Admin of the club */
+        if(auth()->user()){
+         $userId = auth()->user()->id;//getting userId
+         $manager = DB::table('club_managers')->where('user_id',$userId)->where('club_id',$event->club_id)->get();// check if user is a manager of the club
+        }
+        else{
+         $manager = collect(); // empty collection
+        }
+        
+        if($manager->isNotEmpty()){
+            $manages = 1;     
+        }
+        else{
+            $manages = 0; 
+        }
+        /***  Check if the user is a Admin of the club */
   
-        return view ('singleEvent')->with('event',$event)->with('photos',$photos);
+        return view ('singleEvent')->with('event',$event)->with('photos',$photos)->with('follows',$follows)->with('manages',$manages);
     }
 
      /** Follow a Event */
@@ -216,5 +241,19 @@ class EventController extends Controller
         $club_id = $event->club_id;
         $event->delete();
         return redirect('/home/'.$club_id.'/events');        
+    }
+
+    public function delete_photo($id)
+    {
+        $photo = Event_Photos::find($id);
+
+        if(File::exists(public_path('images/Event Photos/'.$photo->path))){
+            File::delete(public_path('images/Event Photos/'.$photo->path));
+        }//Delete previous picture from storage   
+
+        $photo->delete();
+
+        return redirect()->back();
+
     }
 }
