@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\facades\DB;
 use Illuminate\Support\facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Events;
@@ -178,7 +179,7 @@ class EventController extends Controller
         if($request->hasfile('photos')){
 
           foreach ($request->photos as $photo) {
-            $newImageName = time(). '-'. $request->event_name .'.'. $photo->extension();
+            $newImageName = time(). '-'. Str::random(8).'-'. $request->event_name .'.'. $photo->extension();
             $photo->move(public_path('images/Event Photos'),$newImageName);//store image in storage
 
             Event_Photos::create([
