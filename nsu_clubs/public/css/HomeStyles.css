@@ -324,6 +324,7 @@
 
 .img-fluid {
     height: 320px;
+    width: 500px;
 }
 
 @media (max-width: 991px) {
@@ -639,8 +640,11 @@
     }
 }
 
-.blog-post-area .single-blog-post .overlay {
+.overlay {
     background: rgba(0, 0, 0, 0.616);
+}
+#overlay3 {
+    width: 90%;
 }
 
 .blog-post-area .single-blog-post .top-text {

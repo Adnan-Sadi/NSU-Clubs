@@ -139,9 +139,25 @@ img {
     margin-top: 10px;
     width: 100%;
     height: 400px;
-    overflow: hidden;
 }
 
+.eventDescription {
+    overflow-y: scroll;
+    height: 350px;
+}
+.eventDescription::-webkit-scrollbar {
+    width: 12px;
+}
+.eventDescription::-webkit-scrollbar-track {
+    background: #000623;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+.eventDescription::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 1px solid #000623;
+}
 .AboutImage {
     width: 600px;
     height: 400px;

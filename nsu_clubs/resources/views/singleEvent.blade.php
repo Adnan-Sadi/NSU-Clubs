@@ -93,7 +93,7 @@
 										@endif
 
 										</h2>
-										<p> {{ $event->event_description }}</p>
+										<p class="eventDescription"> {{ $event->event_description }}</p>
 									
 									</div>
 								</div>
