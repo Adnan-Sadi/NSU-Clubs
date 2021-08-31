@@ -75,7 +75,7 @@ class EventController extends Controller
         }
         
 
-        return redirect('/home/'.$request->club_id.'/events');
+        return redirect('event/'. $event->event_id. '/edit');
     }
 
     /** Display Event Page */
