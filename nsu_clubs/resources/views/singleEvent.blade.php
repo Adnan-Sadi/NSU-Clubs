@@ -84,7 +84,7 @@
 										
 										@if (Auth::user())
 										<!-- Follow Event Button -->
-										@if ($follows != null)
+										@if (!$follows->isEmpty())
 										<button type="button" class="btn btn-outline-danger btn-sm unfollow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-times-circle"></i> Follow</button><br>
 										@else
 											<button type="button" class="btn btn-outline-success btn-sm follow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-check-circle"></i> Follow</button><br>

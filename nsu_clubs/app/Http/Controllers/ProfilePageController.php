@@ -24,11 +24,11 @@ class ProfilePageController extends Controller
 
         /**getting the clubs followed by the user */
         $clubs_followed = DB::table('users')
-                                ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
-                                ->join('clubs', 'follow_clubs.club_id', '=','clubs.id')
-                                ->select('users.id','follow_clubs.club_id','clubs.*')
-                                ->where('users.id','=',$userId)
-                                ->get();
+                            ->join('follow_clubs', 'users.id', '=','follow_clubs.user_id')
+                            ->join('clubs', 'follow_clubs.club_id', '=','clubs.id')
+                            ->select('users.id','follow_clubs.club_id','clubs.*')
+                            ->where('users.id','=',$userId)
+                            ->get();
         /**getting the clubs followed by the user */
         
         /**getting the events followed by the user */

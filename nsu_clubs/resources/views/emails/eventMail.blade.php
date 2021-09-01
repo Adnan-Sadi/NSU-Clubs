@@ -9,7 +9,7 @@
 {{ $event->event_description }}
 @endcomponent
 
-@component('mail::button', ['url' => 'event/'.$event->event_id, 'color' => 'success'])
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/event/'.$event->event_id, 'color' => 'success'])
 Link
 @endcomponent
 

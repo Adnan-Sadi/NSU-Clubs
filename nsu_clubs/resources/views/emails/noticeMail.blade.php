@@ -10,7 +10,7 @@
 {{ $notice->description }}
 @endcomponent
 
-@component('mail::button', ['url' => 'home/'.$club->id, 'color' => 'success'])
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/home/'.$club->id, 'color' => 'success'])
 Link
 @endcomponent
 
