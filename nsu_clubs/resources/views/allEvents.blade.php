@@ -8,13 +8,13 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <script src="https://kit.fontawesome.com/8aa2fd0685.js" crossorigin="anonymous"></script>
-     
+
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <link rel="shortcut icon" href="{{ asset('images/Home/mortarboard.png') }}"/>
       <!-- FONTAWESOME -->
     <script src="https://kit.fontawesome.com/8aa2fd0685.js" crossorigin="anonymous"></script>
-    
+
     <link href="{{ asset('css/allEventStyles.css') }}" type="text/css" rel="stylesheet">
     </head>
 
@@ -26,16 +26,16 @@
        <div class="container">
         <div class="page-header" style="border: none;position: relative;">
           <h1>Calendar of Events</h1>
-          
+
           <!-- Check if the user is the manager of the club -->
           @if ($manages == 1)
-            <div class="button-container-1">
+            <div class="oraganize-event-button-container">
                 <span class="mas">Organize Event</span>
                 <button id='work' type="button" name="Hover" data-toggle="modal" data-target="#modalCart">Organize Event</button>
             </div>
           @endif
           <!-- Check if the user is the manager of the club -->
-          
+
               <!-- Add new event modal -->
               <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
@@ -44,7 +44,7 @@
                   <!--Header-->
                   <div class="modal-header">
 
-                    
+
                     <h4 class="modal-title" id="myModalLabel">Enter Information</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span>
@@ -52,7 +52,7 @@
                   </div>
                   <!--Body-->
                   <div class="modal-body">
-                    
+
                     <!-- Create New Event Form -->
                     <form action="/event" method="POST" enctype="multipart/form-data">
                      @csrf
@@ -64,7 +64,7 @@
                                 <label for="exampleFormControlTextarea1"><strong>Event Description</strong></label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="description"></textarea>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1"><strong>Date</strong></label>
                                 <input type="date" name="event_date">
@@ -93,11 +93,11 @@
             </div>
             <!-- Add new event modal -->
 
-        
-        
+
+
         </div>
         <!-- TIMELINE -->
-        
+
         <div id="2020" class="spacer-toc"><i class="fa fa-calendar"></i></div>
 
         <!-- View Errors if any-->
@@ -105,18 +105,18 @@
 					<div class="alert alert-danger alert-block">
 					<strong>Error:</strong><br>
 					<button type="button" class="close" data-dismiss="alert">×</button>
-					
+
 					@foreach ($errors->all() as $error)
 						<span>{{$error}}</span><br>
 					@endforeach
 					</div>
 				@endif
-				<!-- View Errors if any--> 
-        
+				<!-- View Errors if any-->
+
         <h2 class="border-line">2021</h2>
-        
+
         <div class="eventWrapper">
-      
+
           @forelse ($club->events as $event)
 
           @if ($event->club_id == $club->id)
@@ -148,29 +148,29 @@
                   <time>{{ $event->start_at }} - {{ $event->end_at }}</time>
                 </div>
               </div>
-      
+
               <div class="event--content-ensemble">
-                <!-- Limiting the size of description -->  
+                <!-- Limiting the size of description -->
                 {{ Str::limit($event->event_description, 150, '...') }}
             </div>
               <!-- csrf-token -->
               <meta name="csrf-token" content="{{ csrf_token() }}">
-              
+
               <!-- Check if user is logged in -->
               @if (Auth::user())
-                
+
                   <div class="event--content-social">
 
                     @php
                         $following = false;//if $following = true, then user is following the event
                     @endphp
-                                        
+
                     @foreach ($follows as $follow)
                       @if ( $event->event_id == $follow->event_id)
                         @php       $following = true;       @endphp
                       @endif
                     @endforeach
-                    
+
                      <!-- Follow Event Button -->
                       @if ($following == true)
                        <button type="button" class="btn btn-outline-danger btn-sm unfollow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-times-circle"></i> Follow</button><br>
@@ -178,14 +178,14 @@
                         <button type="button" class="btn btn-outline-success btn-sm follow_event" id="follow_event_{{ $event->event_id }}" data="{{ $event->event_id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
                       @endif
                       <!-- Follow Event Button -->
-                    
+
                     <!-- Check if the user is the manager of the club -->
                     @if ($manages == 1)
                        <!-- Edit Event Button -->
                        <button type="button" class="btn btn-outline-info btn-sm edit_event" id="{{ $event->event_id }}" onclick="location.href='/event/{{ $event->event_id }}/edit';">
                        <span class="btn-label"><i class="fas fa-edit"></i> Edit</button><br>
                         <!-- Edit Event Button -->
-                        
+
                         <!-- Delete Event Button -->
                         <form id="form-1" action="/event/{{ $event->event_id }}" method="POST">
                             @csrf
@@ -193,34 +193,34 @@
                             <button type="submit" class="btn btn-outline-dark btn-sm"><i class="far fa-trash-alt"></i> Delete</button>
                         </form>
                         <!-- Delete Event Button -->
-                      
+
                     @endif
                     <!-- Check if the user is the manager of the club -->
-                    
-                  
+
+
                   </div>
               @else
-                
+
               @endif
-              
+
             </div>
 
            </div>
          @endif
-              
+
         @empty
         <!-- If the club has no events -->
         <p>No Events found</p>
-              
+
         @endforelse
 
 
         </div>
-        
-        
-        
+
+
+
         <div class="wsite-spacer" style="height:4rem;"></div>
-          
+
         </div><!-- container -->
 
 
@@ -228,10 +228,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{{ asset('js/allEventScript.js') }}"></script>
-  
+
     @endsection
     </body>
 
-   
-   
+
+
 </html>

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,700,300);
 
 /* */
-.button-container-1 {
+.oraganize-event-button-container {
     position: absolute;
     width: 200px;
     height: 50px;
@@ -18,7 +18,7 @@
     border-radius: 8px;
 }
 
-.button-container-1 button {
+.oraganize-event-button-container button {
     width: 101%;
     height: 100%;
     font-family: "Lato", sans-serif;
@@ -38,7 +38,7 @@
     animation: ani2 0.7s steps(22) forwards;
 }
 
-.button-container-1 button:hover {
+.oraganize-event-button-container button:hover {
     -webkit-animation: ani 0.7s steps(22) forwards;
     animation: ani 0.7s steps(22) forwards;
 }
@@ -102,13 +102,6 @@
         mask-position: 0 0;
     }
 }
-
-/*# sourceMappingURL=styles.css.map */
-
-/* ========================*/
-
-/* general structure
-==============================*/
 
 :root {
     --bg-clr: #ebebeb;
@@ -499,7 +492,6 @@ img {
     }
 }
 
-/*# sourceMappingURL=style.css.map */
 .form-control-file {
     color: #971c3d;
 }

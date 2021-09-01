@@ -23,14 +23,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-  
+
   <link rel="stylesheet" href="{{ asset('css/HomeStyles.css') }}" />
 </head>
 
 <body>
 
 @extends('layouts.layout')
- 
+
 @section('content')
 
   <!-- ================ start banner Area ================= -->
@@ -43,8 +43,8 @@
             with NSU CLUBS
           </h1>
           <p class="mx-auto text-white  mt-20 mb-40">
-            We assist students find the best club for them, to prepare them for personal fulfillment, 
-            and success in life.  
+            We assist students find the best club for them, to prepare them for personal fulfillment,
+            and success in life.
           </p>
         </div>
         <div class="offset-lg-2 col-lg-5 col-md-12 home-banner-right">
@@ -63,19 +63,19 @@
           <div class="section-title text-left">
             <h2 class="home-font" >
               Meet the Clubs<br />
-              of North-South University 
-            
-              
+              of North-South University
+
+
             </h2>
           </div>
           <p>
-          They help students by supporting their efforts to learn through extra and 
-            <br>co-curricular experiences while achieving academic goals<br>and striving 
+          They help students by supporting their efforts to learn through extra and
+            <br>co-curricular experiences while achieving academic goals<br>and striving
             for excellence in all.
-        
+
         </p>
         </div>
-      
+
         <!-- Generating the club cards -->
         @foreach ( $clubs as $club )
 
@@ -89,13 +89,13 @@
                 <div class="flip-card-back">
                   <div class="inner color-white">
                     <h3 class="flip-box-header home-font">{{ $club->club_name }}</h3><br>
-                    
+
                     <!-- -->
 
                     <div class="backheader">
                       {{ Str::limit($club->Description, 150, '...') }} <!-- Limiting the size of description -->
                     </div>
-                    
+
                     <button class="flip-box-button" onclick="location.href='/home/{{ $club->id }}';">Learn More</button>
                   </div>
                 </div>
@@ -103,17 +103,17 @@
             </div>
           </div>
         </div>
-            
+
         @endforeach
         <!-- Generating the club cards -->
-   
+
       </div>
     </div>
   </section>
   <!-- ================ End Clubs Area ================= -->
 
   <section class="popular-course-area section-gap">
-    
+
     <!-- PARALLEX -->
     <section class="parallexContainer">
 
@@ -124,38 +124,38 @@
              <br>
          </div>
      </section>
-    
+
    </section>
   <!-- PARALLEX -->
 
  </section>
 
   <!-- ================ Start Recent Events Area ================= -->
-  <section class="blog-post-area section-gap" id="events">
+  <section class="recent-event-area  section-gap" id="events">
     <div class="container-fluid">
       <div class="feature-inner row">
         <div class="col-lg-12">
           <div class="section-title text-left">
             <h2 class="home-font">
-              Upcoming Events   
+              Upcoming Events
             </h2>
             All the recent events organized by the clubs of <br>North-south university.
             <br><br><br><br>
-            
+
           </div>
         </div>
 
         @isset($events[0]) <!-- checking if there are upcoming events -->
 
         <div class="col-lg-4 col-md-6">
-          <div class="single-blog-post">
+          <div class="single-event-post">
             <img src="{{ asset('images/Event Covers/' . $events[0]->cover_photo) }}" class="img-fluid" alt="" />
             <div class="overlay"></div>
             <div class="top-text">
               <p>{{ $events[0]->event_date }}.</p>
             </div>
             <div class="text">
-              <h4 class="text-white home-font">{{ $events[0]->event_name }}</h4> 
+              <h4 class="text-white home-font">{{ $events[0]->event_name }}</h4>
               <div>
                 <p>
                   {{ Str::limit($events[0]->event_description, 150, '...')  }} <!-- Limiting the size of description -->
@@ -170,15 +170,15 @@
         </div>
 
         @endisset
-         
+
         @isset($events[1])<!-- checking if there are upcoming events -->
 
         <div class="col-lg-4 col-md-6 mt--160">
-          <div class="single-blog-post">
+          <div class="single-event-post">
             <img src="{{ asset('images/Event Covers/' . $events[1]->cover_photo) }}" class="img-fluid" alt="" />
             <div class="overlay"></div>
             <div class="top-text">
-              <p>{{ $events[1]->event_date }}.</p>           
+              <p>{{ $events[1]->event_date }}.</p>
             </div>
             <div class="text">
               <h4 class="text-white home-font">{{ $events[1]->event_name }}</h4>
@@ -196,17 +196,17 @@
         </div>
 
         @endisset
-        
+
         @isset($events[2])<!-- checking if there are upcoming events -->
-                          
+
         <div class="col-lg-4 col-md-6 mt--260">
-          <div class="single-blog-post">
+          <div class="single-event-post">
             <img src="{{ asset('images/Event Covers/' . $events[2]->cover_photo) }}" class="img-fluid" alt="" />
             <div class="overlay">
-              
+
             </div>
             <div class="top-text">
-              <p>{{ $events[2]->event_date }}.</p>  
+              <p>{{ $events[2]->event_date }}.</p>
             </div>
             <div class="text">
               <h4 class="text-white home-font">{{ $events[2]->event_name }}</h4>
@@ -235,7 +235,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script> 
+  <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
   <script src="{{ asset('js/homeScript.js') }}"></script>
 
   <!--Data asos script -->

@@ -4,49 +4,49 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>CLUB PAGE</title>
- 
+
     <!-- Font Awesome -->
 	<link rel="shortcut icon" href="{{ asset('images/Home/mortarboard.png') }}"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8aa2fd0685.js" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	
+
     <!-- Main Style -->
     <link href="{{ asset('css/clubPageStyles.css') }}" rel="stylesheet">
 
   </head>
   <body>
-  	
+
 	@extends('layouts.layout1')
 	@section('content')
 
   	<!-- Start Heading Section -->
-	<div id="mu-hero" class="" role="banner" style="background-image: url('{{ asset('images/Club Covers/' . $club->cover_photo) }}');">
-		<div class="mu-hero-overlay">
+	<div id="club-main" class="" role="banner" style="background-image: url('{{ asset('images/Club Covers/' . $club->cover_photo) }}');">
+		<div class="club-main-overlay">
 			<div class="container text-center">
-				<div class="mu-hero-area">
-								
-					<div class="mu-hero-featured-area">
+				<div class="club-main-area">
+
+					<div class="club-main-featured-area">
 						<!-- Start center Logo -->
-						<div class="mu-logo-area">
-							<div class="mu-logo">							
+						<div class="club-logo-area">
+							<div class="club-logo">
 							   <img src="{{ asset('images/Club Logos/' . $club->logo) }}">
 						    </div>
 						</div>
 						<!-- End center Logo -->
 
-						<div class="mu-hero-featured-content">				
-							<div class="mu-event-date-line">								
+						<div class="club-main-featured-content">
+							<div class="club-name-heading">
 								{{ $club->club_name }} -
-								{{ $club->club_initial }}								
+								{{ $club->club_initial }}
 						    </div>
-							
-							<div class="mu-event-counter-area">
-								<div id="mu-event-counter">
-									
+
+							<div class="club-page-extra-space-area">
+								<div id="club-page-extra-space">
+
 								</div>
 							</div>
 						</div>
@@ -56,12 +56,12 @@
 		</div>
 	</div>
 	<!-- End Heading Section -->
-	
+
 
 		<!-- Start Club Info Section -->
-		<section id="mu-schedule">
+		<section id="club-page-main-container">
 			<div class="container">
-                
+
 				<div class="container text-center" >
 					<button type="button" id="navButtons" class="btn btn-dark" onclick="location.href='/home/{{ $club->id }}/members';">Members</button>
 					<button type="button" id="navButtons"class="btn btn-dark" onclick="location.href='/home/{{ $club->id }}/events';">Events</button>
@@ -72,7 +72,7 @@
                         @php
                         $following = false;//if $following = true then user is following the event
                         @endphp
-                        
+
 						<!-- Checking if user is one of the followers of the club -->
                         @foreach ($follows as $follow)
                             @if ( $club->id == $follow->club_id)
@@ -80,36 +80,36 @@
                             @endif
                         @endforeach
 						<!-- Checking if user is one of the followers of the club -->
-                        
+
 						<!-- Follow button -->
                         @if ($following == true)
                         <button type="button" id="followButton" class="btn btn-outline-danger unfollow_club" id="follow_club_{{ $club->id }}" data="{{ $club->id }}"><i class="fas fa-times-circle"></i> Unfollow</button><br>
                         @else
                             <button type="button" id="followButton" class="btn btn-outline-success follow_club" id="follow_club_{{ $club->id }}" data="{{ $club->id }}"><i class="fas fa-check-circle"></i> Follow</button><br>
                         @endif
-						<!-- Follow button -->                       
+						<!-- Follow button -->
 
                     @endif
-                    
+
 				</div>
-				
+
 				<div class="row">
 					<div class="colo-md-12">
-						
-						<div class="mu-schedule-area">
-				
-							<div class="mu-title-area">
-						
-								<h2 class="mu-title">Club Details
+
+						<div class="club-page-main-container-area">
+
+							<div class="club-details-area">
+
+								<h2 class="club-details-title">Club Details
 
                                 <!-- Check if the user is the manager of the club -->
 								@if ($manages == 1)
 								<button type="button" id="editButton" class="btn btn-dark"  data-toggle="modal" data-target="#modalCart">
-								<i class="fa fa-wrench" aria-hidden="true"></i> 	
-								Edit</button>	
+								<i class="fa fa-wrench" aria-hidden="true"></i>
+								Edit</button>
 								@endif
 								<!-- Check if the user is the manager of the club -->
-								
+
 								</h2>
 
 								<!-- View edit club errors if any-->
@@ -117,7 +117,7 @@
 								 <div class="alert alert-danger alert-block">
 									 <strong>Error:</strong><br>
 									<button type="button" class="close" data-dismiss="alert">×</button>
-									
+
 									@foreach ($errors->club_errors->all() as $error)
 										<span>{{$error}}</span><br>
 									@endforeach
@@ -125,7 +125,7 @@
 
 								 @endif
 								 <!-- View edit clubs errors if any-->
-															
+
 								<p>
 									{{ $club->Description }}
 								</p>
@@ -142,7 +142,7 @@
 								 <div class="alert alert-danger alert-block">
 									 <strong>Error:</strong><br>
 									<button type="button" class="close" data-dismiss="alert">×</button>
-									
+
 									@foreach ($errors->notice_errors->all() as $error)
 										<span>{{$error}}</span><br>
 									@endforeach
@@ -150,13 +150,13 @@
 
 								 @endif
 								 <!-- View add notice errors if any-->
-						
+
 								<hr>
-								
+
 							  </div>
 
-							
-							<div class="mu-schedule-content-area">
+
+							<div class="club-page-main-container-content-area">
 
 								<!-- Start Club Notices Section -->
 								<div class="container">
@@ -171,16 +171,16 @@
 									</div>
 								</div>
 								<!-- End Club Notices Section -->
-							
+
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		
+
 	<!-- End Club Info Section -->
 
 
@@ -212,8 +212,8 @@
 				<label class="form-label" for="customFile">Upload Background Image</label>
 				<input type="file" class="form-control" id="customFile" name="cover_photo"/>
 				</div>
-				
-				
+
+
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -255,7 +255,7 @@
 		</div>
 
         </form>
-	  
+
      </div>
 	</div>
   </div>
@@ -290,7 +290,7 @@ for (let i = 0; i < length; i++) {
 	else{
 		items[i]["html"] = '</h4>';
 	}
-  
+
 }
 
 console.log(length);
@@ -307,7 +307,7 @@ const numPages = Math.ceil(items.length / itemsPerPage);
 const createListItem = (item) => `<li class="list-item"><h4 class="item-title">${item.title}
                                   <span id="demo" style="color:rgba(172, 175, 172, 1); font-style: italic; font-size:13px; ">${item.updated_at.split("T")[0]}</span>
                                   <span id="demo" style="color:rgba(172, 175, 172, 1); font-style: italic; font-size:13px; ">${item.updated_at.split("T")[1].split(".")[0]}</span>
-								  ${item.html}								  
+								  ${item.html}
 								  <p>${item.description}</p></li>`;
 
 
@@ -355,13 +355,13 @@ init();
 
 </script>
 
-  
+
    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    <script src="{{ asset('js/clubScript.js') }}"></script>
-   
+
 @endsection
-   
+
   </body>
 </html>

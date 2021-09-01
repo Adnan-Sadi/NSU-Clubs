@@ -54,10 +54,6 @@
 
       // Move slides to the left
       if (direction == "left") {
-        // The slides are numbered 1–X so if we are subtracting one from the index
-        // of each slide so that they move to the left, we have to target the
-        // element whose index would be `0` so that we can move it to the end
-        // of the gallery and set the right data attribute
         if (leftSlideIndex === 0) {
           rotatingGallerySlides.appendChild(slide);
           rotatingGallerySlides.insertAdjacentElement("afterbegin", slide);
@@ -69,10 +65,6 @@
 
         // Move slides to the right
       } else if (direction == "right") {
-        // The slides are numbered 1–X so if we are adding one to the index of
-        // each slide so that they move to the right, we have to target the
-        // element whose index would be (total slides + 1) so that we can move
-        // it to the beginning of the gallery and set the right data attribute
         if (rightSlideIndex === rotatingGallerySlideCount + 1 && rotatingGallerySlideCount>3) {
           rotatingGallerySlides.insertAdjacentElement("afterbegin", slide);
           slide.setAttribute("data-arrival-index", 1);
