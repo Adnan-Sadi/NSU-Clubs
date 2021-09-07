@@ -25,6 +25,7 @@
   ```bash
   git clone https://github.com/Adnan-Sadi/CSE299-Project.git
   ```
+- Export the database 'nsu_clubs2_0.sql' to your XAMPP PhpMyAdmin server.
 - cd into the 'nsu_clubs' Folder using Command Prompt.
 - Install Composer Dependencies. Run the following command in cmd-
    ```bash
