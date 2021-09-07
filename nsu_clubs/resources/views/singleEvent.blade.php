@@ -41,7 +41,7 @@
 					<div class="single-event-main-featured-area">
 						<!-- Start center Logo -->
 						<div class="single-event-main-logo-area">
-							<a class="single-event-main-logo" href="#">{{ $event->clubs->club_initial }}</a>
+							<a class="single-event-main-logo" href="/home/{{ $event->clubs->id }}">{{ $event->clubs->club_initial }}</a>
 						</div>
 						<!-- End center Logo -->
 
