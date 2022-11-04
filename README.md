@@ -1,6 +1,21 @@
-# CSE299-Project
+# NSU-Clubs
 
-# How to run
+## Introduction
+The purpose of this project was to develop a single website for all clubs in North South
+University. This website contains information on all clubs, and users will be able to view these
+information and get updates about new club events and activities when they are created.This
+website has mainly two types of users, general users(students) and club admins. The club admins
+can manage data about their own club effortlessly through this website. For example, club
+admins can add and edit information about their own club, post notices, create and promote new
+club events and organize their own club members data. The general users can browse for clubs,
+follow the clubs and their events and receive notifications about new club activities. This website
+provides a great user-friendly interface for maximum interaction. Various tools were used while
+developing this website including: HTML, CSS, Javascript, MySQL, Laravel 8.0, Bootstrap and
+Datatables. This website reduces the time and stress involved in finding the perfect club, which
+will assist students, particularly finding all information about the clubs.
+
+
+## How to run
 - Download and Install **PHP** if not already installed(**Version 7.4 or higher is preferable**)
   ```bash
   https://www.php.net/downloads.php
